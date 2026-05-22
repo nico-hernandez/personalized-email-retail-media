@@ -448,7 +448,16 @@ ESTRUCTURA HTML CON LAS VARIABLES AMPSCRIPT INLINE
                 </td>
 
                 <!-- CARD 2 -->
-                %%[ SET @esOferta = Field(Row(@productDetailsRows, 2), "esOferta") ]%%
+                %%[ SET @index = 1
+                    SET @esOferta = Field(Row(@productDetailsRows, @index), "esOferta")
+                    SET @precioNormal = Field(Row(@productDetailsRows, @index), "precioNormal")
+                    SET @precioOferta = Field(Row(@productDetailsRows, @index), "precioOferta")
+                    SET @descuento = Field(Row(@productDetailsRows, @index), "descuento")
+                    SET @marca = Field(Row(@productDetailsRows, @index), "marca")
+                    SET @descripcion = Field(Row(@productDetailsRows, @index), "descripcion")
+                    SET @imagen = Field(Row(@productDetailsRows, @index), "imagen")
+                    SET @pdp = Field(Row(@productDetailsRows, @index), "pdp") ]%%
+
                 <td class="card-td card-td-right" style="width:227px; vertical-align:top; padding-left:28px; padding-bottom:45px;">
                   <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="card-table" style="background-color:#111811; border-radius:12px; width:227px; border:1px solid #1e2e1e;">
                     <tr>
@@ -456,34 +465,34 @@ ESTRUCTURA HTML CON LAS VARIABLES AMPSCRIPT INLINE
                         <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%">
                           <tr>
                             <td class="card-img-td" style="background-color:#ffffff; border-radius:8px; height:247px; text-align:center; vertical-align:middle; overflow:hidden; padding:0;">
-                              <img src='%%=v(Field(Row(@productDetailsRows, 2), "imagen"))=%%' alt="Protector Solar Facial FPS 50+ 50 mL" width="160" style="display:block; margin:0 auto; max-height:240px; max-width:200px; width:auto; height:auto;">
+                              <img src='%%=v(@imagen)=%%' alt="Protector Solar Facial FPS 50+ 50 mL" width="160" style="display:block; margin:0 auto; max-height:240px; max-width:200px; width:auto; height:auto;">
                             </td>
                           </tr>
                         </table>
-                        <p class="card-brand" style="margin:10px 0 2px 0; font-family:Arial,Helvetica,sans-serif; font-size:11px; font-weight:700; color:#00c44f; letter-spacing:0.5px; text-transform:uppercase;">%%=v(Field(Row(@productDetailsRows, 2), "marca"))=%%</p>
+                        <p class="card-brand" style="margin:10px 0 2px 0; font-family:Arial,Helvetica,sans-serif; font-size:11px; font-weight:700; color:#00c44f; letter-spacing:0.5px; text-transform:uppercase;">%%=v(@marca)=%%</p>
                         <p class="card-name" style="margin:0 0 8px 0; font-family:Arial,Helvetica,sans-serif; font-size:15px; font-weight:700; color:#ffffff; line-height:1.35; min-height:40px; overflow:hidden;">
-                          %%=v(Field(Row(@productDetailsRows, 2), "descripcion"))=%%
+                          %%=v(@descripcion)=%%
                         </p>
                         %%[ IF @esOferta THEN ]%%
-                          <p class="card-original" style="margin:0 0 3px 0; font-family:Arial,Helvetica,sans-serif; font-size:12px; color:#888888; text-decoration:line-through;">%%=v(Field(Row(@productDetailsRows, 2), "precioNormal"))=%%</p>
+                          <p class="card-original" style="margin:0 0 3px 0; font-family:Arial,Helvetica,sans-serif; font-size:12px; color:#888888; text-decoration:line-through;">%%=v(@precioNormal)=%%</p>
                         %%[ ELSE ]%%
-                          <p class="card-original" style="margin:0 0 3px 0; font-family:Arial,Helvetica,sans-serif; font-size:12px; color:transparent; text-decoration:line-through; pointer-events: none; cursor: default;">%%=v(Field(Row(@productDetailsRows, 2), "precioNormal"))=%%</p>
+                          <p class="card-original" style="margin:0 0 3px 0; font-family:Arial,Helvetica,sans-serif; font-size:12px; color:transparent; text-decoration:line-through; pointer-events: none; cursor: default;">%%=v(@precioNormal)=%%</p>
                         %%[ ENDIF ]%%
                         <table role="presentation" border="0" cellpadding="0" cellspacing="0" style="margin:0 0 10px 0;">
                           <tr>
                             <td style="padding-right:6px; vertical-align:middle;">
-                              <span class="card-price" style="font-family:Arial,Helvetica,sans-serif; font-size:22px; font-weight:700; color:#00c44f;">%%=v(Field(Row(@productDetailsRows, 2), "precioOferta"))=%%</span>
+                              <span class="card-price" style="font-family:Arial,Helvetica,sans-serif; font-size:22px; font-weight:700; color:#00c44f;">%%=v(@precioOferta)=%%</span>
                             </td>
                             <td style="vertical-align:middle;">
                               %%[ IF @esOferta THEN ]%%
-                                <span class="card-badge" style="display:inline-block; background-color:#2e2300; color:#ffc000; font-family:Arial,Helvetica,sans-serif; font-size:10px; font-weight:700; padding:3px 6px; border-radius:4px; border:1px solid #ffc000;">%%=v(Field(Row(@productDetailsRows, 2), "descuento"))=%%</span>
+                                <span class="card-badge" style="display:inline-block; background-color:#2e2300; color:#ffc000; font-family:Arial,Helvetica,sans-serif; font-size:10px; font-weight:700; padding:3px 6px; border-radius:4px; border:1px solid #ffc000;">%%=v(@descuento)=%%</span>
                               %%[ ELSE ]%%
-                                <span class="card-badge" style="display:inline-block; background-color:transparent; color:transparent; font-family:Arial,Helvetica,sans-serif; font-size:10px; font-weight:700; padding:3px 6px; border-radius:4px; border:1px solid transparent; pointer-events: none; cursor: default;">%%=v(Field(Row(@productDetailsRows, 2), "descuento"))=%%</span>
+                                <span class="card-badge" style="display:inline-block; background-color:transparent; color:transparent; font-family:Arial,Helvetica,sans-serif; font-size:10px; font-weight:700; padding:3px 6px; border-radius:4px; border:1px solid transparent; pointer-events: none; cursor: default;">%%=v(@descuento)=%%</span>
                               %%[ ENDIF ]%%
                             </td>
                           </tr>
                         </table>
-                        <a href='%%=RedirectTo(Field(Row(@productDetailsRows, 2), "pdp"))=%%' target="_blank" class="btn-buy" style="display:block; background-color:#00c44f; color:#ffffff; font-family:Arial,Helvetica,sans-serif; font-size:12px; font-weight:700; text-decoration:none; text-align:center; line-height:35px; height:35px; border-radius:6px; letter-spacing:1px; text-transform:uppercase; mso-line-height-rule:exactly;">COMPRAR</a>
+                        <a href='%%=RedirectTo(@pdp)=%%' target="_blank" class="btn-buy" style="display:block; background-color:#00c44f; color:#ffffff; font-family:Arial,Helvetica,sans-serif; font-size:12px; font-weight:700; text-decoration:none; text-align:center; line-height:35px; height:35px; border-radius:6px; letter-spacing:1px; text-transform:uppercase; mso-line-height-rule:exactly;">COMPRAR</a>
                       </td>
                     </tr>
                   </table>
