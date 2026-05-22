@@ -81,7 +81,7 @@
           var descripcion = splitText(row["descripcion"]);
           var precio_normal = row["precio_normal_cl"] || 9999999;
           var precio_oferta = row["precio_oferta_cl"] || row["precio_normal_cl"];
-          var descuento = Math.round(((row["precio_normal_cl"] - row["precio_oferta_cl"]) / row["precio_normal_cl"]) * 100);
+          var descuento = Math.round(((precio_normal - precio_oferta) / precio_normal) * 100);
           var imagen = row["url_imagen"] || "https://image.mailcruzverde.cl/lib/fe3615717564047b711178/m/1/70239c1d-2dac-4c6a-af85-fb4336152eac.png";
           var pdp = row["url_pdp"] || "https://www.cruzverde.cl/";
           
