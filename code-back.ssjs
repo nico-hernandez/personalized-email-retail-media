@@ -11,20 +11,20 @@
     /* =========================================================
       Función que divide texto para evitar descriptores largos
     ========================================================= */
-/*     function splitText(text) {
+    function splitText(text) {
       var max = 24;
       var part1 = "";
       var part2 = "";
 
       // Caso 1: Texto nulo
       if (!text) {
-        return "zzz";
+        return "<br>";
       }
 
       // Caso 2: Texto corto
       if (text.length <= max) {
         part1 = text;
-        return part1 + "zzz";
+        return part1 + "<br>";
       } 
 
       // Caso 3: Texto largo
@@ -37,24 +37,24 @@
         part1 = temp;
       }
 
-      var rest = text.substring(part1.length).trim();
+      var rest = text.substring(part1.length); //text.substring(part1.length).trim();
 
       if (rest.length <= max) {
         part2 = rest;
       } else {
         part2 = rest.substring(0, max) + "...";
       }
-      return part1 + "zzz" + part2;
+      return part1 + "<br>" + part2;
     } 
- */
 
- function splitText(text) {
+
+/*  function splitText(text) {
   var x = text.length;
   var y = text.substring(0, 24);
   var z = text.lastIndexOf(" ");
-  var w = text.trim();
+  var w = text.trim(); // no existe funcion en ssjs
   return x + y + z;
- }
+ } */
     /* =========================================================
       Main que consulta atributos del producto a mostrar en HTML
     ========================================================= */
