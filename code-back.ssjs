@@ -78,7 +78,7 @@
             var descuento = 0;
           }
 
-          var descripcion = row["descripcion"];//splitText(row["descripcion"]);
+          var descripcion = "Protector Solar Facial<br>Gel Crema Oil Control FP..."; //row["descripcion"];//splitText(row["descripcion"]);
 
           productDetails.push({
             index: i + 1,
