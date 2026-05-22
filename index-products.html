@@ -236,8 +236,7 @@ ESTRUCTURA HTML CON LAS VARIABLES AMPSCRIPT INLINE
   </style>
 </head>
 <body style="margin:0; padding:0; background-color:#0a0f0a;">
-<p>JSON: %%=v(@productDetailsString)=%%</p>
-%%=v(Field(Row(@productDetailsRows, 2), "precio_normal"))=%%
+
 <!-- Preheader oculto -->
 <div style="display:none; max-height:0; overflow:hidden; font-size:1px; color:#0a0f0a; line-height:1px; max-width:0px; opacity:0;">
   Sofía, hasta 40% dcto. en productos seleccionados Eucerin. ¡Compra ahora!
@@ -386,14 +385,14 @@ ESTRUCTURA HTML CON LAS VARIABLES AMPSCRIPT INLINE
                         <p class="card-name" style="margin:0 0 8px 0; font-family:Arial,Helvetica,sans-serif; font-size:15px; font-weight:700; color:#ffffff; line-height:1.35; min-height:40px; overflow:hidden;">
                           Protector Solar Facial<br>FPS 50+ 50 mL
                         </p>
-                        <p class="card-original" style="margin:0 0 3px 0; font-family:Arial,Helvetica,sans-serif; font-size:12px; color:#888888; text-decoration:line-through;">$%%=v(Field(Row(@productDetailsRows, 2), "precio_normal"))=%%</p>
+                        <p class="card-original" style="margin:0 0 3px 0; font-family:Arial,Helvetica,sans-serif; font-size:12px; color:#888888; text-decoration:line-through;">$%%=v(Field(Row(@productDetailsRows, 1), "precio_normal"))=%%</p>
                         <table role="presentation" border="0" cellpadding="0" cellspacing="0" style="margin:0 0 10px 0;">
                           <tr>
                             <td style="padding-right:6px; vertical-align:middle;">
-                              <span class="card-price" style="font-family:Arial,Helvetica,sans-serif; font-size:22px; font-weight:700; color:#00c44f;">$16.990</span>
+                              <span class="card-price" style="font-family:Arial,Helvetica,sans-serif; font-size:22px; font-weight:700; color:#00c44f;">$%%=v(Field(Row(@productDetailsRows, 1), "precio_oferta"))=%%</span>
                             </td>
                             <td style="vertical-align:middle;">
-                              <span class="card-badge" style="display:inline-block; background-color:#2e2300; color:#ffc000; font-family:Arial,Helvetica,sans-serif; font-size:10px; font-weight:700; padding:3px 6px; border-radius:4px; border:1px solid #ffc000;">-29%</span>
+                              <span class="card-badge" style="display:inline-block; background-color:#2e2300; color:#ffc000; font-family:Arial,Helvetica,sans-serif; font-size:10px; font-weight:700; padding:3px 6px; border-radius:4px; border:1px solid #ffc000;">%%=v(Field(Row(@productDetailsRows, 1), "descuento"))=%%%</span>
                             </td>
                           </tr>
                         </table>
