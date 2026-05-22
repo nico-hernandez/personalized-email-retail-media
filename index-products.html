@@ -1,3 +1,100 @@
+<!--
+=============================================================
+LÓGICA DE BÚSQUEDA DE ATRIBUTOS EN CATÁLOGO ECOMMERCE
+=============================================================
+El detalle de productos se pasa a AMPScript psoteriormente
+y se puede referenciar inline en el HTML.
+=============================================================
+-->
+  
+<script runat="server">
+  Platform.Load("Core", "1.1.1");
+
+  try {
+    var productList = [
+      "273358",
+      "545055",
+      "546661",
+      "383877",
+      "259654",
+      "574372"
+    ];
+
+    var dataExtension = "ProductDetail";
+    var productDetails = [];
+
+    for (var i = 0; i < productList.length; i++) {
+      var code = productList[i];
+      var rows = Platform.Function.LookupRows(dataExtension, ["codigo_producto"], [code]);
+      var row = (rows && rows.length > 0) ? rows[0] : null;
+
+      if (row) {
+
+        if (row["precio_normal_cl"] > 0 && row["precio_oferta_cl"] >= 0) {
+          var dcto = ((row["precio_normal_cl"] - row["precio_oferta_cl"]) / row["precio_normal_cl"]) * 100;
+          dcto = Math.round(dcto);
+        } else {
+          var dcto = 0;
+        }
+
+        productDetails.push({
+          index: i + 1,
+          status: "encontrado",
+          codigo: row["codigo_producto"],
+          descripcion: row["descripcion"],
+          marca: row["marca"],
+          precio_normal: row["precio_normal_cl"],
+          precio_oferta: row["precio_oferta_cl"],
+          descuento: dcto,
+          imagen: row["url_imagen"],
+          pdp: row["url_pdp"]
+        });
+
+      } else {
+
+        productDetails.push({
+          index: i + 1,
+          status: "no encontrado",
+          codigo: code,
+          descripcion: "",
+          marca: "",
+          precio_normal: 0,
+          precio_oferta: 0,
+          descuento: 0,
+          imagen: "",
+          pdp: ""
+        });
+
+      }
+    }
+
+    // Stringify
+    var productDetailsString = Platform.Function.Stringify(productDetails);
+
+    // Print en pantalla
+    // Write('<pre>' + productDetailsString + '</pre>');
+
+    // Print consola navegador
+    Write('<script>console.log(' + productDetailsString + ')</script>');
+
+    // Pasar a AMPscript
+    Variable.SetValue("@productDetailsString", productDetailsString);
+
+  } catch (ex) {
+    Write("Ocurrió un error: " + String(ex));
+  }
+</script>
+
+%%[
+  SET @productDetailsRows = BuildRowsetFromJSON(@productDetailsString, "$[*]", 1)
+]%%
+
+<!--
+=============================================================
+ESTRUCTURA HTML CON LAS VARIABLES AMPSCRIPT INLINE
+=============================================================
+-->
+
 <!DOCTYPE html>
 <html lang="es" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
 <head>
@@ -288,7 +385,7 @@
                         <p class="card-name" style="margin:0 0 8px 0; font-family:Arial,Helvetica,sans-serif; font-size:15px; font-weight:700; color:#ffffff; line-height:1.35; min-height:40px; overflow:hidden;">
                           Protector Solar Facial<br>FPS 50+ 50 mL
                         </p>
-                        <p class="card-original" style="margin:0 0 3px 0; font-family:Arial,Helvetica,sans-serif; font-size:12px; color:#888888; text-decoration:line-through;">$23.990</p>
+                        <p class="card-original" style="margin:0 0 3px 0; font-family:Arial,Helvetica,sans-serif; font-size:12px; color:#888888; text-decoration:line-through;">$%%=v(Field(Row(@productDetailsRows, 2), "precio_normal"))=%%</p>
                         <table role="presentation" border="0" cellpadding="0" cellspacing="0" style="margin:0 0 10px 0;">
                           <tr>
                             <td style="padding-right:6px; vertical-align:middle;">
