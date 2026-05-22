@@ -18,13 +18,13 @@
 
       // Caso 1: Texto nulo
       if (!text) {
-        return "<br>";
+        return "zzz";
       }
 
       // Caso 2: Texto corto
       if (text.length <= max) {
         part1 = text;
-        return part1 + "<br>";
+        return part1 + "zzz";
       } 
 
       // Caso 3: Texto largo
@@ -44,7 +44,7 @@
       } else {
         part2 = rest.substring(0, max) + "...";
       }
-      return part1 + "<br>" + part2;
+      return part1 + "zzz" + part2;
     } 
 
     /* =========================================================
@@ -117,7 +117,7 @@
       // Write('<pre>' + productDetailsString + '</pre>');
 
       // Print consola navegador
-      //Write('<script>console.log(' + productDetailsString + ')</script>');
+      Write('<script>console.log(' + productDetailsString + ')</script>');
 
       // Pasar a AMPscript
       Variable.SetValue("@productDetailsString", productDetailsString);
