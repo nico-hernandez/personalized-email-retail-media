@@ -72,20 +72,23 @@
       var productDetails = [];
 
       for (var i = 0; i < productList.length; i++) {
-        var code = productList[i];
-        var rows = Platform.Function.LookupRows(dataExtension, ["codigo_producto"], [code]);
+        var codigo = productList[i];
+        var rows = Platform.Function.LookupRows(dataExtension, ["codigo_producto"], [codigo]);
         var row = (rows && rows.length > 0) ? rows[0] : null;
 
         if (row) {
-
-          if (row["precio_normal_cl"] > 0 && row["precio_oferta_cl"] >= 0) {
-            var descuento = "-" + Math.round(((row["precio_normal_cl"] - row["precio_oferta_cl"]) / row["precio_normal_cl"]) * 100) + "%";
-            var precio_normal = "$" + String(row["precio_normal_cl"]).replace(/\B(?=(\d{3})+(?!\d))/g, ".")
-            var precio_oferta = "$" + String(row["precio_oferta_cl"]).replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-          } else {
-            var descuento = 0;
-          }
+          // Casos bordes de los campos de interes
           var descripcion = splitText(row["descripcion"]);
+          var precio_normal = row["precio_normal_cl"] || 9999999;
+          var precio_oferta = row["precio_oferta_cl"] || row["precio_normal_cl"];
+          var descuento = Math.round(((row["precio_normal_cl"] - row["precio_oferta_cl"]) / row["precio_normal_cl"]) * 100);
+          var imagen = row["url_imagen"] || "https://image.mailcruzverde.cl/lib/fe3615717564047b711178/m/1/70239c1d-2dac-4c6a-af85-fb4336152eac.png";
+          var pdp = row["url_pdp"] || "https://www.cruzverde.cl/";
+          
+          //Formatear para mostrar en HTML
+          precio_normal = "$" + String(precio_normal.replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+          precio_oferta = "$" + String(precio_oferta).replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+          descuento = "-" + descuento + "%";
 
           productDetails.push({
             index: i + 1,
@@ -93,11 +96,11 @@
             codigo: row["codigo_producto"],
             descripcion: descripcion,
             marca: row["marca"],
-            precio_normal: row["precio_normal_cl"],
-            precio_oferta: row["precio_oferta_cl"],
+            precio_normal: precio_normal,
+            precio_oferta: precio_oferta,
             descuento: descuento,
-            imagen: row["url_imagen"],
-            pdp: row["url_pdp"]
+            imagen: imagen,
+            pdp: pdp
           });
 
         } else {
@@ -105,12 +108,12 @@
           productDetails.push({
             index: i + 1,
             status: "no encontrado",
-            codigo: code,
+            codigo: codigo,
             descripcion: "",
             marca: "",
-            precio_normal: 0,
-            precio_oferta: 0,
-            descuento: 0,
+            precio_normal: "$9.999.999",
+            precio_oferta: "$9.999.999",
+            descuento: "0%",
             imagen: "",
             pdp: ""
           });
