@@ -111,8 +111,8 @@
             codigo: codigo,
             descripcion: "",
             marca: "",
-            precio_normal: "$9.999.999",
-            precio_oferta: "$9.999.999",
+            precioNormal: "$9.999.999",
+            precioOferta: "$9.999.999",
             descuento: "0%",
             imagen: "",
             pdp: ""

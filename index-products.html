@@ -6,7 +6,7 @@ El detalle de productos se pasa a AMPScript posteriormente
 y se puede referenciar inline en el HTML.
 =============================================================
 -->
-  
+
 <script runat="server">
   Platform.Load("Core", "1.1.1");
 
@@ -81,15 +81,15 @@ return x + y + z;
       if (row) {
         // Casos bordes de los campos de interes
         var descripcion = splitText(row["descripcion"]);
-        var precio_normal = row["precio_normal_cl"] || 9999999;
-        var precio_oferta = row["precio_oferta_cl"] || row["precio_normal_cl"];
-        var descuento = Math.round(((precio_normal - precio_oferta) / precio_normal) * 100);
+        var precioNormal = row["precio_normal_cl"] || 9999999;
+        var precioOferta = row["precio_oferta_cl"] || row["precio_normal_cl"];
+        var descuento = Math.round(((precioNormal - precioOferta) / precioNormal) * 100);
         var imagen = row["url_imagen"] || "https://image.mailcruzverde.cl/lib/fe3615717564047b711178/m/1/70239c1d-2dac-4c6a-af85-fb4336152eac.png";
         var pdp = row["url_pdp"] || "https://www.cruzverde.cl/";
         
         //Formatear para mostrar en HTML
-        precio_normal = "$" + String(precio_normal).replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-        precio_oferta = "$" + String(precio_oferta).replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+        precioNormal = "$" + String(precioNormal).replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+        precioOferta = "$" + String(precioOferta).replace(/\B(?=(\d{3})+(?!\d))/g, ".");
         descuento = "-" + descuento + "%";
 
         productDetails.push({
@@ -98,8 +98,8 @@ return x + y + z;
           codigo: row["codigo_producto"],
           descripcion: descripcion,
           marca: row["marca"],
-          precio_normal: precio_normal,
-          precio_oferta: precio_oferta,
+          precioNormal: precioNormal,
+          precioOferta: precioOferta,
           descuento: descuento,
           imagen: imagen,
           pdp: pdp
@@ -113,8 +113,8 @@ return x + y + z;
           codigo: codigo,
           descripcion: "",
           marca: "",
-          precio_normal: "$9.999.999",
-          precio_oferta: "$9.999.999",
+          precioNormal: "$9.999.999",
+          precioOferta: "$9.999.999",
           descuento: "0%",
           imagen: "",
           pdp: ""
@@ -406,11 +406,11 @@ ESTRUCTURA HTML CON LAS VARIABLES AMPSCRIPT INLINE
                           %%=v(Field(Row(@productDetailsRows, 1), "descripcion"))=%%
                         </p>
                         <!-- Precios -->
-                        <p class="card-original" style="margin:0 0 3px 0; font-family:Arial,Helvetica,sans-serif; font-size:12px; color:#888888; text-decoration:line-through;">%%=v(Field(Row(@productDetailsRows, 1), "precio_normal"))=%%</p>
+                        <p class="card-original" style="margin:0 0 3px 0; font-family:Arial,Helvetica,sans-serif; font-size:12px; color:#888888; text-decoration:line-through;">%%=v(Field(Row(@productDetailsRows, 1), "precioNormal"))=%%</p>
                         <table role="presentation" border="0" cellpadding="0" cellspacing="0" style="margin:0 0 10px 0;">
                           <tr>
                             <td style="padding-right:6px; vertical-align:middle;">
-                              <span class="card-price" style="font-family:Arial,Helvetica,sans-serif; font-size:22px; font-weight:700; color:#00c44f;">%%=v(Field(Row(@productDetailsRows, 1), "precio_oferta"))=%%</span>
+                              <span class="card-price" style="font-family:Arial,Helvetica,sans-serif; font-size:22px; font-weight:700; color:#00c44f;">%%=v(Field(Row(@productDetailsRows, 1), "precioOferta"))=%%</span>
                             </td>
                             <td style="vertical-align:middle;">
                               <span class="card-badge" style="display:inline-block; background-color:#2e2300; color:#ffc000; font-family:Arial,Helvetica,sans-serif; font-size:10px; font-weight:700; padding:3px 6px; border-radius:4px; border:1px solid #ffc000;">-29%</span>
@@ -440,11 +440,11 @@ ESTRUCTURA HTML CON LAS VARIABLES AMPSCRIPT INLINE
                         <p class="card-name" style="margin:0 0 8px 0; font-family:Arial,Helvetica,sans-serif; font-size:15px; font-weight:700; color:#ffffff; line-height:1.35; min-height:40px; overflow:hidden;">
                           %%=v(Field(Row(@productDetailsRows, 2), "descripcion"))=%%
                         </p>
-                        <p class="card-original" style="margin:0 0 3px 0; font-family:Arial,Helvetica,sans-serif; font-size:12px; color:#888888; text-decoration:line-through;">%%=v(Field(Row(@productDetailsRows, 2), "precio_normal"))=%%</p>
+                        <p class="card-original" style="margin:0 0 3px 0; font-family:Arial,Helvetica,sans-serif; font-size:12px; color:#888888; text-decoration:line-through;">%%=v(Field(Row(@productDetailsRows, 2), "precioNormal"))=%%</p>
                         <table role="presentation" border="0" cellpadding="0" cellspacing="0" style="margin:0 0 10px 0;">
                           <tr>
                             <td style="padding-right:6px; vertical-align:middle;">
-                              <span class="card-price" style="font-family:Arial,Helvetica,sans-serif; font-size:22px; font-weight:700; color:#00c44f;">%%=v(Field(Row(@productDetailsRows, 2), "precio_oferta"))=%%</span>
+                              <span class="card-price" style="font-family:Arial,Helvetica,sans-serif; font-size:22px; font-weight:700; color:#00c44f;">%%=v(Field(Row(@productDetailsRows, 2), "precioOferta"))=%%</span>
                             </td>
                             <td style="vertical-align:middle;">
                               <span class="card-badge" style="display:inline-block; background-color:#2e2300; color:#ffc000; font-family:Arial,Helvetica,sans-serif; font-size:10px; font-weight:700; padding:3px 6px; border-radius:4px; border:1px solid #ffc000;">%%=v(Field(Row(@productDetailsRows, 2), "descuento"))=%%</span>
@@ -484,11 +484,11 @@ ESTRUCTURA HTML CON LAS VARIABLES AMPSCRIPT INLINE
                         <p class="card-name" style="margin:0 0 8px 0; font-family:Arial,Helvetica,sans-serif; font-size:15px; font-weight:700; color:#ffffff; line-height:1.35; min-height:40px; overflow:hidden;">
                           %%=v(Field(Row(@productDetailsRows, 3), "descripcion"))=%%
                         </p>
-                        <p class="card-original" style="margin:0 0 3px 0; font-family:Arial,Helvetica,sans-serif; font-size:12px; color:#888888; text-decoration:line-through;">%%=v(Field(Row(@productDetailsRows, 3), "precio_normal"))=%%</p>
+                        <p class="card-original" style="margin:0 0 3px 0; font-family:Arial,Helvetica,sans-serif; font-size:12px; color:#888888; text-decoration:line-through;">%%=v(Field(Row(@productDetailsRows, 3), "precioNormal"))=%%</p>
                         <table role="presentation" border="0" cellpadding="0" cellspacing="0" style="margin:0 0 10px 0;">
                           <tr>
                             <td style="padding-right:6px; vertical-align:middle;">
-                              <span class="card-price" style="font-family:Arial,Helvetica,sans-serif; font-size:22px; font-weight:700; color:#00c44f;">%%=v(Field(Row(@productDetailsRows, 3), "precio_oferta"))=%%</span>
+                              <span class="card-price" style="font-family:Arial,Helvetica,sans-serif; font-size:22px; font-weight:700; color:#00c44f;">%%=v(Field(Row(@productDetailsRows, 3), "precioOferta"))=%%</span>
                             </td>
                             <td style="vertical-align:middle;">
                               <span class="card-badge" style="display:inline-block; background-color:#2e2300; color:#ffc000; font-family:Arial,Helvetica,sans-serif; font-size:10px; font-weight:700; padding:3px 6px; border-radius:4px; border:1px solid #ffc000;">-29%</span>
@@ -517,11 +517,11 @@ ESTRUCTURA HTML CON LAS VARIABLES AMPSCRIPT INLINE
                         <p class="card-name" style="margin:0 0 8px 0; font-family:Arial,Helvetica,sans-serif; font-size:15px; font-weight:700; color:#ffffff; line-height:1.35; min-height:40px; overflow:hidden;">
                           %%=v(Field(Row(@productDetailsRows, 4), "descripcion"))=%%
                         </p>
-                        <p class="card-original" style="margin:0 0 3px 0; font-family:Arial,Helvetica,sans-serif; font-size:12px; color:#888888; text-decoration:line-through;">%%=v(Field(Row(@productDetailsRows, 4), "precio_normal"))=%%</p>
+                        <p class="card-original" style="margin:0 0 3px 0; font-family:Arial,Helvetica,sans-serif; font-size:12px; color:#888888; text-decoration:line-through;">%%=v(Field(Row(@productDetailsRows, 4), "precioNormal"))=%%</p>
                         <table role="presentation" border="0" cellpadding="0" cellspacing="0" style="margin:0 0 10px 0;">
                           <tr>
                             <td style="padding-right:6px; vertical-align:middle;">
-                              <span class="card-price" style="font-family:Arial,Helvetica,sans-serif; font-size:22px; font-weight:700; color:#00c44f;">%%=v(Field(Row(@productDetailsRows, 4), "precio_oferta"))=%%</span>
+                              <span class="card-price" style="font-family:Arial,Helvetica,sans-serif; font-size:22px; font-weight:700; color:#00c44f;">%%=v(Field(Row(@productDetailsRows, 4), "precioOferta"))=%%</span>
                             </td>
                             <td style="vertical-align:middle;">
                               <span class="card-badge" style="display:inline-block; background-color:#2e2300; color:#ffc000; font-family:Arial,Helvetica,sans-serif; font-size:10px; font-weight:700; padding:3px 6px; border-radius:4px; border:1px solid #ffc000;">-29%</span>
@@ -561,11 +561,11 @@ ESTRUCTURA HTML CON LAS VARIABLES AMPSCRIPT INLINE
                         <p class="card-name" style="margin:0 0 8px 0; font-family:Arial,Helvetica,sans-serif; font-size:15px; font-weight:700; color:#ffffff; line-height:1.35; min-height:40px; overflow:hidden;">
                           %%=v(Field(Row(@productDetailsRows, 5), "descripcion"))=%%
                         </p>
-                        <p class="card-original" style="margin:0 0 3px 0; font-family:Arial,Helvetica,sans-serif; font-size:12px; color:#888888; text-decoration:line-through;">%%=v(Field(Row(@productDetailsRows, 5), "precio_normal"))=%%</p>
+                        <p class="card-original" style="margin:0 0 3px 0; font-family:Arial,Helvetica,sans-serif; font-size:12px; color:#888888; text-decoration:line-through;">%%=v(Field(Row(@productDetailsRows, 5), "precioNormal"))=%%</p>
                         <table role="presentation" border="0" cellpadding="0" cellspacing="0" style="margin:0 0 10px 0;">
                           <tr>
                             <td style="padding-right:6px; vertical-align:middle;">
-                              <span class="card-price" style="font-family:Arial,Helvetica,sans-serif; font-size:22px; font-weight:700; color:#00c44f;">%%=v(Field(Row(@productDetailsRows, 5), "precio_oferta"))=%%</span>
+                              <span class="card-price" style="font-family:Arial,Helvetica,sans-serif; font-size:22px; font-weight:700; color:#00c44f;">%%=v(Field(Row(@productDetailsRows, 5), "precioOferta"))=%%</span>
                             </td>
                             <td style="vertical-align:middle;">
                               <span class="card-badge" style="display:inline-block; background-color:#2e2300; color:#ffc000; font-family:Arial,Helvetica,sans-serif; font-size:10px; font-weight:700; padding:3px 6px; border-radius:4px; border:1px solid #ffc000;">-29%</span>
@@ -594,11 +594,11 @@ ESTRUCTURA HTML CON LAS VARIABLES AMPSCRIPT INLINE
                         <p class="card-name" style="margin:0 0 8px 0; font-family:Arial,Helvetica,sans-serif; font-size:15px; font-weight:700; color:#ffffff; line-height:1.35; min-height:40px; overflow:hidden;">
                           %%=v(Field(Row(@productDetailsRows, 6), "descripcion"))=%%
                         </p>
-                        <p class="card-original" style="margin:0 0 3px 0; font-family:Arial,Helvetica,sans-serif; font-size:12px; color:#888888; text-decoration:line-through;">%%=v(Field(Row(@productDetailsRows, 6), "precio_normal"))=%%</p>
+                        <p class="card-original" style="margin:0 0 3px 0; font-family:Arial,Helvetica,sans-serif; font-size:12px; color:#888888; text-decoration:line-through;">%%=v(Field(Row(@productDetailsRows, 6), "precioNormal"))=%%</p>
                         <table role="presentation" border="0" cellpadding="0" cellspacing="0" style="margin:0 0 10px 0;">
                           <tr>
                             <td style="padding-right:6px; vertical-align:middle;">
-                              <span class="card-price" style="font-family:Arial,Helvetica,sans-serif; font-size:22px; font-weight:700; color:#00c44f;">%%=v(Field(Row(@productDetailsRows, 6), "precio_oferta"))=%%</span>
+                              <span class="card-price" style="font-family:Arial,Helvetica,sans-serif; font-size:22px; font-weight:700; color:#00c44f;">%%=v(Field(Row(@productDetailsRows, 6), "precioOferta"))=%%</span>
                             </td>
                             <td style="vertical-align:middle;">
                               <span class="card-badge" style="display:inline-block; background-color:#2e2300; color:#ffc000; font-family:Arial,Helvetica,sans-serif; font-size:10px; font-weight:700; padding:3px 6px; border-radius:4px; border:1px solid #ffc000;">-29%</span>
