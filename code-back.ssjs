@@ -117,7 +117,7 @@
       // Write('<pre>' + productDetailsString + '</pre>');
 
       // Print consola navegador
-      Write('<script>console.log(' + productDetailsString + ')</script>');
+      //Write('<script>console.log(' + productDetailsString + ')</script>');
 
       // Pasar a AMPscript
       Variable.SetValue("@productDetailsString", productDetailsString);
