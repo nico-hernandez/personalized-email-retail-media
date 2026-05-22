@@ -62,8 +62,8 @@
     }
 
     var jsonString = Platform.Function.Stringify(productJson);
-    Platform.Response.Write(productJson);
     Write('<pre>' + jsonString + '</pre>');
+    Write('<script>console.log("' + jsonString + '")</script>');
 
   } catch (ex) {
     Write("Ocurrió un error: " + String(ex));
