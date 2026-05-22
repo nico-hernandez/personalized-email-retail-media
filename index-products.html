@@ -516,14 +516,14 @@ ESTRUCTURA HTML CON LAS VARIABLES AMPSCRIPT INLINE
                         <table role="presentation" border="0" cellpadding="0" cellspacing="0" style="margin:0 0 10px 0;">
                           <tr>
                             <td style="padding-right:6px; vertical-align:middle;">
+                              <span class="card-price" style="font-family:Arial,Helvetica,sans-serif; font-size:22px; font-weight:700; color:#00c44f;">%%=v(Field(Row(@productDetailsRows, 3), "precioOferta"))=%%</span>
+                            </td>
+                            <td style="vertical-align:middle;">
                               %%[ IF @esOferta THEN ]%%
                                 <span class="card-badge" style="display:inline-block; background-color:#2e2300; color:#ffc000; font-family:Arial,Helvetica,sans-serif; font-size:10px; font-weight:700; padding:3px 6px; border-radius:4px; border:1px solid #ffc000;">%%=v(Field(Row(@productDetailsRows, 3), "descuento"))=%%</span>
                               %%[ ELSE ]%%
                                 <span class="card-badge" style="display:inline-block; background-color:transparent; color:transparent; font-family:Arial,Helvetica,sans-serif; font-size:10px; font-weight:700; padding:3px 6px; border-radius:4px; border:1px solid transparent; pointer-events: none; cursor: default;">%%=v(Field(Row(@productDetailsRows, 3), "descuento"))=%%</span>
                               %%[ ENDIF ]%%
-                            </td>
-                            <td style="vertical-align:middle;">
-                              <span class="card-badge" style="display:inline-block; background-color:#2e2300; color:#ffc000; font-family:Arial,Helvetica,sans-serif; font-size:10px; font-weight:700; padding:3px 6px; border-radius:4px; border:1px solid #ffc000;%%=v(Field(Row(@productDetailsRows, 3), "valorOculto"))=%%">%%=v(Field(Row(@productDetailsRows, 3), "descuento"))=%%</span>
                             </td>
                           </tr>
                         </table>
