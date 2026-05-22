@@ -11,7 +11,7 @@
     /* =========================================================
       Función que divide texto para evitar descriptores largos
     ========================================================= */
-    function splitText(text) {
+/*     function splitText(text) {
       var max = 24;
       var part1 = "";
       var part2 = "";
@@ -46,7 +46,11 @@
       }
       return part1 + "zzz" + part2;
     } 
+ */
 
+ function splitText(text) {
+  return text;
+ }
     /* =========================================================
       Main que consulta atributos del producto a mostrar en HTML
     ========================================================= */
