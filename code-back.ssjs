@@ -76,7 +76,7 @@
       Write('<script>console.log(' + productDetailsString + ')</script>');
 
       // Pasar a AMPscript
-    // Variable.SetValue("@productDetailsString", productDetailsString);
+      Variable.SetValue("@productDetailsString", productDetailsString);
 
     } catch (ex) {
       Write("Ocurrió un error: " + String(ex));
