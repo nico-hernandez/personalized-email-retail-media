@@ -63,7 +63,7 @@
 
     var jsonString = Platform.Function.Stringify(productJson);
     Write('<pre>' + jsonString + '</pre>');
-    Write("<script>console.log('" + jsonString + "')</script>");
+    Write("<script>console.log('" + productJson + "')</script>");
 
   } catch (ex) {
     Write("Ocurrió un error: " + String(ex));
