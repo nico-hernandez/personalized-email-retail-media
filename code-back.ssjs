@@ -77,8 +77,7 @@
           } else {
             var descuento = 0;
           }
-          var descripcion = row["descripcion"] || "texto";
-          descripcion = splitText(row["descripcion"]);
+          var descripcion = splitText("Protector Solar Facial Gel Crema Oil Control FPS 50+ 50ml");
 
           productDetails.push({
             index: i + 1,
