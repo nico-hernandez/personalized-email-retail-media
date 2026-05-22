@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="format-detection" content="telephone=no, date=no, address=no, email=no">
+  <title>Cyber +Descuentos Cruz Verde</title>
+  <!--[if mso]>
+  <noscript>
+    <xml>
+      <o:OfficeDocumentSettings>
+        <o:PixelsPerInch>96</o:PixelsPerInch>
+      </o:OfficeDocumentSettings>
+    </xml>
+  </noscript>
+  <![endif]-->
+
+  <!--
+  =============================================================
+  PROPORCIONES DE CARD (base: contenedor 600px, padding H 32px)
+  =============================================================
+  Área de cards: 600 - 32 = 568px
+  Ancho card (W): 568 / 2.5 = 227px   (gap H = W/2 = 114px → 57px c/lado)
+  Alto card:      227 × 1.700 = 386px
+  Gap vertical:   386 / 8.5  =  45px
+  Zona imagen:    (227-24) × 1.214 = 247px  (inner padding 12px c/lado)
+  Alto botón:     227 / 6.538 = 35px
+  =============================================================
+  -->
+
+  <style type="text/css">
+    /* === RESET === */
+    body, table, td, a { -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
+    table, td { mso-table-lspace: 0pt; mso-table-rspace: 0pt; }
+    img { -ms-interpolation-mode: bicubic; border: 0; height: auto; line-height: 100%; outline: none; text-decoration: none; }
+    body { height: 100% !important; margin: 0 !important; padding: 0 !important; width: 100% !important; }
+    a[x-apple-data-detectors] { color: inherit !important; text-decoration: none !important; font-size: inherit !important; font-family: inherit !important; font-weight: inherit !important; line-height: inherit !important; }
+    div[style*="margin: 16px 0;"] { margin: 0 !important; }
+    #MessageViewBody, #MessageWebViewDiv { width: 100% !important; }
+
+    /* === CARD GRID — desktop === */
+    /*
+      gap-H entre cards = W/2 = 114px → outer-padding 16px c/lado del wrapper
+      + espaciado entre cards mediante padding de cada td = 57px c/lado
+      Resultado: td left padding-right=57, td right padding-left=57
+    */
+    .cards-wrapper   { padding: 0 57px; }
+    .card-row        { border-collapse: collapse; width: 100%; }
+    .card-td         { width: 227px; vertical-align: top; padding: 0; }
+    .card-td-left    { padding-right: 28px; padding-bottom: 45px; }
+    .card-td-right   { padding-left: 28px;  padding-bottom: 45px; }
+    /* Última fila: sin padding inferior */
+    .card-td-last    { padding-bottom: 0 !important; }
+
+    /* === CARD INNER === */
+    .card-table      { background-color: #111811; border-radius: 12px; width: 227px; border: 1px solid #1e2e1e; }
+    .card-inner      { padding: 12px; }
+
+    /* Zona imagen: alto = (227-24) × 1.214 = 247px */
+    .card-img-td {
+      background-color: #ffffff;
+      border-radius: 8px;
+      height: 247px;
+      text-align: center;
+      vertical-align: middle;
+      padding: 0;
+      overflow: hidden;
+    }
+    .card-img-td img { display: block; margin: 0 auto; max-height: 240px; max-width:200px; width: auto; height: auto; }
+
+    /* Textos */
+    .card-brand  { margin: 10px 0 2px 0; font-family: Arial,Helvetica,sans-serif; font-size: 11px; font-weight: 700; color: #00c44f; letter-spacing: 0.5px; text-transform: uppercase; }
+    /* Nombre: 2 líneas fijas con line-height para que todas las cards tengan mismo alto */
+    .card-name   {
+      margin: 0 0 8px 0;
+      font-family: Arial,Helvetica,sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      color: #ffffff;
+      line-height: 1.35;
+      /* Forzar exactamente 2 líneas: line-height × font-size × 2 = 1.35×15×2 = 40.5px */
+      min-height: 40px;
+      /* overflow safety */
+      overflow: hidden;
+    }
+    .card-original { margin: 0 0 3px 0; font-family: Arial,Helvetica,sans-serif; font-size: 12px; color: #888888; text-decoration: line-through; }
+    .card-price    { font-family: Arial,Helvetica,sans-serif; font-size: 22px; font-weight: 700; color: #00c44f; }
+    .card-badge    { display: inline-block; background-color: #2e2300; color: #ffc000; font-family: Arial,Helvetica,sans-serif; font-size: 10px; font-weight: 700; padding: 3px 6px; border-radius: 4px; border: 1px solid #00c44f; vertical-align: middle; }
+    .card-price-row { margin: 0 0 10px 0; }
+
+    /* Botón: alto = 227/6.538 = 35px, ancho = 100% de la card inner */
+    .btn-buy {
+      display: block;
+      background-color: #00c44f;
+      color: #ffffff;
+      font-family: Arial,Helvetica,sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      text-decoration: none;
+      text-align: center;
+      /* línea-altura para centrar verticalmente en 35px */
+      line-height: 35px;
+      height: 35px;
+      border-radius: 6px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      mso-line-height-rule: exactly;
+    }
+
+    /* === MOBILE === */
+    @media only screen and (max-width: 640px) {
+      .email-container { width: 100% !important; }
+      /*.mobile-padding  { padding-left: 12px !important; padding-right: 12px !important; }*/
+
+      /* Cards: recalcular proporciones para ancho de pantalla.
+         Asumimos viewport ~375px → área cards = 375-24 = 351px
+         W = 351/2.5 = 140px  gap-H = 70px → 35px c/lado
+         H card = 140×1.7 = 238px
+         gap-V = 238/8.5 = 28px
+         Zona img (inner 8px c/lado) = (140-16)×1.214 = 150px
+         Btn H = 140/6.538 = 21px  → usamos min 28px para touch
+      */
+      .cards-wrapper      { padding: 0 18px !important; }
+      .card-td            { width: 50% !important; }
+      .card-td-left       { padding-right: 18px !important; padding-bottom: 28px !important; }
+      .card-td-right      { padding-left: 18px !important;  padding-bottom: 28px !important; }
+      .card-table         { width: 100% !important; }
+      .card-inner         { padding: 8px !important; }
+      .card-img-td        { height: 150px !important; }
+      .card-img-td img    { max-height: 140px !important; }
+      .card-brand         { font-size: 9px !important; }
+      .card-name          { font-size: 11px !important; line-height: 1.3 !important; min-height: 30px !important; }
+      .card-original      { font-size: 10px !important; }
+      .card-price         { font-size: 16px !important; }
+      .card-badge         { font-size: 8px !important; padding: 2px 4px !important; }
+      .btn-buy            { font-size: 10px !important; line-height: 28px !important; height: 28px !important; letter-spacing: 0.5px !important; }
+    }
+  </style>
+</head>
+<body style="margin:0; padding:0; background-color:#0a0f0a;">
+
+<!-- Preheader oculto -->
+<div style="display:none; max-height:0; overflow:hidden; font-size:1px; color:#0a0f0a; line-height:1px; max-width:0px; opacity:0;">
+  Sofía, hasta 40% dcto. en productos seleccionados Eucerin. ¡Compra ahora!
+</div>
+
+<table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color:#0a0f0a;">
+  <tr>
+    <td align="center">
+
+      <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="600" class="email-container" style="max-width:600px; background-color:#0a0f0a;">
+
+        <!-- ============================================================ -->
+        <!-- COMPONENTE 1: ENCABEZADO — GIF animado                       -->
+        <!-- Reemplazar src con URL del GIF real (600px ancho)            -->
+        <!-- ============================================================ -->
+        <tr>
+          <td align="center" valign="top" style="padding:0; background-color:#000000;">
+            <a href="https://www.cruzverde.cl" target="_blank" style="display:block;">
+              <img
+                src="https://image.mailcruzverde.cl/lib/fe3615717564047b711178/m/1/4e7d0f8c-f47e-4ae1-b0c0-77c84c92c689.gif"
+                alt="Club Cruz Verde – Cyber +Descuentos"
+                width="640"
+                style="display:block; width:100%; max-width:640px; height:auto;"
+              >
+            </a>
+          </td>
+        </tr>
+
+        <!-- ============================================================ -->
+        <!-- COMPONENTE 2: TEXTO VARIABLE — nombre del destinatario       -->
+        <!-- Reemplazar "Sofía" con variable de tu plataforma de envío:  -->
+        <!--   Mailchimp: *|FNAME|*  /  HubSpot: {{ contact.firstname }} -->
+        <!-- ============================================================ -->
+        <tr>
+          <td align="center" valign="top" style="padding:32px 0px 32px 0px; background-color:#000000;">
+            <h1 style="margin:0; padding:0; font-family:Arial,Helvetica,sans-serif; font-size:24px; font-weight:700; color:#ffffff; line-height:1.2; text-align:center;">
+              Sofía
+            </h1>
+          </td>
+        </tr>
+
+        <!-- ============================================================ -->
+        <!-- COMPONENTE 3: IMAGEN HERO — banner "Hasta 40% dcto."        -->
+        <!-- Reemplazar src con URL de imagen real (600px ancho)         -->
+        <!-- ============================================================ -->
+        <tr>
+          <td align="center" valign="top" style="padding:0; background-color:#000000;" class="mobile-padding">
+            <a href="https://www.cruzverde.cl" target="_blank" style="display:block;">
+              <img
+                src="https://image.mailcruzverde.cl/lib/fe3615717564047b711178/m/1/44d8f97f-6e7d-4e74-8584-6021bc46f2eb.png"
+                alt="Hasta 40% de descuento en productos seleccionados"
+                width="640"
+                style="display:block; width:100%; max-width:640px; height:auto;"
+              >
+            </a>
+          </td>
+        </tr>
+
+        <!-- ============================================================ -->
+        <!-- COMPONENTE 4: MARCA — logotipo Eucerin                      -->
+        <!-- Reemplazar src con URL del logo real de la marca            -->
+        <!-- ============================================================ -->
+        <tr>
+          <td align="center" valign="top" style="padding:0; background-color:#0a0f0a;">
+            <img
+              src="https://image.mailcruzverde.cl/lib/fe3615717564047b711178/m/1/0106c6d8-fa79-431a-b77f-848c07ba219a.png"
+              alt="Eucerin"
+              width="640"
+              style="display:block; width:100%; max-width:640px; height:auto;"
+            >
+          </td>
+        </tr>
+
+        <!-- ============================================================ -->
+        <!-- COMPONENTE 5: GRILLA DE CARDS — 3 filas × 2 columnas        -->
+        <!--                                                              -->
+        <!-- Variables por card (reemplazar en cada una):                -->
+        <!--   [PRODUCT_URL]       → URL de destino al hacer clic        -->
+        <!--   [PRODUCT_IMG_URL]   → URL imagen del producto             -->
+        <!--   [PRODUCT_IMG_ALT]   → texto alternativo de la imagen      -->
+        <!--   [BRAND_NAME]        → p. ej. "EUCERIN"                    -->
+        <!--   [PRODUCT_LINE1]     → primera línea del nombre            -->
+        <!--   [PRODUCT_LINE2]     → segunda línea (o &nbsp; si vacía)   -->
+        <!--   [ORIGINAL_PRICE]    → precio original tachado             -->
+        <!--   [SALE_PRICE]        → precio de oferta                    -->
+        <!--   [DISCOUNT_BADGE]    → p. ej. "-29%"                       -->
+        <!-- ============================================================ -->
+
+        <!-- ─── FILA 1 ─────────────────────────────────────────────── -->
+        <tr>
+          <td style="background-color:#000000;" class="cards-wrapper">
+            <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="card-row" style="border-collapse:collapse; width:100%;">
+              <tr>
+
+                <!-- CARD 1 -->
+                <td class="card-td card-td-left" style="width:227px; vertical-align:top; padding-right:28px; padding-bottom:45px;">
+                  <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="card-table" style="background-color:#111811; border-radius:12px; width:227px; border:1px solid #1e2e1e;">
+                    <tr>
+                      <td class="card-inner" style="padding:12px;">
+                        <!-- Imagen -->
+                        <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%">
+                          <tr>
+                            <td class="card-img-td" style="background-color:#ffffff; border-radius:8px; height:247px; text-align:center; vertical-align:middle; overflow:hidden; padding:0;">
+                              <img src="https://beta.cruzverde.cl/on/demandware.static/-/Sites-masterCatalog_Chile/default/dw68ca5d60/images/large/273358-1.jpg?sw=200&sh=200" alt="Protector Solar Facial FPS 50+ 50 mL" width="160" style="display:block; margin:0 auto; max-height:240px; max-width:200px; width:auto; height:auto;">
+                            </td>
+                          </tr>
+                        </table>
+                        <!-- Marca -->
+                        <p class="card-brand" style="margin:10px 0 2px 0; font-family:Arial,Helvetica,sans-serif; font-size:11px; font-weight:700; color:#00c44f; letter-spacing:0.5px; text-transform:uppercase;">EUCERIN</p>
+                        <!-- Nombre producto — siempre 2 líneas (usar &#10; o <br> para la segunda) -->
+                        <p class="card-name" style="margin:0 0 8px 0; font-family:Arial,Helvetica,sans-serif; font-size:15px; font-weight:700; color:#ffffff; line-height:1.35; min-height:40px; overflow:hidden;">
+                          Protector Solar Facial<br>FPS 50+ 50 mL
+                        </p>
+                        <!-- Precios -->
+                        <p class="card-original" style="margin:0 0 3px 0; font-family:Arial,Helvetica,sans-serif; font-size:12px; color:#888888; text-decoration:line-through;">$23.990</p>
+                        <table role="presentation" border="0" cellpadding="0" cellspacing="0" style="margin:0 0 10px 0;">
+                          <tr>
+                            <td style="padding-right:6px; vertical-align:middle;">
+                              <span class="card-price" style="font-family:Arial,Helvetica,sans-serif; font-size:22px; font-weight:700; color:#00c44f;">$16.990</span>
+                            </td>
+                            <td style="vertical-align:middle;">
+                              <span class="card-badge" style="display:inline-block; background-color:#2e2300; color:#ffc000; font-family:Arial,Helvetica,sans-serif; font-size:10px; font-weight:700; padding:3px 6px; border-radius:4px; border:1px solid #ffc000;">-29%</span>
+                            </td>
+                          </tr>
+                        </table>
+                        <!-- Botón -->
+                        <a href="https://www.cruzverde.cl" target="_blank" class="btn-buy" style="display:block; background-color:#00c44f; color:#ffffff; font-family:Arial,Helvetica,sans-serif; font-size:12px; font-weight:700; text-decoration:none; text-align:center; line-height:35px; height:35px; border-radius:6px; letter-spacing:1px; text-transform:uppercase; mso-line-height-rule:exactly;">COMPRAR</a>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+
+                <!-- CARD 2 -->
+                <td class="card-td card-td-right" style="width:227px; vertical-align:top; padding-left:28px; padding-bottom:45px;">
+                  <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="card-table" style="background-color:#111811; border-radius:12px; width:227px; border:1px solid #1e2e1e;">
+                    <tr>
+                      <td class="card-inner" style="padding:12px;">
+                        <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%">
+                          <tr>
+                            <td class="card-img-td" style="background-color:#ffffff; border-radius:8px; height:247px; text-align:center; vertical-align:middle; overflow:hidden; padding:0;">
+                              <img src="https://beta.cruzverde.cl/on/demandware.static/-/Sites-masterCatalog_Chile/default/dw68ca5d60/images/large/273358-1.jpg?sw=200&sh=200" alt="Protector Solar Facial FPS 50+ 50 mL" width="160" style="display:block; margin:0 auto; max-height:240px; max-width:200px; width:auto; height:auto;">
+                            </td>
+                          </tr>
+                        </table>
+                        <p class="card-brand" style="margin:10px 0 2px 0; font-family:Arial,Helvetica,sans-serif; font-size:11px; font-weight:700; color:#00c44f; letter-spacing:0.5px; text-transform:uppercase;">EUCERIN</p>
+                        <p class="card-name" style="margin:0 0 8px 0; font-family:Arial,Helvetica,sans-serif; font-size:15px; font-weight:700; color:#ffffff; line-height:1.35; min-height:40px; overflow:hidden;">
+                          Protector Solar Facial<br>FPS 50+ 50 mL
+                        </p>
+                        <p class="card-original" style="margin:0 0 3px 0; font-family:Arial,Helvetica,sans-serif; font-size:12px; color:#888888; text-decoration:line-through;">$23.990</p>
+                        <table role="presentation" border="0" cellpadding="0" cellspacing="0" style="margin:0 0 10px 0;">
+                          <tr>
+                            <td style="padding-right:6px; vertical-align:middle;">
+                              <span class="card-price" style="font-family:Arial,Helvetica,sans-serif; font-size:22px; font-weight:700; color:#00c44f;">$16.990</span>
+                            </td>
+                            <td style="vertical-align:middle;">
+                              <span class="card-badge" style="display:inline-block; background-color:#2e2300; color:#ffc000; font-family:Arial,Helvetica,sans-serif; font-size:10px; font-weight:700; padding:3px 6px; border-radius:4px; border:1px solid #ffc000;">-29%</span>
+                            </td>
+                          </tr>
+                        </table>
+                        <a href="https://www.cruzverde.cl" target="_blank" class="btn-buy" style="display:block; background-color:#00c44f; color:#ffffff; font-family:Arial,Helvetica,sans-serif; font-size:12px; font-weight:700; text-decoration:none; text-align:center; line-height:35px; height:35px; border-radius:6px; letter-spacing:1px; text-transform:uppercase; mso-line-height-rule:exactly;">COMPRAR</a>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+
+              </tr>
+            </table>
+          </td>
+        </tr>
+
+        <!-- ─── FILA 2 ─────────────────────────────────────────────── -->
+        <tr>
+          <td style="background-color:#000000;" class="cards-wrapper">
+            <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="card-row" style="border-collapse:collapse; width:100%;">
+              <tr>
+
+                <!-- CARD 3 -->
+                <td class="card-td card-td-left" style="width:227px; vertical-align:top; padding-right:28px; padding-bottom:45px;">
+                  <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="card-table" style="background-color:#111811; border-radius:12px; width:227px; border:1px solid #1e2e1e;">
+                    <tr>
+                      <td class="card-inner" style="padding:12px;">
+                        <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%">
+                          <tr>
+                            <td class="card-img-td" style="background-color:#ffffff; border-radius:8px; height:247px; text-align:center; vertical-align:middle; overflow:hidden; padding:0;">
+                              <img src="https://beta.cruzverde.cl/on/demandware.static/-/Sites-masterCatalog_Chile/default/dw68ca5d60/images/large/273358-1.jpg?sw=200&sh=200" alt="Protector Solar Facial FPS 50+ 50 mL" width="160" style="display:block; margin:0 auto; max-height:240px; max-width:200px; width:auto; height:auto;">
+                            </td>
+                          </tr>
+                        </table>
+                        <p class="card-brand" style="margin:10px 0 2px 0; font-family:Arial,Helvetica,sans-serif; font-size:11px; font-weight:700; color:#00c44f; letter-spacing:0.5px; text-transform:uppercase;">EUCERIN</p>
+                        <p class="card-name" style="margin:0 0 8px 0; font-family:Arial,Helvetica,sans-serif; font-size:15px; font-weight:700; color:#ffffff; line-height:1.35; min-height:40px; overflow:hidden;">
+                          Protector Solar Facial<br>FPS 50+ 50 mL
+                        </p>
+                        <p class="card-original" style="margin:0 0 3px 0; font-family:Arial,Helvetica,sans-serif; font-size:12px; color:#888888; text-decoration:line-through;">$23.990</p>
+                        <table role="presentation" border="0" cellpadding="0" cellspacing="0" style="margin:0 0 10px 0;">
+                          <tr>
+                            <td style="padding-right:6px; vertical-align:middle;">
+                              <span class="card-price" style="font-family:Arial,Helvetica,sans-serif; font-size:22px; font-weight:700; color:#00c44f;">$16.990</span>
+                            </td>
+                            <td style="vertical-align:middle;">
+                              <span class="card-badge" style="display:inline-block; background-color:#2e2300; color:#ffc000; font-family:Arial,Helvetica,sans-serif; font-size:10px; font-weight:700; padding:3px 6px; border-radius:4px; border:1px solid #ffc000;">-29%</span>
+                            </td>
+                          </tr>
+                        </table>
+                        <a href="https://www.cruzverde.cl" target="_blank" class="btn-buy" style="display:block; background-color:#00c44f; color:#ffffff; font-family:Arial,Helvetica,sans-serif; font-size:12px; font-weight:700; text-decoration:none; text-align:center; line-height:35px; height:35px; border-radius:6px; letter-spacing:1px; text-transform:uppercase; mso-line-height-rule:exactly;">COMPRAR</a>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+
+                <!-- CARD 4 -->
+                <td class="card-td card-td-right" style="width:227px; vertical-align:top; padding-left:28px; padding-bottom:45px;">
+                  <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="card-table" style="background-color:#111811; border-radius:12px; width:227px; border:1px solid #1e2e1e;">
+                    <tr>
+                      <td class="card-inner" style="padding:12px;">
+                        <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%">
+                          <tr>
+                            <td class="card-img-td" style="background-color:#ffffff; border-radius:8px; height:247px; text-align:center; vertical-align:middle; overflow:hidden; padding:0;">
+                              <img src="https://beta.cruzverde.cl/on/demandware.static/-/Sites-masterCatalog_Chile/default/dw68ca5d60/images/large/273358-1.jpg?sw=200&sh=200" alt="Protector Solar Facial FPS 50+ 50 mL" width="160" style="display:block; margin:0 auto; max-height:240px; max-width:200px; width:auto; height:auto;">
+                            </td>
+                          </tr>
+                        </table>
+                        <p class="card-brand" style="margin:10px 0 2px 0; font-family:Arial,Helvetica,sans-serif; font-size:11px; font-weight:700; color:#00c44f; letter-spacing:0.5px; text-transform:uppercase;">EUCERIN</p>
+                        <p class="card-name" style="margin:0 0 8px 0; font-family:Arial,Helvetica,sans-serif; font-size:15px; font-weight:700; color:#ffffff; line-height:1.35; min-height:40px; overflow:hidden;">
+                          Protector Solar Facial<br>FPS 50+ 50 mL
+                        </p>
+                        <p class="card-original" style="margin:0 0 3px 0; font-family:Arial,Helvetica,sans-serif; font-size:12px; color:#888888; text-decoration:line-through;">$23.990</p>
+                        <table role="presentation" border="0" cellpadding="0" cellspacing="0" style="margin:0 0 10px 0;">
+                          <tr>
+                            <td style="padding-right:6px; vertical-align:middle;">
+                              <span class="card-price" style="font-family:Arial,Helvetica,sans-serif; font-size:22px; font-weight:700; color:#00c44f;">$16.990</span>
+                            </td>
+                            <td style="vertical-align:middle;">
+                              <span class="card-badge" style="display:inline-block; background-color:#2e2300; color:#ffc000; font-family:Arial,Helvetica,sans-serif; font-size:10px; font-weight:700; padding:3px 6px; border-radius:4px; border:1px solid #ffc000;">-29%</span>
+                            </td>
+                          </tr>
+                        </table>
+                        <a href="https://www.cruzverde.cl" target="_blank" class="btn-buy" style="display:block; background-color:#00c44f; color:#ffffff; font-family:Arial,Helvetica,sans-serif; font-size:12px; font-weight:700; text-decoration:none; text-align:center; line-height:35px; height:35px; border-radius:6px; letter-spacing:1px; text-transform:uppercase; mso-line-height-rule:exactly;">COMPRAR</a>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+
+              </tr>
+            </table>
+          </td>
+        </tr>
+
+        <!-- ─── FILA 3 (sin padding-bottom) ────────────────────────── -->
+        <tr>
+          <td style="background-color:#000000; padding-bottom:32px;" class="cards-wrapper">
+            <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="card-row" style="border-collapse:collapse; width:100%;">
+              <tr>
+
+                <!-- CARD 5 -->
+                <td class="card-td card-td-left card-td-last" style="width:227px; vertical-align:top; padding-right:28px; padding-bottom:0;">
+                  <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="card-table" style="background-color:#111811; border-radius:12px; width:227px; border:1px solid #1e2e1e;">
+                    <tr>
+                      <td class="card-inner" style="padding:12px;">
+                        <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%">
+                          <tr>
+                            <td class="card-img-td" style="background-color:#ffffff; border-radius:8px; height:247px; text-align:center; vertical-align:middle; overflow:hidden; padding:0;">
+                              <img src="https://beta.cruzverde.cl/on/demandware.static/-/Sites-masterCatalog_Chile/default/dw68ca5d60/images/large/273358-1.jpg?sw=200&sh=200" alt="Protector Solar Facial FPS 50+ 50 mL" width="160" style="display:block; margin:0 auto; max-height:240px; max-width:200px; width:auto; height:auto;">
+                            </td>
+                          </tr>
+                        </table>
+                        <p class="card-brand" style="margin:10px 0 2px 0; font-family:Arial,Helvetica,sans-serif; font-size:11px; font-weight:700; color:#00c44f; letter-spacing:0.5px; text-transform:uppercase;">EUCERIN</p>
+                        <p class="card-name" style="margin:0 0 8px 0; font-family:Arial,Helvetica,sans-serif; font-size:15px; font-weight:700; color:#ffffff; line-height:1.35; min-height:40px; overflow:hidden;">
+                          Protector Solar Facial<br>FPS 50+ 50 mL
+                        </p>
+                        <p class="card-original" style="margin:0 0 3px 0; font-family:Arial,Helvetica,sans-serif; font-size:12px; color:#888888; text-decoration:line-through;">$23.990</p>
+                        <table role="presentation" border="0" cellpadding="0" cellspacing="0" style="margin:0 0 10px 0;">
+                          <tr>
+                            <td style="padding-right:6px; vertical-align:middle;">
+                              <span class="card-price" style="font-family:Arial,Helvetica,sans-serif; font-size:22px; font-weight:700; color:#00c44f;">$16.990</span>
+                            </td>
+                            <td style="vertical-align:middle;">
+                              <span class="card-badge" style="display:inline-block; background-color:#2e2300; color:#ffc000; font-family:Arial,Helvetica,sans-serif; font-size:10px; font-weight:700; padding:3px 6px; border-radius:4px; border:1px solid #ffc000;">-29%</span>
+                            </td>
+                          </tr>
+                        </table>
+                        <a href="https://www.cruzverde.cl" target="_blank" class="btn-buy" style="display:block; background-color:#00c44f; color:#ffffff; font-family:Arial,Helvetica,sans-serif; font-size:12px; font-weight:700; text-decoration:none; text-align:center; line-height:35px; height:35px; border-radius:6px; letter-spacing:1px; text-transform:uppercase; mso-line-height-rule:exactly;">COMPRAR</a>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+
+                <!-- CARD 6 -->
+                <td class="card-td card-td-right card-td-last" style="width:227px; vertical-align:top; padding-left:28px; padding-bottom:0;">
+                  <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="card-table" style="background-color:#111811; border-radius:12px; width:227px; border:1px solid #1e2e1e;">
+                    <tr>
+                      <td class="card-inner" style="padding:12px;">
+                        <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%">
+                          <tr>
+                            <td class="card-img-td" style="background-color:#ffffff; border-radius:8px; height:247px; text-align:center; vertical-align:middle; overflow:hidden; padding:0;">
+                              <img src="https://beta.cruzverde.cl/on/demandware.static/-/Sites-masterCatalog_Chile/default/dw68ca5d60/images/large/273358-1.jpg?sw=200&sh=200" alt="Protector Solar Facial FPS 50+ 50 mL" width="160" style="display:block; margin:0 auto; max-height:240px; max-width:200px; width:auto; height:auto;">
+                            </td>
+                          </tr>
+                        </table>
+                        <p class="card-brand" style="margin:10px 0 2px 0; font-family:Arial,Helvetica,sans-serif; font-size:11px; font-weight:700; color:#00c44f; letter-spacing:0.5px; text-transform:uppercase;">EUCERIN</p>
+                        <p class="card-name" style="margin:0 0 8px 0; font-family:Arial,Helvetica,sans-serif; font-size:15px; font-weight:700; color:#ffffff; line-height:1.35; min-height:40px; overflow:hidden;">
+                          Protector Solar Facial<br>FPS 50+ 50 mL
+                        </p>
+                        <p class="card-original" style="margin:0 0 3px 0; font-family:Arial,Helvetica,sans-serif; font-size:12px; color:#888888; text-decoration:line-through;">$23.990</p>
+                        <table role="presentation" border="0" cellpadding="0" cellspacing="0" style="margin:0 0 10px 0;">
+                          <tr>
+                            <td style="padding-right:6px; vertical-align:middle;">
+                              <span class="card-price" style="font-family:Arial,Helvetica,sans-serif; font-size:22px; font-weight:700; color:#00c44f;">$16.990</span>
+                            </td>
+                            <td style="vertical-align:middle;">
+                              <span class="card-badge" style="display:inline-block; background-color:#2e2300; color:#ffc000; font-family:Arial,Helvetica,sans-serif; font-size:10px; font-weight:700; padding:3px 6px; border-radius:4px; border:1px solid #ffc000;">-29%</span>
+                            </td>
+                          </tr>
+                        </table>
+                        <a href="https://www.cruzverde.cl" target="_blank" class="btn-buy" style="display:block; background-color:#00c44f; color:#ffffff; font-family:Arial,Helvetica,sans-serif; font-size:12px; font-weight:700; text-decoration:none; text-align:center; line-height:35px; height:35px; border-radius:6px; letter-spacing:1px; text-transform:uppercase; mso-line-height-rule:exactly;">COMPRAR</a>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+
+              </tr>
+            </table>
+          </td>
+        </tr>
+
+        <!-- FOOTER -->
+        <tr>
+          <td align="center" valign="top" style="padding:20px 24px; background-color:#000000; border-top:1px solid #1a2a1a;">
+            <p style="margin:0 0 6px 0; padding:0; font-family:Arial,Helvetica,sans-serif; font-size:11px; color:#555555; text-align:center;">
+              © 2024 Cruz Verde. Todos los derechos reservados.
+            </p>
+            <p style="margin:0; padding:0; font-family:Arial,Helvetica,sans-serif; font-size:11px; color:#555555; text-align:center;">
+              Si no deseas recibir más comunicaciones, puedes
+              <a href="#" style="color:#00c44f; text-decoration:underline;">darte de baja aquí</a>.
+            </p>
+          </td>
+        </tr>
+
+      </table>
+
+    </td>
+  </tr>
+</table>
+
+</body>
+</html>
