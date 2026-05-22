@@ -1,26 +1,6 @@
-  %%[ 
-  SET @currentTime  = Now()
-  SET @date =  Format(@currentTime,"dd/MM/yyyy")
-  /*For testing purpouse use SubscriberKey 99999999 14169419*/ 
-  SET @subscriberKey = "99999999" 
-  /*SET @subscriberKey = RequestParameter("SubscriberKey")*/ 
-  /* Browsed products */ 
-  SET @rowsBrowsedProd = LookupOrderedRows("PostNavegacionProductos", 3, "ranking asc", "subscriber_key", @subscriberKey) 
-  SET @rowsCountBrowsedProd = rowCount(@rowsBrowsedProd) 
-  /*Detail Product*/ 
-  FOR @i = 1 TO @rowsCountBrowsedProd DO 
-    SET @codigoProd = Field(Row(@rowsBrowsedProd, @i), "codigo_producto")  
-    SET @rowsProductDetail = LookupRows("ProductDetail", "codigo_producto", @codigoProd) 
-    SET @descripcion = Field(Row(@rowsProductDetail, 1), "descripcion")
-    SET @descripcion = IIF(Length(@descripcion) >= 30, Concat(Substring(@descripcion, 1, 28), " ..."), @descripcion)
-    SET @addBreak = IIF(Length(@descripcion) <= 21, '<p style="margin: 0; font-size: 14px; text-align: center; mso-line-height-alt: 16.8px;"><span style="font-size:16px;"><strong>&nbsp</strong></span></p>', "")
-    SET @marca = Field(Row(@rowsProductDetail, 1), "marca") 
-    SET @precioLista = Field(Row(@rowsProductDetail, 1), "precio_normal_cl")
-    SET @precioOferta = Field(Row(@rowsProductDetail, 1), "precio_oferta_cl")
-    SET @hideBadgeOferta = IIF(@precioOferta > 0, 'inline', 'none')
-    SET @hidePrecioNormal = IIF(@precioOferta > 0, 'visible', 'hidden')
-    SET @urlPdp = Field(Row(@rowsProductDetail, 1), "url_pdp") 
-    SET @urlImagen = Concat(Field(Row(@rowsProductDetail, 1), "url_imagen"), "?sw=295&sh=295")
-    SET @precioLista = FormatCurrency(@precioLista, "es-CL")
-    SET @precioOferta = IIF(@precioOferta > 0, FormatCurrency(@precioOferta, "es-CL"), @precioLista)
-  ]%%
+
+%%[
+  SET @productListString = '["273358","545055","546661","383877","259654","574372"]'
+  SET @productListRow = BuildRowsetFromJSON(@productListString, "$[*]", 1)
+  SET @rowsProductDetail = LookupRows("ProductDetail", "codigo_producto", @codigoProd)
+]%%
