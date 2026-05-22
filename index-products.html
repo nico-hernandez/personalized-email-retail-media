@@ -411,7 +411,7 @@ ESTRUCTURA HTML CON LAS VARIABLES AMPSCRIPT INLINE
                           %%=v(Field(Row(@productDetailsRows, 1), "descripcion"))=%%
                         </p>
                         <!-- Precios -->
-                        %%[ IF @esOferta == "true" THEN ]%%
+                        %%[ IF @esOferta THEN ]%%
                           <p class="card-original" style="margin:0 0 3px 0; font-family:Arial,Helvetica,sans-serif; font-size:12px; color:#888888; text-decoration:line-through;">%%=v(Field(Row(@productDetailsRows, 1), "precioNormal"))=%%</p>
                         %%[ ELSE ]%%
                           <p class="card-original" style="margin:0 0 3px 0; font-family:Arial,Helvetica,sans-serif; font-size:12px; color:transparent; text-decoration:line-through; pointer-events: none; cursor: default;">%%=v(Field(Row(@productDetailsRows, 1), "precioNormal"))=%%</p>
@@ -422,7 +422,7 @@ ESTRUCTURA HTML CON LAS VARIABLES AMPSCRIPT INLINE
                               <span class="card-price" style="font-family:Arial,Helvetica,sans-serif; font-size:22px; font-weight:700; color:#00c44f;">%%=v(Field(Row(@productDetailsRows, 1), "precioOferta"))=%%</span>
                             </td>
                             <td style="vertical-align:middle;">
-                              %%[ IF @esOferta == "true" THEN ]%%
+                              %%[ IF @esOferta THEN ]%%
                                 <span class="card-badge" style="display:inline-block; background-color:#2e2300; color:#ffc000; font-family:Arial,Helvetica,sans-serif; font-size:10px; font-weight:700; padding:3px 6px; border-radius:4px; border:1px solid #ffc000;">%%=v(Field(Row(@productDetailsRows, 1), "descuento"))=%%</span>
                               %%[ ELSE ]%%
                                 <span class="card-badge" style="display:inline-block; background-color:transparent; color:transparent; font-family:Arial,Helvetica,sans-serif; font-size:10px; font-weight:700; padding:3px 6px; border-radius:4px; border:1px solid transparent; pointer-events: none; cursor: default;">%%=v(Field(Row(@productDetailsRows, 1), "descuento"))=%%</span>
