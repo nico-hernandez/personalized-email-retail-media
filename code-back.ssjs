@@ -86,7 +86,7 @@
           var pdp = row["url_pdp"] || "https://www.cruzverde.cl/";
           
           //Formatear para mostrar en HTML
-          precio_normal = "$" + String(precio_normal.replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+          precio_normal = "$" + String(precio_normal).replace(/\B(?=(\d{3})+(?!\d))/g, ".");
           precio_oferta = "$" + String(precio_oferta).replace(/\B(?=(\d{3})+(?!\d))/g, ".");
           descuento = "-" + descuento + "%";
 
