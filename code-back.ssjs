@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -24,11 +25,13 @@
 
     for (var i = 0; i < productList.length; i++) {
       var code = productList[i];
-      var row = Platform.Function.LookupRows(dataExtension, ["codigo_producto"], [code])[0];
+      var rows = Platform.Function.LookupRows(dataExtension, ["codigo_producto"], [code]);
+      var row = (rows && rows.length > 0) ? rows[0] : null;
 
       if (row) {
+
         if (row["precio_normal_cl"] > 0 && row["precio_oferta_cl"] >= 0) {
-          var dcto = -((row["precio_normal_cl"] - row["precio_oferta_cl"]) / row["precio_normal_cl"]) * 100;
+          var dcto = ((row["precio_normal_cl"] - row["precio_oferta_cl"]) / row["precio_normal_cl"]) * 100;
           dcto = Math.round(dcto);
         } else {
           var dcto = 0;
@@ -46,7 +49,9 @@
           imagen: row["url_imagen"],
           pdp: row["url_pdp"]
         });
+
       } else {
+
         productDetails.push({
           index: i + 1,
           status: "no encontrado",
@@ -55,28 +60,30 @@
           marca: "",
           precio_normal: 0,
           precio_oferta: 0,
-          descuento: "",
+          descuento: 0,
           imagen: "",
           pdp: ""
         });
+
       }
     }
 
-    // Stringify para hacer los prints
-    var jsonString = Platform.Function.Stringify(productDetails);
-    //Print por pantalla
-    Write('<pre>' + jsonString + '</pre>');
-    //Print por consola JS
-    Write("<script>console.log(" + jsonString + ")</script>");
+    // Stringify
+    var productDetailsString = Platform.Function.Stringify(productDetails);
 
-    //Pasar a AMPScript
-    Variable.SetValue("productDetailsString", Platform.Function.Stringify(productDetails));
+    // Print en pantalla
+    Write('<pre>' + productDetailsString + '</pre>');
+
+    // Print consola navegador
+    Write('<script>console.log(' + productDetailsString + ')</script>');
+
+    // Pasar a AMPscript
+    Variable.SetValue("@productDetailsString", productDetailsString);
 
   } catch (ex) {
     Write("Ocurrió un error: " + String(ex));
   }
 </script>
-
 
 %%[
   SET @productDetailsRows = BuildRowsetFromJSON(@productDetailsString, "$[*]", 1)
