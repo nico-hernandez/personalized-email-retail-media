@@ -1,0 +1,72 @@
+<script runat="server">
+  Platform.Load("Core", "1.1.1");
+
+  try {
+    // 1. Definir la lista de los 6 códigos de productos
+    var productCodes = [
+      "273358",
+      "545055",
+      "546661",
+      "383877",
+      "259654",
+      "574372",
+    ];
+
+    // Nombre del Data Extension
+    var dataExtensionName = "ProductDetail";
+
+    // Inicializamos el objeto JSON final
+    var productJson = {};
+
+    // 2. Recorrer los códigos para consultar la Data Extension
+    for (var i = 0; i < productCodes.length; i++) {
+      var code = productCodes[i];
+      var indexPosition = (i + 1).toString(); // Posición 1 al 6 en el JSON
+
+      // Buscamos el producto en la DE por su código
+      var resultingRow = Platform.Function.LookupRows(
+        dataExtensionName,
+        ["codigo_producto"],
+        [code],
+      );
+
+      if (resultingRow && resultingRow.length > 0) {
+        var row = resultingRow[0]; // Tomamos el primer registro encontrado
+
+        // Si lo encuentra, mapeamos los datos y asignamos status "encontrado"
+        productJson[indexPosition] = {
+          status: "encontrado",
+          codigo: row["codigo_producto"],
+          descripcion: row["descripcion"],
+          marca: row["marca"],
+          precio_normal: row["precio_normal"],
+          precio_oferta: row["precio_oferta"],
+          descuento: row["descuento"],
+          imagen: row["url_imagen"],
+          pdp: row["url_pdp"],
+        };
+      } else {
+        // Si NO lo encuentra, campos vacíos y asignamos status "no encontrado"
+        productJson[indexPosition] = {
+          status: "no encontrado",
+          codigo: code,
+          descripcion: "",
+          marca: "",
+          precio_normal: 0,
+          precio_oferta: 0,
+          descuento: "",
+          imagen: "",
+          pdp: "",
+        };
+      }
+    }
+
+    // Convertimos el objeto de JavaScript a una cadena de texto JSON
+    var jsonString = Platform.Function.Stringify(productJson);
+
+    // Imprimir el resultado en pantalla
+    Write(jsonString);
+  } catch (ex) {
+    Write("Ocurrió un error: " + String(ex));
+  }
+</script>
