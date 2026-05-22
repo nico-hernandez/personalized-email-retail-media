@@ -80,8 +80,8 @@
 
           if (row["precio_normal_cl"] > 0 && row["precio_oferta_cl"] >= 0) {
             var descuento = "-" + Math.round(((row["precio_normal_cl"] - row["precio_oferta_cl"]) / row["precio_normal_cl"]) * 100) + "%";
-            var precio_normal = "$" + String(row["precio_normal_cl"] ).replace(/\B(?=(\d{3})+(?!\d))/g, ".")
-            var precio_oferta = "$" + String(row["precio_oferta_cl"] ).replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+            var precio_normal = "$" + String(row["precio_normal_cl"]).replace(/\B(?=(\d{3})+(?!\d))/g, ".")
+            var precio_oferta = "$" + String(row["precio_oferta_cl"]).replace(/\B(?=(\d{3})+(?!\d))/g, ".");
           } else {
             var descuento = 0;
           }
@@ -93,8 +93,8 @@
             codigo: row["codigo_producto"],
             descripcion: descripcion,
             marca: row["marca"],
-            precio_normal: precio_normal,
-            precio_oferta: precio_oferta,
+            precio_normal: row["precio_normal_cl"],
+            precio_oferta: row["precio_oferta_cl"],
             descuento: descuento,
             imagen: row["url_imagen"],
             pdp: row["url_pdp"]
