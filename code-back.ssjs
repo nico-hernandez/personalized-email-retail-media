@@ -52,7 +52,7 @@
   var x = text.length;
   var y = text.substring(0, 24);
   var z = temp.lastIndexOf(" ");
-  return x + y + z;
+  return x + y;
  }
     /* =========================================================
       Main que consulta atributos del producto a mostrar en HTML
