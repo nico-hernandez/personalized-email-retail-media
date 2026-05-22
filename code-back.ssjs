@@ -8,6 +8,55 @@
   <script runat="server">
     Platform.Load("Core", "1.1.1");
 
+    /* =========================================================
+      Función que divide texto para evitar descriptores largos
+    ========================================================= */
+    function splitText(text) {
+
+          var max = 24;
+          var part1 = "";
+          var part2 = "";
+          
+          // Caso 1: Texto nulo
+          if (!text) {
+              return { part1: "", part2: "" };
+          }
+
+          // Caso 2: Texto es menor al valor máximo
+          if (text.length <= max) {
+              return {
+                  part1: text,
+                  part2: ""
+              };
+          }
+
+          // Caso 3: Texto es mayor al valor máximo
+          var temp = text.substring(0, max);
+          var lastSpace = temp.lastIndexOf(" ");
+
+          if (lastSpace > 0) {
+              part1 = temp.substring(0, lastSpace);
+          } else {
+              part1 = temp;
+          }
+
+          var rest = text.substring(part1.length).trim();
+
+          // Segunda parte max 24 chars
+          if (rest.length <= max) {
+              part2 = rest;
+          } else {
+              part2 = rest.substring(0, max) + "...";
+          }
+
+          return {
+              part1: part1,
+              part2: part2
+          };
+      }
+    /* =========================================================
+      Main que consulta atributos del producto a mostrar en HTML
+    ========================================================= */
     try {
       var productList = [
         "273358",
@@ -78,54 +127,6 @@
 
       // Pasar a AMPscript
       Variable.SetValue("@productDetailsString", productDetailsString);
-
-      function splitTextSmart(text) {
-
-          var max = 24;
-
-          var part1 = "";
-          var part2 = "";
-
-          if (!text) {
-              return { part1: "", part2: "" };
-          }
-
-          // Si cabe completo en 24 → todo en part1
-          if (text.length <= max) {
-              return {
-                  part1: text,
-                  part2: ""
-              };
-          }
-
-          // Cortamos tentativa
-          var temp = text.substring(0, max);
-
-          // Buscamos último espacio para no cortar palabra
-          var lastSpace = temp.lastIndexOf(" ");
-
-          if (lastSpace > 0) {
-              part1 = temp.substring(0, lastSpace);
-          } else {
-              // si no hay espacios (palabra muy larga)
-              part1 = temp;
-          }
-
-          // Parte restante
-          var rest = text.substring(part1.length).trim();
-
-          // Segunda parte max 24 chars
-          if (rest.length <= max) {
-              part2 = rest;
-          } else {
-              part2 = rest.substring(0, max) + "...";
-          }
-
-          return {
-              part1: part1,
-              part2: part2
-          };
-      }
 
     } catch (ex) {
       Write("Ocurrió un error: " + String(ex));
