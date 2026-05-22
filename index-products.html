@@ -455,7 +455,7 @@ ESTRUCTURA HTML CON LAS VARIABLES AMPSCRIPT INLINE
                         <p class="card-name" style="margin:0 0 8px 0; font-family:Arial,Helvetica,sans-serif; font-size:15px; font-weight:700; color:#ffffff; line-height:1.35; min-height:40px; overflow:hidden;">
                           %%=v(Field(Row(@productDetailsRows, 2), "descripcion"))=%%
                         </p>
-                        %%[ IF @esOferta == "true" THEN ]%%
+                        %%[ IF @esOferta THEN ]%%
                           <p class="card-original" style="margin:0 0 3px 0; font-family:Arial,Helvetica,sans-serif; font-size:12px; color:#888888; text-decoration:line-through;">%%=v(Field(Row(@productDetailsRows, 2), "precioNormal"))=%%</p>
                         %%[ ELSE ]%%
                           <p class="card-original" style="margin:0 0 3px 0; font-family:Arial,Helvetica,sans-serif; font-size:12px; color:transparent; text-decoration:line-through; pointer-events: none; cursor: default;">%%=v(Field(Row(@productDetailsRows, 2), "precioNormal"))=%%</p>
@@ -466,7 +466,7 @@ ESTRUCTURA HTML CON LAS VARIABLES AMPSCRIPT INLINE
                               <span class="card-price" style="font-family:Arial,Helvetica,sans-serif; font-size:22px; font-weight:700; color:#00c44f;">%%=v(Field(Row(@productDetailsRows, 2), "precioOferta"))=%%</span>
                             </td>
                             <td style="vertical-align:middle;">
-                              %%[ IF @esOferta == "true" THEN ]%%
+                              %%[ IF @esOferta THEN ]%%
                                 <span class="card-badge" style="display:inline-block; background-color:#2e2300; color:#ffc000; font-family:Arial,Helvetica,sans-serif; font-size:10px; font-weight:700; padding:3px 6px; border-radius:4px; border:1px solid #ffc000;">%%=v(Field(Row(@productDetailsRows, 2), "descuento"))=%%</span>
                               %%[ ELSE ]%%
                                 <span class="card-badge" style="display:inline-block; background-color:transparent; color:transparent; font-family:Arial,Helvetica,sans-serif; font-size:10px; font-weight:700; padding:3px 6px; border-radius:4px; border:1px solid transparent; pointer-events: none; cursor: default;">%%=v(Field(Row(@productDetailsRows, 2), "descuento"))=%%</span>
@@ -492,6 +492,7 @@ ESTRUCTURA HTML CON LAS VARIABLES AMPSCRIPT INLINE
               <tr>
 
                 <!-- CARD 3 -->
+                %%[ SET @esOferta = Field(Row(@productDetailsRows, 3), "esOferta") ]%%
                 <td class="card-td card-td-left" style="width:227px; vertical-align:top; padding-right:28px; padding-bottom:45px;">
                   <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="card-table" style="background-color:#111811; border-radius:12px; width:227px; border:1px solid #1e2e1e;">
                     <tr>
@@ -507,11 +508,19 @@ ESTRUCTURA HTML CON LAS VARIABLES AMPSCRIPT INLINE
                         <p class="card-name" style="margin:0 0 8px 0; font-family:Arial,Helvetica,sans-serif; font-size:15px; font-weight:700; color:#ffffff; line-height:1.35; min-height:40px; overflow:hidden;">
                           %%=v(Field(Row(@productDetailsRows, 3), "descripcion"))=%%
                         </p>
-                        <p class="card-original" style="margin:0 0 3px 0; font-family:Arial,Helvetica,sans-serif; font-size:12px; color:#888888; text-decoration:line-through;%%=v(Field(Row(@productDetailsRows, 3), "valorOculto"))=%%">%%=v(Field(Row(@productDetailsRows, 3), "precioNormal"))=%%</p>
+                        %%[ IF @esOferta THEN ]%%
+                          <p class="card-original" style="margin:0 0 3px 0; font-family:Arial,Helvetica,sans-serif; font-size:12px; color:#888888; text-decoration:line-through;">%%=v(Field(Row(@productDetailsRows, 3), "precioNormal"))=%%</p>
+                        %%[ ELSE ]%%
+                          <p class="card-original" style="margin:0 0 3px 0; font-family:Arial,Helvetica,sans-serif; font-size:12px; color:transparent; text-decoration:line-through; pointer-events: none; cursor: default;">%%=v(Field(Row(@productDetailsRows, 3), "precioNormal"))=%%</p>
+                        %%[ ENDIF ]%%
                         <table role="presentation" border="0" cellpadding="0" cellspacing="0" style="margin:0 0 10px 0;">
                           <tr>
                             <td style="padding-right:6px; vertical-align:middle;">
-                              <span class="card-price" style="font-family:Arial,Helvetica,sans-serif; font-size:22px; font-weight:700; color:#00c44f;">%%=v(Field(Row(@productDetailsRows, 3), "precioOferta"))=%%</span>
+                              %%[ IF @esOferta THEN ]%%
+                                <span class="card-badge" style="display:inline-block; background-color:#2e2300; color:#ffc000; font-family:Arial,Helvetica,sans-serif; font-size:10px; font-weight:700; padding:3px 6px; border-radius:4px; border:1px solid #ffc000;">%%=v(Field(Row(@productDetailsRows, 3), "descuento"))=%%</span>
+                              %%[ ELSE ]%%
+                                <span class="card-badge" style="display:inline-block; background-color:transparent; color:transparent; font-family:Arial,Helvetica,sans-serif; font-size:10px; font-weight:700; padding:3px 6px; border-radius:4px; border:1px solid transparent; pointer-events: none; cursor: default;">%%=v(Field(Row(@productDetailsRows, 3), "descuento"))=%%</span>
+                              %%[ ENDIF ]%%
                             </td>
                             <td style="vertical-align:middle;">
                               <span class="card-badge" style="display:inline-block; background-color:#2e2300; color:#ffc000; font-family:Arial,Helvetica,sans-serif; font-size:10px; font-weight:700; padding:3px 6px; border-radius:4px; border:1px solid #ffc000;%%=v(Field(Row(@productDetailsRows, 3), "valorOculto"))=%%">%%=v(Field(Row(@productDetailsRows, 3), "descuento"))=%%</span>
@@ -525,6 +534,7 @@ ESTRUCTURA HTML CON LAS VARIABLES AMPSCRIPT INLINE
                 </td>
 
                 <!-- CARD 4 -->
+                %%[ SET @esOferta = Field(Row(@productDetailsRows, 4), "esOferta") ]%%
                 <td class="card-td card-td-right" style="width:227px; vertical-align:top; padding-left:28px; padding-bottom:45px;">
                   <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="card-table" style="background-color:#111811; border-radius:12px; width:227px; border:1px solid #1e2e1e;">
                     <tr>
@@ -540,14 +550,22 @@ ESTRUCTURA HTML CON LAS VARIABLES AMPSCRIPT INLINE
                         <p class="card-name" style="margin:0 0 8px 0; font-family:Arial,Helvetica,sans-serif; font-size:15px; font-weight:700; color:#ffffff; line-height:1.35; min-height:40px; overflow:hidden;">
                           %%=v(Field(Row(@productDetailsRows, 4), "descripcion"))=%%
                         </p>
-                        <p class="card-original" style="margin:0 0 3px 0; font-family:Arial,Helvetica,sans-serif; font-size:12px; color:#888888; text-decoration:line-through;%%=v(Field(Row(@productDetailsRows, 4), "valorOculto"))=%%">%%=v(Field(Row(@productDetailsRows, 4), "precioNormal"))=%%</p>
+                        %%[ IF @esOferta THEN ]%%
+                          <p class="card-original" style="margin:0 0 3px 0; font-family:Arial,Helvetica,sans-serif; font-size:12px; color:#888888; text-decoration:line-through;">%%=v(Field(Row(@productDetailsRows, 4), "precioNormal"))=%%</p>
+                        %%[ ELSE ]%%
+                          <p class="card-original" style="margin:0 0 3px 0; font-family:Arial,Helvetica,sans-serif; font-size:12px; color:transparent; text-decoration:line-through; pointer-events: none; cursor: default;">%%=v(Field(Row(@productDetailsRows, 4), "precioNormal"))=%%</p>
+                        %%[ ENDIF ]%%
                         <table role="presentation" border="0" cellpadding="0" cellspacing="0" style="margin:0 0 10px 0;">
                           <tr>
                             <td style="padding-right:6px; vertical-align:middle;">
                               <span class="card-price" style="font-family:Arial,Helvetica,sans-serif; font-size:22px; font-weight:700; color:#00c44f;">%%=v(Field(Row(@productDetailsRows, 4), "precioOferta"))=%%</span>
                             </td>
                             <td style="vertical-align:middle;">
-                              <span class="card-badge" style="display:inline-block; background-color:#2e2300; color:#ffc000; font-family:Arial,Helvetica,sans-serif; font-size:10px; font-weight:700; padding:3px 6px; border-radius:4px; border:1px solid #ffc000;%%=v(Field(Row(@productDetailsRows, 4), "valorOculto"))=%%">%%=v(Field(Row(@productDetailsRows, 4), "descuento"))=%%</span>
+                              %%[ IF @esOferta THEN ]%%
+                                <span class="card-badge" style="display:inline-block; background-color:#2e2300; color:#ffc000; font-family:Arial,Helvetica,sans-serif; font-size:10px; font-weight:700; padding:3px 6px; border-radius:4px; border:1px solid #ffc000;">%%=v(Field(Row(@productDetailsRows, 4), "descuento"))=%%</span>
+                              %%[ ELSE ]%%
+                                <span class="card-badge" style="display:inline-block; background-color:transparent; color:transparent; font-family:Arial,Helvetica,sans-serif; font-size:10px; font-weight:700; padding:3px 6px; border-radius:4px; border:1px solid transparent; pointer-events: none; cursor: default;">%%=v(Field(Row(@productDetailsRows, 3), "descuento"))=%%</span>
+                              %%[ ENDIF ]%%
                             </td>
                           </tr>
                         </table>
@@ -569,6 +587,7 @@ ESTRUCTURA HTML CON LAS VARIABLES AMPSCRIPT INLINE
               <tr>
 
                 <!-- CARD 5 -->
+                %%[ SET @esOferta = Field(Row(@productDetailsRows, 5), "esOferta") ]%%
                 <td class="card-td card-td-left card-td-last" style="width:227px; vertical-align:top; padding-right:28px; padding-bottom:0;">
                   <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="card-table" style="background-color:#111811; border-radius:12px; width:227px; border:1px solid #1e2e1e;">
                     <tr>
@@ -584,14 +603,22 @@ ESTRUCTURA HTML CON LAS VARIABLES AMPSCRIPT INLINE
                         <p class="card-name" style="margin:0 0 8px 0; font-family:Arial,Helvetica,sans-serif; font-size:15px; font-weight:700; color:#ffffff; line-height:1.35; min-height:40px; overflow:hidden;">
                           %%=v(Field(Row(@productDetailsRows, 5), "descripcion"))=%%
                         </p>
-                        <p class="card-original" style="margin:0 0 3px 0; font-family:Arial,Helvetica,sans-serif; font-size:12px; color:#888888; text-decoration:line-through;%%=v(Field(Row(@productDetailsRows, 5), "valorOculto"))=%%">%%=v(Field(Row(@productDetailsRows, 5), "precioNormal"))=%%</p>
+                        %%[ IF @esOferta THEN ]%%
+                          <p class="card-original" style="margin:0 0 3px 0; font-family:Arial,Helvetica,sans-serif; font-size:12px; color:#888888; text-decoration:line-through;">%%=v(Field(Row(@productDetailsRows, 5), "precioNormal"))=%%</p>
+                        %%[ ELSE ]%%
+                          <p class="card-original" style="margin:0 0 3px 0; font-family:Arial,Helvetica,sans-serif; font-size:12px; color:transparent; text-decoration:line-through; pointer-events: none; cursor: default;">%%=v(Field(Row(@productDetailsRows, 5), "precioNormal"))=%%</p>
+                        %%[ ENDIF ]%%
                         <table role="presentation" border="0" cellpadding="0" cellspacing="0" style="margin:0 0 10px 0;">
                           <tr>
                             <td style="padding-right:6px; vertical-align:middle;">
                               <span class="card-price" style="font-family:Arial,Helvetica,sans-serif; font-size:22px; font-weight:700; color:#00c44f;">%%=v(Field(Row(@productDetailsRows, 5), "precioOferta"))=%%</span>
                             </td>
                             <td style="vertical-align:middle;">
-                              <span class="card-badge" style="display:inline-block; background-color:#2e2300; color:#ffc000; font-family:Arial,Helvetica,sans-serif; font-size:10px; font-weight:700; padding:3px 6px; border-radius:4px; border:1px solid #ffc000;%%=v(Field(Row(@productDetailsRows, 5), "valorOculto"))=%%">%%=v(Field(Row(@productDetailsRows, 5), "descuento"))=%%</span>
+                              %%[ IF @esOferta THEN ]%%
+                                <span class="card-badge" style="display:inline-block; background-color:#2e2300; color:#ffc000; font-family:Arial,Helvetica,sans-serif; font-size:10px; font-weight:700; padding:3px 6px; border-radius:4px; border:1px solid #ffc000;">%%=v(Field(Row(@productDetailsRows, 5), "descuento"))=%%</span>
+                              %%[ ELSE ]%%
+                                <span class="card-badge" style="display:inline-block; background-color:transparent; color:transparent; font-family:Arial,Helvetica,sans-serif; font-size:10px; font-weight:700; padding:3px 6px; border-radius:4px; border:1px solid transparent; pointer-events: none; cursor: default;">%%=v(Field(Row(@productDetailsRows, 5), "descuento"))=%%</span>
+                              %%[ ENDIF ]%%
                             </td>
                           </tr>
                         </table>
@@ -602,6 +629,7 @@ ESTRUCTURA HTML CON LAS VARIABLES AMPSCRIPT INLINE
                 </td>
 
                 <!-- CARD 6 -->
+                %%[ SET @esOferta = Field(Row(@productDetailsRows, 6), "esOferta") ]%%
                 <td class="card-td card-td-right card-td-last" style="width:227px; vertical-align:top; padding-left:28px; padding-bottom:0;">
                   <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="card-table" style="background-color:#111811; border-radius:12px; width:227px; border:1px solid #1e2e1e;">
                     <tr>
@@ -617,14 +645,22 @@ ESTRUCTURA HTML CON LAS VARIABLES AMPSCRIPT INLINE
                         <p class="card-name" style="margin:0 0 8px 0; font-family:Arial,Helvetica,sans-serif; font-size:15px; font-weight:700; color:#ffffff; line-height:1.35; min-height:40px; overflow:hidden;">
                           %%=v(Field(Row(@productDetailsRows, 6), "descripcion"))=%%
                         </p>
-                        <p class="card-original" style="margin:0 0 3px 0; font-family:Arial,Helvetica,sans-serif; font-size:12px; color:#888888; text-decoration:line-through;%%=v(Field(Row(@productDetailsRows, 6), "valorOculto"))=%%">%%=v(Field(Row(@productDetailsRows, 6), "precioNormal"))=%%</p>
+                        %%[ IF @esOferta THEN ]%%
+                          <p class="card-original" style="margin:0 0 3px 0; font-family:Arial,Helvetica,sans-serif; font-size:12px; color:#888888; text-decoration:line-through;">%%=v(Field(Row(@productDetailsRows, 6), "precioNormal"))=%%</p>
+                        %%[ ELSE ]%%
+                          <p class="card-original" style="margin:0 0 3px 0; font-family:Arial,Helvetica,sans-serif; font-size:12px; color:transparent; text-decoration:line-through; pointer-events: none; cursor: default;">%%=v(Field(Row(@productDetailsRows, 6), "precioNormal"))=%%</p>
+                        %%[ ENDIF ]%%
                         <table role="presentation" border="0" cellpadding="0" cellspacing="0" style="margin:0 0 10px 0;">
                           <tr>
                             <td style="padding-right:6px; vertical-align:middle;">
                               <span class="card-price" style="font-family:Arial,Helvetica,sans-serif; font-size:22px; font-weight:700; color:#00c44f;">%%=v(Field(Row(@productDetailsRows, 6), "precioOferta"))=%%</span>
                             </td>
                             <td style="vertical-align:middle;">
-                              <span class="card-badge" style="display:inline-block; background-color:#2e2300; color:#ffc000; font-family:Arial,Helvetica,sans-serif; font-size:10px; font-weight:700; padding:3px 6px; border-radius:4px; border:1px solid #ffc000;%%=v(Field(Row(@productDetailsRows, 6), "valorOculto"))=%%">%%=v(Field(Row(@productDetailsRows, 6), "descuento"))=%%</span>
+                              %%[ IF @esOferta THEN ]%%
+                                <span class="card-badge" style="display:inline-block; background-color:#2e2300; color:#ffc000; font-family:Arial,Helvetica,sans-serif; font-size:10px; font-weight:700; padding:3px 6px; border-radius:4px; border:1px solid #ffc000;">%%=v(Field(Row(@productDetailsRows, 6), "descuento"))=%%</span>
+                              %%[ ELSE ]%%
+                                <span class="card-badge" style="display:inline-block; background-color:transparent; color:transparent; font-family:Arial,Helvetica,sans-serif; font-size:10px; font-weight:700; padding:3px 6px; border-radius:4px; border:1px solid transparent; pointer-events: none; cursor: default;">%%=v(Field(Row(@productDetailsRows, 6), "descuento"))=%%</span>
+                              %%[ ENDIF ]%%
                             </td>
                           </tr>
                         </table>
