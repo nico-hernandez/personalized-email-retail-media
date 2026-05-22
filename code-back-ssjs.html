@@ -19,51 +19,7 @@
       "574372"
     ];
 
-    var dataExtensionName = "ProductDetail";
-    var productJson = {};
-
-    for (var i = 0; i < productCodes.length; i++) {
-      var code = productCodes[i];
-      var indexPosition = (i + 1).toString();
-
-      var resultingRow = Platform.Function.LookupRows(
-        dataExtensionName,
-        ["codigo_producto"],
-        [code]
-      );
-
-      if (resultingRow && resultingRow.length > 0) {
-        var row = resultingRow[0];
-
-        productJson[indexPosition] = {
-          status: "encontrado",
-          codigo: row["codigo_producto"],
-          descripcion: row["descripcion"],
-          marca: row["marca"],
-          precio_normal: row["precio_normal"],
-          precio_oferta: row["precio_oferta"],
-          descuento: row["descuento"],
-          imagen: row["url_imagen"],
-          pdp: row["url_pdp"]
-        };
-      } else {
-        productJson[indexPosition] = {
-          status: "no encontrado",
-          codigo: code,
-          descripcion: "",
-          marca: "",
-          precio_normal: 0,
-          precio_oferta: 0,
-          descuento: "",
-          imagen: "",
-          pdp: ""
-        };
-      }
-    }
-
-    var jsonString = Platform.Function.Stringify(productJson);
-
-    Write('<pre>' + jsonString + '</pre>');
+    Write('testing ssjs');
 
   } catch (ex) {
     Write("Ocurrió un error: " + String(ex));
