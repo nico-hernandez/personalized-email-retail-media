@@ -82,5 +82,9 @@
       Write("Ocurrió un error: " + String(ex));
     }
   </script>
+
+  %%[
+    SET @productDetailsRows = BuildRowsetFromJSON(@productDetailsString, "$[*]", 1)
+  ]%%
 </body>
 </html>
