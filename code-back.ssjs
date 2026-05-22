@@ -11,7 +11,7 @@
     /* =========================================================
       Función que divide texto para evitar descriptores largos
     ========================================================= */
-    /* function splitText(text) {
+    function splitText(text) {
       var max = 24;
       var part1 = "";
       var part2 = "";
@@ -24,28 +24,28 @@
       // Caso 2: Texto corto
       if (text.length <= max) {
         part1 = text;
-      } else 
-      {
-        // Caso 3: Texto largo
-        var temp = text.substring(0, max);
-        var lastSpace = temp.lastIndexOf(" ");
+        return part1 + "<br>";
+      } 
 
-        if (lastSpace > 0) {
-          part1 = temp.substring(0, lastSpace);
-        } else {
-          part1 = temp;
-        }
+      // Caso 3: Texto largo
+      var temp = text.substring(0, max);
+      var lastSpace = temp.lastIndexOf(" ");
 
-        var rest = text.substring(part1.length).trim();
+      if (lastSpace > 0) {
+        part1 = temp.substring(0, lastSpace);
+      } else {
+        part1 = temp;
+      }
 
-        if (rest.length <= max) {
-          part2 = rest;
-        } else {
-          part2 = rest.substring(0, max) + "...";
-        }
+      var rest = text.substring(part1.length).trim();
+
+      if (rest.length <= max) {
+        part2 = rest;
+      } else {
+        part2 = rest.substring(0, max) + "...";
       }
       return part1 + "<br>" + part2;
-    } */
+    } 
 
     /* =========================================================
       Main que consulta atributos del producto a mostrar en HTML
