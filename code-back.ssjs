@@ -49,7 +49,7 @@
  */
 
  function splitText(text) {
-  var x = "";
+  var x = text.length;
   return text;
  }
     /* =========================================================
