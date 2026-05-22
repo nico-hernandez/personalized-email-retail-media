@@ -51,7 +51,7 @@
  function splitText(text) {
   var x = text.length;
   var y = text.substring(0, 24);
-  return max;
+  return x + y;
  }
     /* =========================================================
       Main que consulta atributos del producto a mostrar en HTML
