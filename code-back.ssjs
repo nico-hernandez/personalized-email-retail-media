@@ -78,6 +78,7 @@
 
         if (row) {
           // Casos bordes de los campos de interes
+          var esOferta = !row["precio_oferta_cl"] ? false : true;
           var descripcion = splitText(row["descripcion"]);
           var precioNormal = row["precio_normal_cl"] || 9999999;
           var precioOferta = row["precio_oferta_cl"] || row["precio_normal_cl"];
@@ -87,8 +88,8 @@
           
           //Formatear para mostrar en HTML
           precioNormal = "$" + String(precioNormal).replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-          precioOferta = "$" + String(precioOferta).replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-          descuento = "-" + descuento + "%";
+          precioOferta = esOferta ? "$" + String(precioOferta).replace(/\B(?=(\d{3})+(?!\d))/g, ".") : "";
+          descuento = esOferta ? "-" + descuento + "%" : "";
 
           productDetails.push({
             index: i + 1,
@@ -98,6 +99,7 @@
             marca: row["marca"],
             precioNormal: precioNormal,
             precioOferta: precioOferta,
+            esOferta: esOferta,
             descuento: descuento,
             imagen: imagen,
             pdp: pdp
@@ -111,9 +113,10 @@
             codigo: codigo,
             descripcion: "",
             marca: "",
-            precioNormal: "$9.999.999",
-            precioOferta: "$9.999.999",
-            descuento: "0%",
+            precioNormal: "",
+            precioOferta: "",
+            esOferta: false,
+            descuento: "",
             imagen: "",
             pdp: ""
           });
