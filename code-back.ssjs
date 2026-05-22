@@ -78,7 +78,7 @@
             var descuento = 0;
           }
 
-          var descripcion = "";//splitText(row["descripcion"]);
+          var descripcion = splitText(row["descripcion"]);
 
           productDetails.push({
             index: i + 1,
