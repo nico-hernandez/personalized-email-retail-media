@@ -62,7 +62,7 @@
     }
 
     var jsonString = Platform.Function.Stringify(productJson);
-
+    Platform.Response.Write(productJson);
     Write('<pre>' + jsonString + '</pre>');
 
   } catch (ex) {
