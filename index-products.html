@@ -90,8 +90,8 @@ return x + y + z;
         
         //Formatear para mostrar en HTML
         precioNormal = "$" + String(precioNormal).replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-        precioOferta = esOferta ? "$" + String(precioOferta).replace(/\B(?=(\d{3})+(?!\d))/g, ".") : "";
-        descuento = esOferta ? "-" + descuento + "%" : "";
+        precioOferta = "$" + String(precioOferta).replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+        descuento = "-" + descuento + "%";
 
         productDetails.push({
           index: i + 1,
