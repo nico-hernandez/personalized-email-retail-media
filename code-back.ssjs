@@ -29,7 +29,7 @@
         if (row) {
 
           if (row["precio_normal_cl"] > 0 && row["precio_oferta_cl"] >= 0) {
-            var descuento = Math.round(((row["precio_normal_cl"] - row["precio_oferta_cl"]) / row["precio_normal_cl"]) * 100) + "%";
+            var descuento = Math.round(((row["precio_normal_cl"] - row["precio_oferta_cl"]) / row["precio_normal_cl"]) * 100);
             var precio_normal = Platform.Function.FormatNumber(row["precio_normal_cl"], "N0").replace(/,/g, ".");
             var precio_oferta = Platform.Function.FormatNumber(row["precio_oferta_cl"], "N0").replace(/,/g, ".");
           } else {
@@ -42,8 +42,8 @@
             codigo: row["codigo_producto"],
             descripcion: row["descripcion"],
             marca: row["marca"],
-            precio_normal: row["precio_normal_cl"],
-            precio_oferta: row["precio_oferta_cl"],
+            precio_normal: precio_normal,
+            precio_oferta: precio_oferta,
             descuento: descuento,
             imagen: row["url_imagen"],
             pdp: row["url_pdp"]
