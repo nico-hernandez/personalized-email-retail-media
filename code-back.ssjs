@@ -29,10 +29,11 @@
         if (row) {
 
           if (row["precio_normal_cl"] > 0 && row["precio_oferta_cl"] >= 0) {
-            var dcto = ((row["precio_normal_cl"] - row["precio_oferta_cl"]) / row["precio_normal_cl"]) * 100;
-            dcto = Math.round(dcto);
+            var descuento = Math.round(((row["precio_normal_cl"] - row["precio_oferta_cl"]) / row["precio_normal_cl"]) * 100) + "%";
+            var precio_normal = Platform.Function.FormatNumber(row["precio_normal_cl"], "N0").replace(/,/g, ".");
+            var precio_oferta = Platform.Function.FormatNumber(row["precio_oferta_cl"], "N0").replace(/,/g, ".");
           } else {
-            var dcto = 0;
+            var descuento = 0;
           }
 
           productDetails.push({
@@ -43,7 +44,7 @@
             marca: row["marca"],
             precio_normal: row["precio_normal_cl"],
             precio_oferta: row["precio_oferta_cl"],
-            descuento: dcto,
+            descuento: descuento,
             imagen: row["url_imagen"],
             pdp: row["url_pdp"]
           });
