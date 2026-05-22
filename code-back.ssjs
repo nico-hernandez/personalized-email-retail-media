@@ -50,7 +50,7 @@
 
  function splitText(text) {
   var x = text.length;
-  var y = text.substring(0, max);
+  var y = text.substring(0, 24);
   return max;
  }
     /* =========================================================
