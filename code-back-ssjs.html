@@ -1,39 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Productos JSON</title>
+</head>
+<body>
+
 <script runat="server">
   Platform.Load("Core", "1.1.1");
 
   try {
-    // 1. Definir la lista de los 6 códigos de productos
     var productCodes = [
       "273358",
       "545055",
       "546661",
       "383877",
       "259654",
-      "574372",
+      "574372"
     ];
 
-    // Nombre del Data Extension
     var dataExtensionName = "ProductDetail";
-
-    // Inicializamos el objeto JSON final
     var productJson = {};
 
-    // 2. Recorrer los códigos para consultar la Data Extension
     for (var i = 0; i < productCodes.length; i++) {
       var code = productCodes[i];
-      var indexPosition = (i + 1).toString(); // Posición 1 al 6 en el JSON
+      var indexPosition = (i + 1).toString();
 
-      // Buscamos el producto en la DE por su código
       var resultingRow = Platform.Function.LookupRows(
         dataExtensionName,
         ["codigo_producto"],
-        [code],
+        [code]
       );
 
       if (resultingRow && resultingRow.length > 0) {
-        var row = resultingRow[0]; // Tomamos el primer registro encontrado
+        var row = resultingRow[0];
 
-        // Si lo encuentra, mapeamos los datos y asignamos status "encontrado"
         productJson[indexPosition] = {
           status: "encontrado",
           codigo: row["codigo_producto"],
@@ -43,10 +44,9 @@
           precio_oferta: row["precio_oferta"],
           descuento: row["descuento"],
           imagen: row["url_imagen"],
-          pdp: row["url_pdp"],
+          pdp: row["url_pdp"]
         };
       } else {
-        // Si NO lo encuentra, campos vacíos y asignamos status "no encontrado"
         productJson[indexPosition] = {
           status: "no encontrado",
           codigo: code,
@@ -56,17 +56,19 @@
           precio_oferta: 0,
           descuento: "",
           imagen: "",
-          pdp: "",
+          pdp: ""
         };
       }
     }
 
-    // Convertimos el objeto de JavaScript a una cadena de texto JSON
     var jsonString = Platform.Function.Stringify(productJson);
 
-    // Imprimir el resultado en pantalla
-    Write(jsonString);
+    Write('<pre>' + jsonString + '</pre>');
+
   } catch (ex) {
     Write("Ocurrió un error: " + String(ex));
   }
 </script>
+
+</body>
+</html>
