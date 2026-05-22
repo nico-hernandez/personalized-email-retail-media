@@ -26,7 +26,7 @@
       var code = productList[i];
       var row = Platform.Function.LookupRows(dataExtension, ["codigo_producto"], [code])[0];
 
-      if (row && row.length > 0) {
+      if (row) {
         if (row["precio_normal_cl"] > 0 && row["precio_oferta_cl"] >= 0) {
           var dcto = -((row["precio_normal_cl"] - row["precio_oferta_cl"]) / row["precio_normal_cl"]) * 100;
           dcto = Math.round(dcto);
