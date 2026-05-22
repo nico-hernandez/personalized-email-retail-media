@@ -91,7 +91,7 @@
             index: i + 1,
             status: "encontrado",
             codigo: row["codigo_producto"],
-            descripcion: descripcion,
+            descripcion: row["descripcion"],
             marca: row["marca"],
             precio_normal: precio_normal,
             precio_oferta: precio_oferta,
