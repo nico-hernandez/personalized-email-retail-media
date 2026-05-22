@@ -90,7 +90,7 @@
   <p>
     %%=v(Field(Row(@productDetailsRows, 1), "codigo"))=%%
     $%%=v(Field(Row(@productDetailsRows, 1), "precio_normal"))=%%
-    %%=v(Field(Row(@productDetailsRows, 1), "dcto"))=%%
+    %%=v(Field(Row(@productDetailsRows, 1), "descuento"))=%%
   </p>
 </body>
 </html>
