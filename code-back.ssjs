@@ -79,15 +79,15 @@
         if (row) {
           // Casos bordes de los campos de interes
           var descripcion = splitText(row["descripcion"]);
-          var precio_normal = row["precio_normal_cl"] || 9999999;
-          var precio_oferta = row["precio_oferta_cl"] || row["precio_normal_cl"];
-          var descuento = Math.round(((precio_normal - precio_oferta) / precio_normal) * 100);
+          var precioNormal = row["precio_normal_cl"] || 9999999;
+          var precioOferta = row["precio_oferta_cl"] || row["precio_normal_cl"];
+          var descuento = Math.round(((precioNormal - precioOferta) / precioNormal) * 100);
           var imagen = row["url_imagen"] || "https://image.mailcruzverde.cl/lib/fe3615717564047b711178/m/1/70239c1d-2dac-4c6a-af85-fb4336152eac.png";
           var pdp = row["url_pdp"] || "https://www.cruzverde.cl/";
           
           //Formatear para mostrar en HTML
-          precio_normal = "$" + String(precio_normal).replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-          precio_oferta = "$" + String(precio_oferta).replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+          precioNormal = "$" + String(precioNormal).replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+          precioOferta = "$" + String(precioOferta).replace(/\B(?=(\d{3})+(?!\d))/g, ".");
           descuento = "-" + descuento + "%";
 
           productDetails.push({
@@ -96,8 +96,8 @@
             codigo: row["codigo_producto"],
             descripcion: descripcion,
             marca: row["marca"],
-            precio_normal: precio_normal,
-            precio_oferta: precio_oferta,
+            precioNormal: precioNormal,
+            precioOferta: precioOferta,
             descuento: descuento,
             imagen: imagen,
             pdp: pdp
@@ -144,7 +144,7 @@
 
   <p>
     %%=v(Field(Row(@productDetailsRows, 2), "codigo"))=%%
-    %%=v(Field(Row(@productDetailsRows, 2), "precio_normal"))=%%
+    %%=v(Field(Row(@productDetailsRows, 2), "precioNormal"))=%%
     %%=v(Field(Row(@productDetailsRows, 2), "descuento"))=%%
   </p>
 </body>
