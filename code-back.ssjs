@@ -52,6 +52,7 @@
   var x = text.length;
   var y = text.substring(0, 24);
   var z = text.lastIndexOf(" ");
+  var w = text.trim();
   return x + y + z;
  }
     /* =========================================================
