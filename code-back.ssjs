@@ -30,7 +30,7 @@
 
           if (row["precio_normal_cl"] > 0 && row["precio_oferta_cl"] >= 0) {
             var descuento = Math.round(((row["precio_normal_cl"] - row["precio_oferta_cl"]) / row["precio_normal_cl"]) * 100);
-            var precio_normal = parseFloat(row["precio_normal_cl"]);
+            var precio_normal = "$" + String(row["precio_normal_cl"] ).replace(/\B(?=(\d{3})+(?!\d))/g, ".")
             var precio_oferta = 100;
           } else {
             var descuento = 0;
