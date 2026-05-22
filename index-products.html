@@ -31,10 +31,11 @@ y se puede referenciar inline en el HTML.
       if (row) {
 
         if (row["precio_normal_cl"] > 0 && row["precio_oferta_cl"] >= 0) {
-          var dcto = ((row["precio_normal_cl"] - row["precio_oferta_cl"]) / row["precio_normal_cl"]) * 100;
-          dcto = Math.round(dcto);
+          var descuento = "-" + Math.round(((row["precio_normal_cl"] - row["precio_oferta_cl"]) / row["precio_normal_cl"]) * 100) + "%";
+          var precio_normal = "$" + String(row["precio_normal_cl"] ).replace(/\B(?=(\d{3})+(?!\d))/g, ".")
+          var precio_oferta = "$" + String(row["precio_oferta_cl"] ).replace(/\B(?=(\d{3})+(?!\d))/g, ".");
         } else {
-          var dcto = 0;
+          var descuento = 0;
         }
 
         productDetails.push({
@@ -43,9 +44,9 @@ y se puede referenciar inline en el HTML.
           codigo: row["codigo_producto"],
           descripcion: row["descripcion"],
           marca: row["marca"],
-          precio_normal: row["precio_normal_cl"],
-          precio_oferta: row["precio_oferta_cl"],
-          descuento: dcto,
+          precio_normal: precio_normal,
+          precio_oferta: precio_oferta,
+          descuento: descuento,
           imagen: row["url_imagen"],
           pdp: row["url_pdp"]
         });
