@@ -34,6 +34,11 @@
 
       if (resultingRow && resultingRow.length > 0) {
         var row = resultingRow[0];
+        
+        if (row["precio_normal_cl"] > 0 && row["precio_oferta_cl"] >= 0) {
+            var dcto = ((row["precio_normal_cl"] - row["precio_oferta_cl"]) / row["precio_normal_cl"]) * 100;
+            dcto = Math.round(dcto);
+        }
 
         productJson[indexPosition] = {
           status: "encontrado",
@@ -42,7 +47,7 @@
           marca: row["marca"],
           precio_normal: row["precio_normal_cl"],
           precio_oferta: row["precio_oferta_cl"],
-          descuento: row["descuento"],
+          descuento: dcto,
           imagen: row["url_imagen"],
           pdp: row["url_pdp"]
         };
@@ -62,9 +67,11 @@
     }
 
     var jsonString = Platform.Function.Stringify(productJson);
+    
+    //Print por pantalla
     Write('<pre>' + jsonString + '</pre>');
+    //Print por consola JS
     Write("<script>console.log(" + jsonString + ")</script>");
-    Write("<script>console.log(" + productJson + ")</script>");
 
   } catch (ex) {
     Write("Ocurrió un error: " + String(ex));
