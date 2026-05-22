@@ -1,3 +1,11 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Productos</title>
+</head>
+<body>
+
 <script runat="server">
   Platform.Load("Core", "1.1.1");
 
@@ -54,14 +62,31 @@
       }
     }
 
+    // Stringify para hacer los prints
     var jsonString = Platform.Function.Stringify(productDetails);
-
     //Print por pantalla
     Write('<pre>' + jsonString + '</pre>');
     //Print por consola JS
     Write("<script>console.log(" + jsonString + ")</script>");
 
-} catch (ex) {
-Write("Ocurrió un error: " + String(ex));
-}
+    //Pasar a AMPScript
+    Variable.SetValue("productDetailsString", Platform.Function.Stringify(productDetails));
+
+  } catch (ex) {
+    Write("Ocurrió un error: " + String(ex));
+  }
 </script>
+
+
+%%[
+  SET @productDetailsRows = BuildRowsetFromJSON(@productDetailsString, "$[*]", 1)
+]%%
+
+<p>
+  %%=v(Field(Row(@productDetailsRows, 1), "codigo"))=%%
+  $%%=v(Field(Row(@productDetailsRows, 1), "precio_normal"))=%%
+  %%=v(Field(Row(@productDetailsRows, 1), "dcto"))=%%
+</p>
+
+</body>
+</html>
