@@ -86,5 +86,11 @@
   %%[
     SET @productDetailsRows = BuildRowsetFromJSON(@productDetailsString, "$[*]", 1)
   ]%%
+
+  <p>
+    %%=v(Field(Row(@productDetailsRows, 1), "codigo"))=%%
+    $%%=v(Field(Row(@productDetailsRows, 1), "precio_normal"))=%%
+    %%=v(Field(Row(@productDetailsRows, 1), "dcto"))=%%
+  </p>
 </body>
 </html>
