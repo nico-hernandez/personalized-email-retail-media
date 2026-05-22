@@ -13,47 +13,45 @@
     ========================================================= */
     function splitText(text) {
 
-          var max = 24;
-          var part1 = "";
-          var part2 = "";
-          
-          // Caso 1: Texto nulo
-          if (!text) {
-              return { part1: "", part2: "" };
-          }
-
-          // Caso 2: Texto es menor al valor máximo
-          if (text.length <= max) {
-              return {
-                  part1: text,
-                  part2: ""
-              };
-          }
-
-          // Caso 3: Texto es mayor al valor máximo
-          var temp = text.substring(0, max);
-          var lastSpace = temp.lastIndexOf(" ");
-
-          if (lastSpace > 0) {
-              part1 = temp.substring(0, lastSpace);
-          } else {
-              part1 = temp;
-          }
-
-          var rest = text.substring(part1.length).trim();
-
-          // Segunda parte max 24 chars
-          if (rest.length <= max) {
-              part2 = rest;
-          } else {
-              part2 = rest.substring(0, max) + "...";
-          }
-
-          return {
-              part1: part1,
-              part2: part2
-          };
+      var max = 24;
+      var part1 = "";
+      var part2 = "";
+      
+      // Caso 1: Texto nulo
+      if (!text) {
+        part1 = ""; 
+        part2 = "";
+        return part1 + "<br>" + part2;
       }
+
+      // Caso 2: Texto es menor al valor máximo
+      if (text.length <= max) {
+        part1 = text;
+        part2 = "";
+        return part1 + "<br>" + part2;
+      }
+
+      // Caso 3: Texto es mayor al valor máximo
+      var temp = text.substring(0, max);
+      var lastSpace = temp.lastIndexOf(" ");
+
+      if (lastSpace > 0) {
+        part1 = temp.substring(0, lastSpace);
+      } else {
+        part1 = temp;
+      }
+
+      var rest = text.substring(part1.length).trim();
+
+      // Segunda parte max 24 chars
+      if (rest.length <= max) {
+        part2 = rest;
+      } else {
+        part2 = rest.substring(0, max) + "...";
+      }
+      return part1 + "<br>" + part2;
+    }
+
     /* =========================================================
       Main que consulta atributos del producto a mostrar en HTML
     ========================================================= */
@@ -85,11 +83,13 @@
             var descuento = 0;
           }
 
+          var descripcion = splitText(row["descripcion"])
+
           productDetails.push({
             index: i + 1,
             status: "encontrado",
             codigo: row["codigo_producto"],
-            descripcion: row["descripcion"],
+            descripcion: descripcion,
             marca: row["marca"],
             precio_normal: precio_normal,
             precio_oferta: precio_oferta,
