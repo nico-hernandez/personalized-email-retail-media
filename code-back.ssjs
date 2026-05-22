@@ -3,8 +3,6 @@
 <head>
   <meta charset="UTF-8">
   <title>Productos</title>
-</head>
-<body>
   <script runat="server">
     Platform.Load("Core", "1.1.1");
 
@@ -86,6 +84,9 @@
   %%[
     SET @productDetailsRows = BuildRowsetFromJSON(@productDetailsString, "$[*]", 1)
   ]%%
+
+</head>
+<body>
 
   <p>
     %%=v(Field(Row(@productDetailsRows, 2), "codigo"))=%%

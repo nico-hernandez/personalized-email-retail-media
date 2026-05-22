@@ -7,32 +7,6 @@ y se puede referenciar inline en el HTML.
 =============================================================
 -->
   
-
-
-<!--
-=============================================================
-ESTRUCTURA HTML CON LAS VARIABLES AMPSCRIPT INLINE
-=============================================================
--->
-
-<!DOCTYPE html>
-<html lang="es" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="format-detection" content="telephone=no, date=no, address=no, email=no">
-  <title>Cyber W Cruz Verde</title>
-  <!--[if mso]>
-  <noscript>
-    <xml>
-      <o:OfficeDocumentSettings>
-        <o:PixelsPerInch>96</o:PixelsPerInch>
-      </o:OfficeDocumentSettings>
-    </xml>
-  </noscript>
-  <![endif]-->
-
 <script runat="server">
   Platform.Load("Core", "1.1.1");
 
@@ -114,6 +88,30 @@ ESTRUCTURA HTML CON LAS VARIABLES AMPSCRIPT INLINE
 %%[
   SET @productDetailsRows = BuildRowsetFromJSON(@productDetailsString, "$[*]", 1)
 ]%%
+
+<!--
+=============================================================
+ESTRUCTURA HTML CON LAS VARIABLES AMPSCRIPT INLINE
+=============================================================
+-->
+
+<!DOCTYPE html>
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="format-detection" content="telephone=no, date=no, address=no, email=no">
+  <title>Cyber W Cruz Verde</title>
+  <!--[if mso]>
+  <noscript>
+    <xml>
+      <o:OfficeDocumentSettings>
+        <o:PixelsPerInch>96</o:PixelsPerInch>
+      </o:OfficeDocumentSettings>
+    </xml>
+  </noscript>
+  <![endif]-->
 
   <!--
   =============================================================
