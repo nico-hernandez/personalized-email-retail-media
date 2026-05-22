@@ -85,6 +85,7 @@ return x + y + z;
         var descuento = Math.round(((precioNormal - precioOferta) / precioNormal) * 100);
         var imagen = row["url_imagen"] || "https://image.mailcruzverde.cl/lib/fe3615717564047b711178/m/1/70239c1d-2dac-4c6a-af85-fb4336152eac.png";
         var pdp = row["url_pdp"] || "https://www.cruzverde.cl/";
+        var valorOculto = esOferta ? "" : " visibility:hidden; mso-hide:all;";
         
         //Formatear para mostrar en HTML
         precioNormal = "$" + String(precioNormal).replace(/\B(?=(\d{3})+(?!\d))/g, ".");
@@ -102,7 +103,8 @@ return x + y + z;
           esOferta: esOferta,
           descuento: descuento,
           imagen: imagen,
-          pdp: pdp
+          pdp: pdp,
+          valorOculto: valorOculto
         });
 
       } else {
