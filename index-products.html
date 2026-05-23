@@ -388,10 +388,10 @@ ESTRUCTURA HTML CON LAS VARIABLES AMPSCRIPT INLINE
             SET @columnas = 2 ]%%
 
         %%[ FOR @i=1 TO @filas DO ]%%
-            SET @paddingBottom = IIF(@i == @filas, "32px", "0px")
+            SET @paddingBottomWrapper = IIF(@i == @filas, "32px", "0px")
             <!-- ─── FILA i ─────────────────────────────────────────────── -->
             <tr>
-              <td style="background-color:#000000; padding-bottom:%%=v(@paddingBottom)=%%;" class="cards-wrapper">
+              <td style="background-color:#000000; padding-bottom:%%=v(@paddingBottomWrapper)=%%;" class="cards-wrapper">
                 <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="card-row" style="border-collapse:collapse; width:100%;">
                   <tr>
                     %%[ FOR @j=1 TO @columnas DO ]%%
