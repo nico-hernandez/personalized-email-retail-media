@@ -388,13 +388,13 @@ ESTRUCTURA HTML CON LAS VARIABLES AMPSCRIPT INLINE
             SET @columnas = 2 ]%%
 
         %%[ FOR @i=1 TO @filas DO ]%%
-          <!-- ─── FILA 1 ─────────────────────────────────────────────── -->
+          <!-- ─── FILA i ─────────────────────────────────────────────── -->
           <tr>
             <td style="background-color:#000000;" class="cards-wrapper">
               <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="card-row" style="border-collapse:collapse; width:100%;">
                 <tr>
                   %%[ FOR @j=1 TO @columnas DO ]%%
-
+                    <!-- ─── COLUMNA j ────────────────────────────────── -->
                     %%[ SET @index = Add(Multiply(Subtract(@i, 1), @columnas), @j)
                         SET @esOferta = Field(Row(@productDetailsRows, @index), "esOferta")
                         SET @precioNormal = Field(Row(@productDetailsRows, @index), "precioNormal")
@@ -405,11 +405,12 @@ ESTRUCTURA HTML CON LAS VARIABLES AMPSCRIPT INLINE
                         SET @imagen = Field(Row(@productDetailsRows, @index), "imagen")
                         SET @pdp = Field(Row(@productDetailsRows, @index), "pdp") ]%%
                     %%[
-                        SET @lado = IIF(Mod(@j, 2) == 0, "left", "right")
+                        SET @cardLado = IIF(Mod(@j, 2) == 0, "right", "left")
+                        SET @paddingLado = IIF(Mod(@j, 2) == 0, "left", "right")
                         SET @paddingBottom = IIF(@i == @filas, "0px", "45px")
-                        SET @claseLast = IIF(@i == @filas, "card-td-last", "")
+                        SET @cardLast = IIF(@i == @filas, "card-td-last", "")
                     ]%%
-                    <td class="card-td card-td-%%=v(@lado)=%% %%=v(@claseLast)=%%" style="width:227px; vertical-align:top; padding-%%=v(@lado)=%%:28px; padding-bottom:%%=v(@paddingBottom)=%%;">
+                    <td class="card-td card-td-%%=v(@claseLado)=%% %%=v(@cardLast)=%%" style="width:227px; vertical-align:top; padding-%%=v(@paddingLado)=%%:28px; padding-bottom:%%=v(@paddingBottom)=%%;">
                       <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="card-table" style="background-color:#111811; border-radius:12px; width:227px; border:1px solid #1e2e1e;">
                         <tr>
                           <td class="card-inner" style="padding:12px;">
