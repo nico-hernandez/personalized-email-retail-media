@@ -388,78 +388,79 @@ ESTRUCTURA HTML CON LAS VARIABLES AMPSCRIPT INLINE
             SET @columnas = 2 ]%%
 
         %%[ FOR @i=1 TO @filas DO ]%%
-          <!-- ─── FILA i ─────────────────────────────────────────────── -->
-          <tr>
-            <td style="background-color:#000000;" class="cards-wrapper">
-              <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="card-row" style="border-collapse:collapse; width:100%;">
-                <tr>
-                  %%[ FOR @j=1 TO @columnas DO ]%%
-                    <!-- ─── COLUMNA j ────────────────────────────────── -->
-                    %%[ SET @index = Add(Multiply(Subtract(@i, 1), @columnas), @j)
-                        SET @esOferta = Field(Row(@productDetailsRows, @index), "esOferta")
-                        SET @precioNormal = Field(Row(@productDetailsRows, @index), "precioNormal")
-                        SET @precioOferta = Field(Row(@productDetailsRows, @index), "precioOferta")
-                        SET @descuento = Field(Row(@productDetailsRows, @index), "descuento")
-                        SET @marca = Field(Row(@productDetailsRows, @index), "marca")
-                        SET @descripcion = Field(Row(@productDetailsRows, @index), "descripcion")
-                        SET @imagen = Field(Row(@productDetailsRows, @index), "imagen")
-                        SET @pdp = Field(Row(@productDetailsRows, @index), "pdp") ]%%
-                    %%[
-                        SET @cardLado = IIF(Mod(@j, 2) == 0, "right", "left")
-                        SET @paddingLado = IIF(Mod(@j, 2) == 0, "left", "right")
-                        SET @paddingBottom = IIF(@i == @filas, "0px", "45px")
-                        SET @cardLast = IIF(@i == @filas, "card-td-last", "")
-                    ]%%
-                    <td class="card-td card-td-%%=v(@claseLado)=%% %%=v(@cardLast)=%%" style="width:227px; vertical-align:top; padding-%%=v(@paddingLado)=%%:28px; padding-bottom:%%=v(@paddingBottom)=%%;">
-                      <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="card-table" style="background-color:#111811; border-radius:12px; width:227px; border:1px solid #1e2e1e;">
-                        <tr>
-                          <td class="card-inner" style="padding:12px;">
-                            <!-- Imagen -->
-                            <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%">
-                              <tr>
-                                <td class="card-img-td" style="background-color:#ffffff; border-radius:8px; height:247px; text-align:center; vertical-align:middle; overflow:hidden; padding:0;">
-                                  <img src='%%=v(@imagen)=%%' alt="Protector Solar Facial FPS 50+ 50 mL" width="160" style="display:block; margin:0 auto; max-height:240px; max-width:200px; width:auto; height:auto;">
-                                </td>
-                              </tr>
-                            </table>
-                            <!-- Marca -->
-                            <p class="card-brand" style="margin:10px 0 2px 0; font-family:Arial,Helvetica,sans-serif; font-size:11px; font-weight:700; color:#00c44f; letter-spacing:0.5px; text-transform:uppercase;">%%=v(@marca)=%%</p>
-                            <!-- Nombre producto — siempre 2 líneas (usar &#10; o <br> para la segunda) -->
-                            <p class="card-name" style="margin:0 0 8px 0; font-family:Arial,Helvetica,sans-serif; font-size:15px; font-weight:700; color:#ffffff; line-height:1.35; min-height:40px; overflow:hidden;">
-                              %%=v(@descripcion)=%%
-                            </p>
-                            <!-- Precios -->
-                            %%[ IF @esOferta THEN ]%%
-                              <p class="card-original" style="margin:0 0 3px 0; font-family:Arial,Helvetica,sans-serif; font-size:12px; color:#888888; text-decoration:line-through;">%%=v(@precioNormal)=%%</p>
-                            %%[ ELSE ]%%
-                              <p class="card-original" style="margin:0 0 3px 0; font-family:Arial,Helvetica,sans-serif; font-size:12px; color:transparent; text-decoration:line-through; pointer-events: none; cursor: default;">%%=v(@precioNormal)=%%</p>
-                            %%[ ENDIF ]%%
-                            <table role="presentation" border="0" cellpadding="0" cellspacing="0" style="margin:0 0 10px 0;">
-                              <tr>
-                                <td style="padding-right:6px; vertical-align:middle;">
-                                  <span class="card-price" style="font-family:Arial,Helvetica,sans-serif; font-size:22px; font-weight:700; color:#00c44f;">%%=v(@precioOferta)=%%</span>
-                                </td>
-                                <td style="vertical-align:middle;">
-                                  %%[ IF @esOferta THEN ]%%
-                                    <span class="card-badge" style="display:inline-block; background-color:#2e2300; color:#ffc000; font-family:Arial,Helvetica,sans-serif; font-size:10px; font-weight:700; padding:3px 6px; border-radius:4px; border:1px solid #ffc000;">%%=v(@descuento)=%%</span>
-                                  %%[ ELSE ]%%
-                                    <span class="card-badge" style="display:inline-block; background-color:transparent; color:transparent; font-family:Arial,Helvetica,sans-serif; font-size:10px; font-weight:700; padding:3px 6px; border-radius:4px; border:1px solid transparent; pointer-events: none; cursor: default;">%%=v(@descuento)=%%</span>
-                                  %%[ ENDIF ]%%
-                                </td>
-                              </tr>
-                            </table>
-                            <!-- Botón -->
-                            <a href='%%=RedirectTo(@pdp)=%%' target="_blank" class="btn-buy" style="display:block; background-color:#00c44f; color:#ffffff; font-family:Arial,Helvetica,sans-serif; font-size:12px; font-weight:700; text-decoration:none; text-align:center; line-height:35px; height:35px; border-radius:6px; letter-spacing:1px; text-transform:uppercase; mso-line-height-rule:exactly;">COMPRAR</a>
-                          </td>
-                        </tr>
-                      </table>
-                    </td>
+            SET @paddingBottom = IIF(@i == @filas, "32px", "0px")
+            <!-- ─── FILA i ─────────────────────────────────────────────── -->
+            <tr>
+              <td style="background-color:#000000; padding-bottom:%%=v(@paddingBottom)=%%;" class="cards-wrapper">
+                <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="card-row" style="border-collapse:collapse; width:100%;">
+                  <tr>
+                    %%[ FOR @j=1 TO @columnas DO ]%%
+                      <!-- ─── COLUMNA j ────────────────────────────────── -->
+                      %%[ SET @index = Add(Multiply(Subtract(@i, 1), @columnas), @j)
+                          SET @esOferta = Field(Row(@productDetailsRows, @index), "esOferta")
+                          SET @precioNormal = Field(Row(@productDetailsRows, @index), "precioNormal")
+                          SET @precioOferta = Field(Row(@productDetailsRows, @index), "precioOferta")
+                          SET @descuento = Field(Row(@productDetailsRows, @index), "descuento")
+                          SET @marca = Field(Row(@productDetailsRows, @index), "marca")
+                          SET @descripcion = Field(Row(@productDetailsRows, @index), "descripcion")
+                          SET @imagen = Field(Row(@productDetailsRows, @index), "imagen")
+                          SET @pdp = Field(Row(@productDetailsRows, @index), "pdp") ]%%
+                      %%[
+                          SET @cardLado = IIF(Mod(@j, 2) == 0, "right", "left")
+                          SET @paddingLado = IIF(Mod(@j, 2) == 0, "left", "right")
+                          SET @paddingBottom = IIF(@i == @filas, "0px", "45px")
+                          SET @cardLast = IIF(@i == @filas, "card-td-last", "")
+                      ]%%
+                      <td class="card-td card-td-%%=v(@claseLado)=%% %%=v(@cardLast)=%%" style="width:227px; vertical-align:top; padding-%%=v(@paddingLado)=%%:28px; padding-bottom:%%=v(@paddingBottom)=%%;">
+                        <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="card-table" style="background-color:#111811; border-radius:12px; width:227px; border:1px solid #1e2e1e;">
+                          <tr>
+                            <td class="card-inner" style="padding:12px;">
+                              <!-- Imagen -->
+                              <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%">
+                                <tr>
+                                  <td class="card-img-td" style="background-color:#ffffff; border-radius:8px; height:247px; text-align:center; vertical-align:middle; overflow:hidden; padding:0;">
+                                    <img src='%%=v(@imagen)=%%' alt="Protector Solar Facial FPS 50+ 50 mL" width="160" style="display:block; margin:0 auto; max-height:240px; max-width:200px; width:auto; height:auto;">
+                                  </td>
+                                </tr>
+                              </table>
+                              <!-- Marca -->
+                              <p class="card-brand" style="margin:10px 0 2px 0; font-family:Arial,Helvetica,sans-serif; font-size:11px; font-weight:700; color:#00c44f; letter-spacing:0.5px; text-transform:uppercase;">%%=v(@marca)=%%</p>
+                              <!-- Nombre producto — siempre 2 líneas (usar &#10; o <br> para la segunda) -->
+                              <p class="card-name" style="margin:0 0 8px 0; font-family:Arial,Helvetica,sans-serif; font-size:15px; font-weight:700; color:#ffffff; line-height:1.35; min-height:40px; overflow:hidden;">
+                                %%=v(@descripcion)=%%
+                              </p>
+                              <!-- Precios -->
+                              %%[ IF @esOferta THEN ]%%
+                                <p class="card-original" style="margin:0 0 3px 0; font-family:Arial,Helvetica,sans-serif; font-size:12px; color:#888888; text-decoration:line-through;">%%=v(@precioNormal)=%%</p>
+                              %%[ ELSE ]%%
+                                <p class="card-original" style="margin:0 0 3px 0; font-family:Arial,Helvetica,sans-serif; font-size:12px; color:transparent; text-decoration:line-through; pointer-events: none; cursor: default;">%%=v(@precioNormal)=%%</p>
+                              %%[ ENDIF ]%%
+                              <table role="presentation" border="0" cellpadding="0" cellspacing="0" style="margin:0 0 10px 0;">
+                                <tr>
+                                  <td style="padding-right:6px; vertical-align:middle;">
+                                    <span class="card-price" style="font-family:Arial,Helvetica,sans-serif; font-size:22px; font-weight:700; color:#00c44f;">%%=v(@precioOferta)=%%</span>
+                                  </td>
+                                  <td style="vertical-align:middle;">
+                                    %%[ IF @esOferta THEN ]%%
+                                      <span class="card-badge" style="display:inline-block; background-color:#2e2300; color:#ffc000; font-family:Arial,Helvetica,sans-serif; font-size:10px; font-weight:700; padding:3px 6px; border-radius:4px; border:1px solid #ffc000;">%%=v(@descuento)=%%</span>
+                                    %%[ ELSE ]%%
+                                      <span class="card-badge" style="display:inline-block; background-color:transparent; color:transparent; font-family:Arial,Helvetica,sans-serif; font-size:10px; font-weight:700; padding:3px 6px; border-radius:4px; border:1px solid transparent; pointer-events: none; cursor: default;">%%=v(@descuento)=%%</span>
+                                    %%[ ENDIF ]%%
+                                  </td>
+                                </tr>
+                              </table>
+                              <!-- Botón -->
+                              <a href='%%=RedirectTo(@pdp)=%%' target="_blank" class="btn-buy" style="display:block; background-color:#00c44f; color:#ffffff; font-family:Arial,Helvetica,sans-serif; font-size:12px; font-weight:700; text-decoration:none; text-align:center; line-height:35px; height:35px; border-radius:6px; letter-spacing:1px; text-transform:uppercase; mso-line-height-rule:exactly;">COMPRAR</a>
+                            </td>
+                          </tr>
+                        </table>
+                      </td>
 
-                  %%[ NEXT @j ]%%
-                </tr>
-              </table>
-            </td>
-          </tr>
+                    %%[ NEXT @j ]%%
+                  </tr>
+                </table>
+              </td>
+            </tr>
         %%[ NEXT @i ]%%
 
         <!-- FOOTER -->
