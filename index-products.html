@@ -1,33 +1,65 @@
 <!--
 =============================================================
-1. SECCIÓN DE PARAMETRIZACIÓN DEL EMAIL
+A. SECCIÓN DE PARAMETRIZACIÓN DEL EMAIL
 =============================================================
 Aquí se definen todos los parámetros del email, no se deben
 hacer modificaciones extra al código.
+La estructura del email y parametrización consiste en:
+  1. Header
+  2. Nombre Variable
+  3. Hero
+  4. Marca
+  5. Grid de Cards (siempre 2 productos por fila)
+  6. Ver Todo
+  7. Footer
 =============================================================
 -->
 <script runat="server">
   Platform.Load("Core", "1.1.1");
-  // Data Extension Catálogo desde el cual se rescata atributos de productos
+
+  /* ===================================
+    0. Parámetros de Datos y Estructura
+  =================================== */  
+  // Data extension catálogo desde el cual se rescata atributos de productos
   var paramCatalogo = "ProductDetail - Test";
-  // URL de imagen de producto por default cuando no hay imagen disponible
-  var paramImagenProductoDefault = "https://image.mailcruzverde.cl/lib/fe3615717564047b711178/m/1/70239c1d-2dac-4c6a-af85-fb4336152eac.png";
-  // URL de página por default cuando no URL de PDP disponible
-  var paramUrlDefault = "https://www.cruzverde.cl/";
   // Lista de productos a desplegar: debe ser un número par de productos válidos.
   var paramProductList = ["273358", "545055", "259654", "276432", "391647", "277072"];
   // Cantidad de columnas de productos, este diseño soporta sólo 2 columnas, NO MODIFICAR.
   var paramColumnas = 2;
   // Cantidad de filas de productos, dada la lista de productos y cantidad de columnas.
   var paramFilas = paramProductList.length / paramColumnas;
+
+  /* ================================
+    1. Parámetros Sección Header
+  ================================ */  
   // URL de imagen del Header
   var paramHeader = "https://image.mailcruzverde.cl/lib/fe3615717564047b711178/m/1/4e7d0f8c-f47e-4ae1-b0c0-77c84c92c689.gif";
+ 
+  /* ================================
+    2. Parámetros Sección Hero
+  ================================ */  
   // URL de imagen del Hero
   var paramHero = "https://image.mailcruzverde.cl/lib/fe3615717564047b711178/m/1/44d8f97f-6e7d-4e74-8584-6021bc46f2eb.png";
+  
+  /* ================================
+    3. Parámetros Sección Marca
+  ================================ */  
   // URL de imagen de la Marca
   var paramMarca = "https://image.mailcruzverde.cl/lib/fe3615717564047b711178/m/1/0106c6d8-fa79-431a-b77f-848c07ba219a.png";
+  
+  /* ================================
+    4. Parámetros Cards de Productos
+  ================================ */
   // Texto del botón en las cards de productos
   var paramTextoBotonCards = "ver producto";
+  // URL de imagen de producto por default cuando no hay imagen disponible
+  var paramImagenProductoDefault = "https://image.mailcruzverde.cl/lib/fe3615717564047b711178/m/1/70239c1d-2dac-4c6a-af85-fb4336152eac.png";
+  // URL de página por default cuando no URL de PDP disponible
+  var paramUrlDefault = "https://www.cruzverde.cl/";
+
+  /* ================================
+    5. Parámetros Sección Ver Todo
+  ================================ */
   // Flag activación sección final "VER TODO"
   var paramFlagVerTodo = true;
   // URL de imagen sección final "VER TODO"
@@ -43,6 +75,9 @@ hacer modificaciones extra al código.
   // URL de botón sección final "VER TODO"
   var paramUrlVerTodo = "https://www.cruzverde.cl/";
 
+  /* ================================
+    Traspaso a variables AMPScript
+  ================================ */
   Variable.SetValue("@paramCatalogo", paramCatalogo);
   Variable.SetValue("@paramImagenProductoDefault", paramImagenProductoDefault);
   Variable.SetValue("@paramUrlDefault", paramUrlDefault);
@@ -64,17 +99,20 @@ hacer modificaciones extra al código.
 </script>
 
 <!--
-=============================================================
-2. LÓGICA DE BÚSQUEDA DE ATRIBUTOS EN CATÁLOGO ECOMMERCE
-=============================================================
+=================================================================
+B. SECCIÓN LÓGICA DE BÚSQUEDA DE ATRIBUTOS EN CATÁLOGO ECOMMERCE
+=================================================================
 El detalle de productos se pasa a AMPScript posteriormente
 y se puede referenciar inline en el HTML.
-=============================================================
+Esta lógica contempla:
+  1. Función para mostrar correctamente descripción
+  2. Main de ejecución de lógica y traspaso a AMPSccript
+=================================================================
 -->
 <script runat="server">
-  /* =========================================================
-    Función que divide texto para evitar descriptores largos
-  ========================================================= */
+  /* ===========================================================
+    1. Función que divide texto para evitar descriptores largos
+  =========================================================== */
   function splitText(text) {
     var max = 22;
     var part1 = "";
@@ -111,9 +149,9 @@ y se puede referenciar inline en el HTML.
     return part1 + "<br>" + part2;
   } 
 
-  /* =========================================================
-    Main que consulta atributos del producto a mostrar en HTML
-  ========================================================= */
+  /* =============================================================
+    2. Main que consulta atributos del producto a mostrar en HTML
+  ============================================================= */
   try {
     var productDetails = [];
 
@@ -195,10 +233,18 @@ y se puede referenciar inline en el HTML.
 
 <!--
 =============================================================
-3. ESTRUCTURA HTML CON VARIABLES AMPSCRIPT INLINE
+C. SECCIÓN ESTRUCTURA HTML CON VARIABLES AMPSCRIPT INLINE
 =============================================================
-Dada la parametrización definida en sección 1, se genera la
+Dada la parametrización definida en la lógica, se genera la
 estructura HTML. No es necesario editar esta parte.
+La estructura del email consiste en:
+  1. Header
+  2. Nombre Variable
+  3. Hero
+  4. Marca
+  5. Grid de Cards (siempre 2 productos por fila)
+  6. Ver Todo
+  7. Footer
 =============================================================
 -->
 <!DOCTYPE html>
@@ -356,7 +402,7 @@ estructura HTML. No es necesario editar esta parte.
 
         <!-- ============================================================ -->
         <!-- COMPONENTE 1: HEADER     — GIF animado                       -->
-        <!-- Reemplazar src con URL del GIF real (600px ancho)            -->
+        <!-- Reemplazar src con URL del GIF real (640px ancho)            -->
         <!-- ============================================================ -->
         <tr>
           <td align="center" valign="top" style="padding:0; background-color:#000000;">
@@ -508,7 +554,7 @@ estructura HTML. No es necesario editar esta parte.
         %%[ NEXT @i ]%%
 
         <!-- ============================================================ -->
-        <!-- VER TODO: Eucerin                                           -->
+        <!-- COMPONENTE 6: VER TODO                                      -->
         <!-- Imagen bodegón (40%) | Textos + botón (60%)                 -->
         <!-- Reemplazar src de imagen, textos y URL del botón            -->
         <!-- ============================================================ -->
@@ -540,7 +586,9 @@ estructura HTML. No es necesario editar esta parte.
         </tr>
         %%[ ELSE ]%%
         %%[ ENDIF ]%%
-        <!-- FOOTER -->
+        <!-- ============================================================ -->
+        <!-- COMPONENTE 7: FOOTER                                         -->
+        <!-- ============================================================ -->
         <tr>
           <td align="center" valign="top" style="padding:20px 24px; background-color:#000000; border-top:1px solid #1a2a1a;">
             <p style="margin:0 0 6px 0; padding:0; font-family:Arial,Helvetica,sans-serif; font-size:11px; color:#555555; text-align:center;">
