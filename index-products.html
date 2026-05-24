@@ -38,8 +38,10 @@ hacer modificaciones extra al código.
   var paramTextoSecundarioVerTodo1 = "¡Cuida tu piel del sol todos los días!";
   // Texto secundario sección final "VER TODO"
   var paramTextoSecundarioVerTodo2 = "Productos seleccionados";
-  // URL de botón sección final "VER TODO"
+  // Texto de botón sección final "VER TODO"
   var paramBotonVerTodo = "ver todo";
+  // URL de botón sección final "VER TODO"
+  var paramUrlVerTodo = "https://www.cruzverde.cl/";
 
   Variable.SetValue("@paramCatalogo", paramCatalogo);
   Variable.SetValue("@paramImagenProductoDefault", paramImagenProductoDefault);
@@ -57,6 +59,7 @@ hacer modificaciones extra al código.
   Variable.SetValue("@paramTextoSecundarioVerTodo1", paramTextoSecundarioVerTodo1);
   Variable.SetValue("@paramTextoSecundarioVerTodo2", paramTextoSecundarioVerTodo2);
   Variable.SetValue("@paramBotonVerTodo", paramBotonVerTodo);
+  Variable.SetValue("@paramUrlVerTodo", paramUrlVerTodo);
 
 </script>
 
@@ -112,13 +115,11 @@ y se puede referenciar inline en el HTML.
     Main que consulta atributos del producto a mostrar en HTML
   ========================================================= */
   try {
-    var productList = paramProductList;
-    var dataExtension = paramCatalogo;
     var productDetails = [];
 
-    for (var i = 0; i < productList.length; i++) {
-      var codigo = productList[i];
-      var rows = Platform.Function.LookupRows(dataExtension, ["codigo_producto"], [codigo]);
+    for (var i = 0; i < paramProductList.length; i++) {
+      var codigo = paramProductList[i];
+      var rows = Platform.Function.LookupRows(paramCatalogo, ["codigo_producto"], [codigo]);
       var row = (rows && rows.length > 0) ? rows[0] : null;
 
       if (row) {
@@ -462,7 +463,7 @@ estructura HTML. No es necesario editar esta parte.
                               <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%">
                                 <tr>
                                   <td class="card-img-td" style="background-color:#ffffff; border-radius:8px; height:247px; text-align:center; vertical-align:middle; overflow:hidden; padding:0;">
-                                    <img src='%%=v(@imagen)=%%' alt="Protector Solar Facial FPS 50+ 50 mL" width="160" style="display:block; margin:0 auto; max-height:240px; max-width:200px; width:auto; height:auto;">
+                                    <img src='%%=v(@imagen)=%%' alt="" width="160" style="display:block; margin:0 auto; max-height:240px; max-width:200px; width:auto; height:auto;">
                                   </td>
                                 </tr>
                               </table>
@@ -519,7 +520,7 @@ estructura HTML. No es necesario editar esta parte.
                 <!-- Bodegón: 40% -->
                 <td class="cat-img-td" style="width:40%; vertical-align:middle; padding:0;">
                   <img src="%%=v(@paramImagenVerTodo)=%%"
-                      alt="Prevención Solar – productos Eucerin"
+                      alt=""
                       width="232"
                       style="display:block; width:100%; height:auto;">
                 </td>
@@ -528,7 +529,7 @@ estructura HTML. No es necesario editar esta parte.
                   <p class="cat-eyebrow" style="margin:0 0 4px 0; font-family:Arial,Helvetica,sans-serif; font-size:13px; font-weight:400; color:#cccccc;">%%=v(@paramTextoSecundarioVerTodo1)=%%</p>
                   <h2 class="cat-title" style="margin:0 0 6px 0; font-family:Arial,Helvetica,sans-serif; font-size:32px; font-weight:700; color:#ffffff; line-height:1.1;">%%=v(@paramTextoPrincipalVerTodo)=%%</h2>
                   <p class="cat-sub" style="margin:0 0 14px 0; font-family:Arial,Helvetica,sans-serif; font-size:12px; color:#aaaaaa;">%%=v(@paramTextoSecundarioVerTodo2)=%%</p>
-                  <a href="https://www.cruzverde.cl" target="_blank" class="btn-cat"
+                  <a href="%%=v(@paramUrlVerTodo)=%%" target="_blank" class="btn-cat"
                     style="display:inline-block; background-color:#00c44f; color:#ffffff; font-family:Arial,Helvetica,sans-serif; font-size:11px; font-weight:700; text-decoration:none; text-align:center; padding:0 18px; line-height:32px; height:32px; border-radius:6px; letter-spacing:1px; text-transform:uppercase; mso-line-height-rule:exactly;">
                     %%=v(@paramBotonVerTodo)=%%
                   </a>
