@@ -514,6 +514,7 @@ estructura HTML. No es necesario editar esta parte.
         <!-- Imagen bodegón (40%) | Textos + botón (60%)                 -->
         <!-- Reemplazar src de imagen, textos y URL del botón            -->
         <!-- ============================================================ -->
+        %%[ IF paramFlagVerTodo THEN ]%%
         <tr>
           <td style="padding:20px 57px 20px 57px; background-color:#000000;" class="mobile-pad">
             <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="cat-row" style="width:100%; border-collapse:collapse; background-color:#000000;">
@@ -539,7 +540,8 @@ estructura HTML. No es necesario editar esta parte.
             </table>
           </td>
         </tr>
-
+        %%[ ELSE ]%%
+        %%[ ENDIF ]%%
         <!-- FOOTER -->
         <tr>
           <td align="center" valign="top" style="padding:20px 24px; background-color:#000000; border-top:1px solid #1a2a1a;">
