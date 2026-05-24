@@ -34,21 +34,31 @@ La estructura del email y parametrización consiste en:
   ================================ */  
   // URL de imagen del Header
   var paramHeader = "https://image.mailcruzverde.cl/lib/fe3615717564047b711178/m/1/4e7d0f8c-f47e-4ae1-b0c0-77c84c92c689.gif";
- 
+  var paramFlagHeader = true;
+
+  /* =====================================
+    3. Parámetros Sección Nombre Variable
+  ===================================== */
+  // Texto del nombre del cliente
+  var paramNombre = "Sofía";
+  var paramFlagNombre = true;
+
   /* ================================
-    2. Parámetros Sección Hero
+    3. Parámetros Sección Hero
   ================================ */  
   // URL de imagen del Hero
   var paramHero = "https://image.mailcruzverde.cl/lib/fe3615717564047b711178/m/1/44d8f97f-6e7d-4e74-8584-6021bc46f2eb.png";
-  
+  var paramFlagHero = true;
+
   /* ================================
-    3. Parámetros Sección Marca
+    4. Parámetros Sección Marca
   ================================ */  
   // URL de imagen de la Marca
   var paramMarca = "https://image.mailcruzverde.cl/lib/fe3615717564047b711178/m/1/0106c6d8-fa79-431a-b77f-848c07ba219a.png";
-  
+  var paramFlagMarca = true;
+
   /* ================================
-    4. Parámetros Cards de Productos
+    5. Parámetros Cards de Productos
   ================================ */
   // Texto del botón en las cards de productos
   var paramTextoBotonCards = "ver producto";
@@ -56,9 +66,21 @@ La estructura del email y parametrización consiste en:
   var paramImagenProductoDefault = "https://image.mailcruzverde.cl/lib/fe3615717564047b711178/m/1/70239c1d-2dac-4c6a-af85-fb4336152eac.png";
   // URL de página por default cuando no URL de PDP disponible
   var paramUrlDefault = "https://www.cruzverde.cl/";
+  // Flag Marca Card de Productos
+  var paramFlagMarcaCard = true;
+  // Flag Descripción Card de Productos
+  var paramFlagDescripcionCard = true;
+  // Flag Precio Normal
+  var paramFlagPrecioNormalCard = true;
+  // Flag Precio Oferta
+  var paramFlagPrecioOfertaCard = true;
+  // Flag Descuento
+  var paramFlagDescuentoCard = true;
+  // Flag Botón
+  var paramFlagBotonCard = true;
 
   /* ================================
-    5. Parámetros Sección Ver Todo
+    6. Parámetros Sección Ver Todo
   ================================ */
   // Flag activación sección final "VER TODO"
   var paramFlagVerTodo = true;
@@ -74,6 +96,12 @@ La estructura del email y parametrización consiste en:
   var paramBotonVerTodo = "ver todo";
   // URL de botón sección final "VER TODO"
   var paramUrlVerTodo = "https://www.cruzverde.cl/";
+
+  /* ================================
+    6. Parámetros Sección Footer
+  ================================ */
+  // Flag activación sección Footer
+  var paramFlagFooter = true;
 
   /* ================================
     Traspaso a variables AMPScript
@@ -95,6 +123,13 @@ La estructura del email y parametrización consiste en:
   Variable.SetValue("@paramTextoSecundarioVerTodo2", paramTextoSecundarioVerTodo2);
   Variable.SetValue("@paramBotonVerTodo", paramBotonVerTodo);
   Variable.SetValue("@paramUrlVerTodo", paramUrlVerTodo);
+  Variable.SetValue("@paramFlagMarca", paramFlagMarca);
+  Variable.SetValue("@paramFlagMarcaCard", paramFlagMarcaCard);
+  Variable.SetValue("@paramFlagDescripcionCard", paramFlagDescripcionCard);
+  Variable.SetValue("@paramFlagDescripcionCard", paramFlagPrecioNormalCard);
+  Variable.SetValue("@paramFlagDescripcionCard", paramFlagPrecioOfertaCard);
+  Variable.SetValue("@paramFlagDescripcionCard", paramFlagDescuentoCard);
+  Variable.SetValue("@paramFlagDescripcionCard", paramFlagBotonCard);
 
 </script>
 
@@ -404,63 +439,75 @@ La estructura del email consiste en:
         <!-- COMPONENTE 1: HEADER     — GIF animado                       -->
         <!-- Reemplazar src con URL del GIF real (640px ancho)            -->
         <!-- ============================================================ -->
-        <tr>
-          <td align="center" valign="top" style="padding:0; background-color:#000000;">
-            <a href="https://www.cruzverde.cl" target="_blank" style="display:block;">
-              <img
-                src="%%=v(@paramHeader)=%%"
-                alt="Club Cruz Verde – Cyber +Descuentos"
-                width="640"
-                style="display:block; width:100%; max-width:640px; height:auto;"
-              >
-            </a>
-          </td>
-        </tr>
+        %%[ IF @paramFlagHeader THEN ]%%
+          <tr>
+            <td align="center" valign="top" style="padding:0; background-color:#000000;">
+              <a href="https://www.cruzverde.cl" target="_blank" style="display:block;">
+                <img
+                  src="%%=v(@paramHeader)=%%"
+                  alt="Club Cruz Verde – Cyber +Descuentos"
+                  width="640"
+                  style="display:block; width:100%; max-width:640px; height:auto;"
+                >
+              </a>
+            </td>
+          </tr>
+        %%[ ELSE ]%%
+        %%[ ENDIF ]%%
 
         <!-- ============================================================ -->
         <!-- COMPONENTE 2: TEXTO VARIABLE — nombre del destinatario       -->
         <!-- Reemplazar "Sofía" con variable de tu plataforma de envío:  -->
         <!--   Mailchimp: *|FNAME|*  /  HubSpot: {{ contact.firstname }} -->
         <!-- ============================================================ -->
-        <tr>
-          <td align="center" valign="top" style="padding:32px 0px 32px 0px; background-color:#000000;">
-            <h1 style="margin:0; padding:0; font-family:Arial,Helvetica,sans-serif; font-size:24px; font-weight:700; color:#ffffff; line-height:1.2; text-align:center;">
-              Sofía
-            </h1>
-          </td>
-        </tr>
+        %%[ IF @paramFlagNombre THEN ]%%
+          <tr>
+            <td align="center" valign="top" style="padding:32px 0px 32px 0px; background-color:#000000;">
+              <h1 style="margin:0; padding:0; font-family:Arial,Helvetica,sans-serif; font-size:24px; font-weight:700; color:#ffffff; line-height:1.2; text-align:center;">
+                Sofía
+              </h1>
+            </td>
+          </tr>
+        %%[ ELSE ]%%
+        %%[ ENDIF ]%%
 
         <!-- ============================================================ -->
         <!-- COMPONENTE 3: IMAGEN HERO — banner "Hasta 40% dcto."        -->
         <!-- Reemplazar src con URL de imagen real (600px ancho)         -->
         <!-- ============================================================ -->
-        <tr>
-          <td align="center" valign="top" style="padding:0; background-color:#000000;" class="mobile-padding">
-            <a href="https://www.cruzverde.cl" target="_blank" style="display:block;">
-              <img
-                src="%%=v(@paramHero)=%%"
-                alt="Hasta 40% de descuento en productos seleccionados"
-                width="640"
-                style="display:block; width:100%; max-width:640px; height:auto;"
-              >
-            </a>
-          </td>
-        </tr>
+        %%[ IF @paramFlagHero THEN ]%%
+          <tr>
+            <td align="center" valign="top" style="padding:0; background-color:#000000;" class="mobile-padding">
+              <a href="https://www.cruzverde.cl" target="_blank" style="display:block;">
+                <img
+                  src="%%=v(@paramHero)=%%"
+                  alt="Hasta 40% de descuento en productos seleccionados"
+                  width="640"
+                  style="display:block; width:100%; max-width:640px; height:auto;"
+                >
+              </a>
+            </td>
+          </tr>
+        %%[ ELSE ]%%
+        %%[ ENDIF ]%%
 
         <!-- ============================================================ -->
         <!-- COMPONENTE 4: MARCA — logotipo Eucerin                      -->
         <!-- Reemplazar src con URL del logo real de la marca            -->
         <!-- ============================================================ -->
-        <tr>
-          <td align="center" valign="top" style="padding:0; background-color:#0a0f0a;">
-            <img
-              src="%%=v(@paramMarca)=%%"
-              alt="Eucerin"
-              width="640"
-              style="display:block; width:100%; max-width:640px; height:auto;"
-            >
-          </td>
-        </tr>
+        %%[ IF @paramFlagMarca THEN ]%%
+          <tr>
+            <td align="center" valign="top" style="padding:0; background-color:#0a0f0a;">
+              <img
+                src="%%=v(@paramMarca)=%%"
+                alt="Eucerin"
+                width="640"
+                style="display:block; width:100%; max-width:640px; height:auto;"
+              >
+            </td>
+          </tr>
+        %%[ ELSE ]%%
+        %%[ ENDIF ]%%
 
         <!-- ============================================================ -->
         <!-- COMPONENTE 5: GRILLA DE CARDS — 3 filas × 2 columnas        -->
@@ -476,7 +523,6 @@ La estructura del email consiste en:
         <!--   [SALE_PRICE]        → precio de oferta                    -->
         <!--   [DISCOUNT_BADGE]    → p. ej. "-29%"                       -->
         <!-- ============================================================ -->
-
         %%[ FOR @i=1 TO @paramFilas DO ]%%
           %%[ SET @paddingBottomWrapper = IIF(@i == @paramFilas, "32px", "0px") ]%%
             <!-- ─── FILA i ─────────────────────────────────────────────── -->
@@ -559,47 +605,51 @@ La estructura del email consiste en:
         <!-- Reemplazar src de imagen, textos y URL del botón            -->
         <!-- ============================================================ -->
         %%[ IF @paramFlagVerTodo THEN ]%%
-        <tr>
-          <td style="padding:20px 57px 20px 57px; background-color:#000000;" class="mobile-pad">
-            <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="cat-row" style="width:100%; border-collapse:collapse; background-color:#000000;">
-              <tr>
-                <!-- Bodegón: 40% -->
-                <td class="cat-img-td" style="width:40%; vertical-align:middle; padding:0;">
-                  <img src="%%=v(@paramImagenVerTodo)=%%"
-                      alt=""
-                      width="232"
-                      style="display:block; width:100%; height:auto;">
-                </td>
-                <!-- Texto y botón: 60% -->
-                <td class="cat-copy-td" style="width:60%; vertical-align:middle; padding:20px 0px 20px 32px;">
-                  <p class="cat-eyebrow" style="margin:0 0 4px 0; font-family:Arial,Helvetica,sans-serif; font-size:13px; font-weight:400; color:#cccccc;">%%=v(@paramTextoSecundarioVerTodo1)=%%</p>
-                  <h2 class="cat-title" style="margin:0 0 6px 0; font-family:Arial,Helvetica,sans-serif; font-size:32px; font-weight:700; color:#ffffff; line-height:1.1;">%%=v(@paramTextoPrincipalVerTodo)=%%</h2>
-                  <p class="cat-sub" style="margin:0 0 14px 0; font-family:Arial,Helvetica,sans-serif; font-size:12px; color:#aaaaaa;">%%=v(@paramTextoSecundarioVerTodo2)=%%</p>
-                  <a href="%%=v(@paramUrlVerTodo)=%%" target="_blank" class="btn-cat"
-                    style="display:inline-block; background-color:#00c44f; color:#ffffff; font-family:Arial,Helvetica,sans-serif; font-size:11px; font-weight:700; text-decoration:none; text-align:center; padding:0 18px; line-height:32px; height:32px; border-radius:6px; letter-spacing:1px; text-transform:uppercase; mso-line-height-rule:exactly;">
-                    %%=v(@paramBotonVerTodo)=%%
-                  </a>
-                </td>
-              </tr>
-            </table>
-          </td>
-        </tr>
+          <tr>
+            <td style="padding:20px 57px 20px 57px; background-color:#000000;" class="mobile-pad">
+              <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="cat-row" style="width:100%; border-collapse:collapse; background-color:#000000;">
+                <tr>
+                  <!-- Bodegón: 40% -->
+                  <td class="cat-img-td" style="width:40%; vertical-align:middle; padding:0;">
+                    <img src="%%=v(@paramImagenVerTodo)=%%"
+                        alt=""
+                        width="232"
+                        style="display:block; width:100%; height:auto;">
+                  </td>
+                  <!-- Texto y botón: 60% -->
+                  <td class="cat-copy-td" style="width:60%; vertical-align:middle; padding:20px 0px 20px 32px;">
+                    <p class="cat-eyebrow" style="margin:0 0 4px 0; font-family:Arial,Helvetica,sans-serif; font-size:13px; font-weight:400; color:#cccccc;">%%=v(@paramTextoSecundarioVerTodo1)=%%</p>
+                    <h2 class="cat-title" style="margin:0 0 6px 0; font-family:Arial,Helvetica,sans-serif; font-size:32px; font-weight:700; color:#ffffff; line-height:1.1;">%%=v(@paramTextoPrincipalVerTodo)=%%</h2>
+                    <p class="cat-sub" style="margin:0 0 14px 0; font-family:Arial,Helvetica,sans-serif; font-size:12px; color:#aaaaaa;">%%=v(@paramTextoSecundarioVerTodo2)=%%</p>
+                    <a href="%%=v(@paramUrlVerTodo)=%%" target="_blank" class="btn-cat"
+                      style="display:inline-block; background-color:#00c44f; color:#ffffff; font-family:Arial,Helvetica,sans-serif; font-size:11px; font-weight:700; text-decoration:none; text-align:center; padding:0 18px; line-height:32px; height:32px; border-radius:6px; letter-spacing:1px; text-transform:uppercase; mso-line-height-rule:exactly;">
+                      %%=v(@paramBotonVerTodo)=%%
+                    </a>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
         %%[ ELSE ]%%
         %%[ ENDIF ]%%
+
         <!-- ============================================================ -->
         <!-- COMPONENTE 7: FOOTER                                         -->
         <!-- ============================================================ -->
-        <tr>
-          <td align="center" valign="top" style="padding:20px 24px; background-color:#000000; border-top:1px solid #1a2a1a;">
-            <p style="margin:0 0 6px 0; padding:0; font-family:Arial,Helvetica,sans-serif; font-size:11px; color:#555555; text-align:center;">
-              © 2024 Cruz Verde. Todos los derechos reservados.
-            </p>
-            <p style="margin:0; padding:0; font-family:Arial,Helvetica,sans-serif; font-size:11px; color:#555555; text-align:center;">
-              Si no deseas recibir más comunicaciones, puedes
-              <a href="#" style="color:#00c44f; text-decoration:underline;">darte de baja aquí</a>.
-            </p>
-          </td>
-        </tr>
+        %%[ IF @paramFlagFooter THEN ]%%
+          <tr>
+            <td align="center" valign="top" style="padding:20px 24px; background-color:#000000; border-top:1px solid #1a2a1a;">
+              <p style="margin:0 0 6px 0; padding:0; font-family:Arial,Helvetica,sans-serif; font-size:11px; color:#555555; text-align:center;">
+                © 2024 Cruz Verde. Todos los derechos reservados.
+              </p>
+              <p style="margin:0; padding:0; font-family:Arial,Helvetica,sans-serif; font-size:11px; color:#555555; text-align:center;">
+                Si no deseas recibir más comunicaciones, puedes
+                <a href="#" style="color:#00c44f; text-decoration:underline;">darte de baja aquí</a>.
+              </p>
+            </td>
+          </tr>
+        %%[ ELSE ]%%
+        %%[ ENDIF ]%%
 
       </table>
 
