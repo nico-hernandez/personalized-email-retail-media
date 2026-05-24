@@ -107,15 +107,26 @@ La estructura del email y parametrización consiste en:
     Traspaso a variables AMPScript
   ================================ */
   Variable.SetValue("@paramCatalogo", paramCatalogo);
-  Variable.SetValue("@paramImagenProductoDefault", paramImagenProductoDefault);
-  Variable.SetValue("@paramUrlDefault", paramUrlDefault);
   Variable.SetValue("@paramProductList", paramProductList);
   Variable.SetValue("@paramColumnas", paramColumnas);
   Variable.SetValue("@paramFilas", paramFilas);
   Variable.SetValue("@paramHeader", paramHeader);
+  Variable.SetValue("@paramFlagHeader", paramFlagHeader);
+  Variable.SetValue("@paramNombre", paramNombre);
+  Variable.SetValue("@paramFlagNombre", paramFlagNombre);
   Variable.SetValue("@paramHero", paramHero);
+  Variable.SetValue("@paramFlagHero", paramFlagHero);
   Variable.SetValue("@paramMarca", paramMarca);
+  Variable.SetValue("@paramFlagMarca", paramFlagMarca);
   Variable.SetValue("@paramTextoBotonCards", paramTextoBotonCards);
+  Variable.SetValue("@paramImagenProductoDefault", paramImagenProductoDefault);
+  Variable.SetValue("@paramUrlDefault", paramUrlDefault);
+  Variable.SetValue("@paramFlagMarcaCard", paramFlagMarcaCard);
+  Variable.SetValue("@paramFlagDescripcionCard", paramFlagDescripcionCard);
+  Variable.SetValue("@paramFlagPrecioNormalCard", paramFlagPrecioNormalCard);
+  Variable.SetValue("@paramFlagPrecioOfertaCard", paramFlagPrecioOfertaCard);
+  Variable.SetValue("@paramFlagDescuentoCard", paramFlagDescuentoCard);
+  Variable.SetValue("@paramFlagBotonCard", paramFlagBotonCard);
   Variable.SetValue("@paramFlagVerTodo", paramFlagVerTodo);
   Variable.SetValue("@paramImagenVerTodo", paramImagenVerTodo);
   Variable.SetValue("@paramTextoPrincipalVerTodo", paramTextoPrincipalVerTodo);
@@ -123,13 +134,8 @@ La estructura del email y parametrización consiste en:
   Variable.SetValue("@paramTextoSecundarioVerTodo2", paramTextoSecundarioVerTodo2);
   Variable.SetValue("@paramBotonVerTodo", paramBotonVerTodo);
   Variable.SetValue("@paramUrlVerTodo", paramUrlVerTodo);
-  Variable.SetValue("@paramFlagMarca", paramFlagMarca);
-  Variable.SetValue("@paramFlagMarcaCard", paramFlagMarcaCard);
-  Variable.SetValue("@paramFlagDescripcionCard", paramFlagDescripcionCard);
-  Variable.SetValue("@paramFlagDescripcionCard", paramFlagPrecioNormalCard);
-  Variable.SetValue("@paramFlagDescripcionCard", paramFlagPrecioOfertaCard);
-  Variable.SetValue("@paramFlagDescripcionCard", paramFlagDescuentoCard);
-  Variable.SetValue("@paramFlagDescripcionCard", paramFlagBotonCard);
+  Variable.SetValue("@paramFlagFooter", paramFlagFooter);
+
 
 </script>
 
