@@ -61,9 +61,9 @@ La estructura del email y parametrización consiste en:
     5. Parámetros Cards de Productos
   ================================ */
   // Texto del botón en las cards de productos
-  var paramTextoBotonCards = "ver producto";
+  var paramTextoBotonCard = "ver producto";
   // URL de imagen de producto por default cuando no hay imagen disponible
-  var paramImagenProductoDefault = "https://image.mailcruzverde.cl/lib/fe3615717564047b711178/m/1/70239c1d-2dac-4c6a-af85-fb4336152eac.png";
+  var paramImagenDefaultCard = "https://image.mailcruzverde.cl/lib/fe3615717564047b711178/m/1/70239c1d-2dac-4c6a-af85-fb4336152eac.png";
   // URL de página por default cuando no URL de PDP disponible
   var paramUrlDefault = "https://www.cruzverde.cl/";
   // Flag Marca Card de Productos
@@ -118,8 +118,8 @@ La estructura del email y parametrización consiste en:
   Variable.SetValue("@paramFlagHero", paramFlagHero);
   Variable.SetValue("@paramMarca", paramMarca);
   Variable.SetValue("@paramFlagMarca", paramFlagMarca);
-  Variable.SetValue("@paramTextoBotonCards", paramTextoBotonCards);
-  Variable.SetValue("@paramImagenProductoDefault", paramImagenProductoDefault);
+  Variable.SetValue("@paramTextoBotonCard", paramTextoBotonCard);
+  Variable.SetValue("@paramImagenDefaultCard", paramImagenDefaultCard);
   Variable.SetValue("@paramUrlDefault", paramUrlDefault);
   Variable.SetValue("@paramFlagMarcaCard", paramFlagMarcaCard);
   Variable.SetValue("@paramFlagDescripcionCard", paramFlagDescripcionCard);
@@ -208,7 +208,7 @@ Esta lógica contempla:
         var precioNormal = row["precio_normal_cl"] || 9999999;
         var precioOferta = row["precio_oferta_cl"] || row["precio_normal_cl"];
         var descuento = Math.round(((precioNormal - precioOferta) / precioNormal) * 100);
-        var imagen = row["url_imagen"] || paramImagenProductoDefault;
+        var imagen = row["url_imagen"] || paramImagenDefaultCard;
         var pdp = row["url_pdp"] || paramUrlDefault;
         var valorOculto = esOferta ? "" : " visibility:hidden; mso-hide:all;";
         
@@ -592,7 +592,7 @@ La estructura del email consiste en:
                                 </tr>
                               </table>
                               <!-- Botón -->
-                              <a href='%%=RedirectTo(@pdp)=%%' target="_blank" class="btn-buy" style="display:block; background-color:#00c44f; color:#ffffff; font-family:Arial,Helvetica,sans-serif; font-size:12px; font-weight:700; text-decoration:none; text-align:center; line-height:35px; height:35px; border-radius:6px; letter-spacing:1px; text-transform:uppercase; mso-line-height-rule:exactly;">%%=v(@paramTextoBotonCards)=%%</a>
+                              <a href='%%=RedirectTo(@pdp)=%%' target="_blank" class="btn-buy" style="display:block; background-color:#00c44f; color:#ffffff; font-family:Arial,Helvetica,sans-serif; font-size:12px; font-weight:700; text-decoration:none; text-align:center; line-height:35px; height:35px; border-radius:6px; letter-spacing:1px; text-transform:uppercase; mso-line-height-rule:exactly;">%%=v(@paramTextoBotonCard)=%%</a>
                             </td>
                           </tr>
                         </table>
