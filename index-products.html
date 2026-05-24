@@ -22,23 +22,23 @@ hacer modificaciones extra al código.
   // URL de imagen del Header
   var paramHeader = "https://image.mailcruzverde.cl/lib/fe3615717564047b711178/m/1/4e7d0f8c-f47e-4ae1-b0c0-77c84c92c689.gif";
   // URL de imagen del Hero
-  var paramHero = "";
+  var paramHero = "https://image.mailcruzverde.cl/lib/fe3615717564047b711178/m/1/44d8f97f-6e7d-4e74-8584-6021bc46f2eb.png";
   // URL de imagen de la Marca
-  var paramMarca = "";
+  var paramMarca = "https://image.mailcruzverde.cl/lib/fe3615717564047b711178/m/1/0106c6d8-fa79-431a-b77f-848c07ba219a.png";
   // Texto del botón en las cards de productos
-  var paramTextoBotonCards = "";
+  var paramTextoBotonCards = "ver producto";
   // Flag activación sección final "VER TODO"
   var paramFlagVerTodo = true;
   // URL de imagen sección final "VER TODO"
-  var paramImagenVerTodo = "";
+  var paramImagenVerTodo = "https://image.mailcruzverde.cl/lib/fe3615717564047b711178/m/1/bcd46bbb-2e7b-4c2d-ab2a-1459190d5038.png";
   // Texto Principal sección final "VER TODO"
-  var paramTextoPrincipalVerTodo = "";
+  var paramTextoPrincipalVerTodo = "Eucerin";
   // Texto secundario sección final "VER TODO"
-  var paramTextoSecundarioVerTodo1  = "";
+  var paramTextoSecundarioVerTodo1 = "¡Cuida tu piel del sol todos los días!";
   // Texto secundario sección final "VER TODO"
-  var paramTextoSecundarioVerTodo2 = "";
+  var paramTextoSecundarioVerTodo2 = "Productos seleccionados";
   // URL de botón sección final "VER TODO"
-  var paramBotonVerTodo = "";
+  var paramBotonVerTodo = "ver todo";
 
   Variable.SetValue("@paramCatalogo", paramCatalogo);
   Variable.SetValue("@paramImagenProductoDefault", paramImagenProductoDefault);
@@ -392,7 +392,7 @@ estructura HTML. No es necesario editar esta parte.
           <td align="center" valign="top" style="padding:0; background-color:#000000;" class="mobile-padding">
             <a href="https://www.cruzverde.cl" target="_blank" style="display:block;">
               <img
-                src="https://image.mailcruzverde.cl/lib/fe3615717564047b711178/m/1/44d8f97f-6e7d-4e74-8584-6021bc46f2eb.png"
+                src="%%=v(@paramHero)=%%"
                 alt="Hasta 40% de descuento en productos seleccionados"
                 width="640"
                 style="display:block; width:100%; max-width:640px; height:auto;"
@@ -408,7 +408,7 @@ estructura HTML. No es necesario editar esta parte.
         <tr>
           <td align="center" valign="top" style="padding:0; background-color:#0a0f0a;">
             <img
-              src="https://image.mailcruzverde.cl/lib/fe3615717564047b711178/m/1/0106c6d8-fa79-431a-b77f-848c07ba219a.png"
+              src="%%=v(@paramMarca)=%%"
               alt="Eucerin"
               width="640"
               style="display:block; width:100%; max-width:640px; height:auto;"
@@ -496,7 +496,7 @@ estructura HTML. No es necesario editar esta parte.
                                 </tr>
                               </table>
                               <!-- Botón -->
-                              <a href='%%=RedirectTo(@pdp)=%%' target="_blank" class="btn-buy" style="display:block; background-color:#00c44f; color:#ffffff; font-family:Arial,Helvetica,sans-serif; font-size:12px; font-weight:700; text-decoration:none; text-align:center; line-height:35px; height:35px; border-radius:6px; letter-spacing:1px; text-transform:uppercase; mso-line-height-rule:exactly;">COMPRAR</a>
+                              <a href='%%=RedirectTo(@pdp)=%%' target="_blank" class="btn-buy" style="display:block; background-color:#00c44f; color:#ffffff; font-family:Arial,Helvetica,sans-serif; font-size:12px; font-weight:700; text-decoration:none; text-align:center; line-height:35px; height:35px; border-radius:6px; letter-spacing:1px; text-transform:uppercase; mso-line-height-rule:exactly;">%%=v(@paramTextoBotonCards)=%%</a>
                             </td>
                           </tr>
                         </table>
@@ -520,19 +520,19 @@ estructura HTML. No es necesario editar esta parte.
               <tr>
                 <!-- Bodegón: 40% -->
                 <td class="cat-img-td" style="width:40%; vertical-align:middle; padding:0;">
-                  <img src="https://image.mailcruzverde.cl/lib/fe3615717564047b711178/m/1/bcd46bbb-2e7b-4c2d-ab2a-1459190d5038.png"
+                  <img src="%%=v(@paramImagenVerTodo)=%%"
                       alt="Prevención Solar – productos Eucerin"
                       width="232"
                       style="display:block; width:100%; height:auto;">
                 </td>
                 <!-- Texto y botón: 60% -->
                 <td class="cat-copy-td" style="width:60%; vertical-align:middle; padding:20px 0px 20px 32px;">
-                  <p class="cat-eyebrow" style="margin:0 0 4px 0; font-family:Arial,Helvetica,sans-serif; font-size:13px; font-weight:400; color:#cccccc;">¡Cuida tu piel del sol todos los días!</p>
-                  <h2 class="cat-title" style="margin:0 0 6px 0; font-family:Arial,Helvetica,sans-serif; font-size:32px; font-weight:700; color:#ffffff; line-height:1.1;">Eucerin</h2>
-                  <p class="cat-sub" style="margin:0 0 14px 0; font-family:Arial,Helvetica,sans-serif; font-size:12px; color:#aaaaaa;">Productos seleccionados</p>
+                  <p class="cat-eyebrow" style="margin:0 0 4px 0; font-family:Arial,Helvetica,sans-serif; font-size:13px; font-weight:400; color:#cccccc;">%%=v(@paramTextoSecundarioVerTodo1)=%%</p>
+                  <h2 class="cat-title" style="margin:0 0 6px 0; font-family:Arial,Helvetica,sans-serif; font-size:32px; font-weight:700; color:#ffffff; line-height:1.1;">%%=v(@paramTextoPrincipalVerTodo)=%%</h2>
+                  <p class="cat-sub" style="margin:0 0 14px 0; font-family:Arial,Helvetica,sans-serif; font-size:12px; color:#aaaaaa;">%%=v(@paramTextoSecundarioVerTodo2)=%%</p>
                   <a href="https://www.cruzverde.cl" target="_blank" class="btn-cat"
                     style="display:inline-block; background-color:#00c44f; color:#ffffff; font-family:Arial,Helvetica,sans-serif; font-size:11px; font-weight:700; text-decoration:none; text-align:center; padding:0 18px; line-height:32px; height:32px; border-radius:6px; letter-spacing:1px; text-transform:uppercase; mso-line-height-rule:exactly;">
-                    VER TODO
+                    %%=v(@paramBotonVerTodo)=%%
                   </a>
                 </td>
               </tr>
