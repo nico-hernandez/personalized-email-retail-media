@@ -86,6 +86,7 @@ La estructura del email y parametrización consiste en:
   var paramFlagVerTodo = true;
   // URL de imagen sección final "VER TODO"
   var paramImagenVerTodo = "https://image.mailcruzverde.cl/lib/fe3615717564047b711178/m/1/bcd46bbb-2e7b-4c2d-ab2a-1459190d5038.png";
+  var paramFlagImagenVerTodo = true;
   // Texto Principal sección final "VER TODO"
   var paramTextoPrincipalVerTodo = "Eucerin";
   // Texto secundario sección final "VER TODO"
@@ -129,6 +130,7 @@ La estructura del email y parametrización consiste en:
   Variable.SetValue("@paramFlagBotonCard", paramFlagBotonCard);
   Variable.SetValue("@paramFlagVerTodo", paramFlagVerTodo);
   Variable.SetValue("@paramImagenVerTodo", paramImagenVerTodo);
+  Variable.SetValue("@paramFlagImagenVerTodo", paramFlagImagenVerTodo);
   Variable.SetValue("@paramTextoPrincipalVerTodo", paramTextoPrincipalVerTodo);
   Variable.SetValue("@paramTextoSecundarioVerTodo1", paramTextoSecundarioVerTodo1);
   Variable.SetValue("@paramTextoSecundarioVerTodo2", paramTextoSecundarioVerTodo2);
@@ -458,7 +460,6 @@ La estructura del email consiste en:
               </a>
             </td>
           </tr>
-        %%[ ELSE ]%%
         %%[ ENDIF ]%%
 
         <!-- ============================================================ -->
@@ -474,7 +475,6 @@ La estructura del email consiste en:
               </h1>
             </td>
           </tr>
-        %%[ ELSE ]%%
         %%[ ENDIF ]%%
 
         <!-- ============================================================ -->
@@ -494,7 +494,6 @@ La estructura del email consiste en:
               </a>
             </td>
           </tr>
-        %%[ ELSE ]%%
         %%[ ENDIF ]%%
 
         <!-- ============================================================ -->
@@ -512,7 +511,6 @@ La estructura del email consiste en:
               >
             </td>
           </tr>
-        %%[ ELSE ]%%
         %%[ ENDIF ]%%
 
         <!-- ============================================================ -->
@@ -565,40 +563,53 @@ La estructura del email consiste en:
                                   </td>
                                 </tr>
                               </table>
-                              <!-- Marca -->
-                              <p class="card-brand" style="margin:10px 0 2px 0; font-family:Arial,Helvetica,sans-serif; font-size:11px; font-weight:700; color:#00c44f; letter-spacing:0.5px; text-transform:uppercase;">%%=v(@marca)=%%</p>
-                              <!-- Nombre producto — siempre 2 líneas (usar &#10; o <br> para la segunda) -->
-                              <p class="card-name" style="margin:0 0 8px 0; font-family:Arial,Helvetica,sans-serif; font-size:15px; font-weight:700; color:#ffffff; line-height:1.35; min-height:40px; overflow:hidden;">
-                                %%=v(@descripcion)=%%
-                              </p>
+                              %%[ IF @paramFlagMarcaCard THEN ]%%
+                                <!-- Marca -->
+                                <p class="card-brand" style="margin:10px 0 2px 0; font-family:Arial,Helvetica,sans-serif; font-size:11px; font-weight:700; color:#00c44f; letter-spacing:0.5px; text-transform:uppercase;">%%=v(@marca)=%%</p>
+                              %%[ ENDIF ]%%
+                              %%[ IF @paramFlagDescripcionCard THEN ]%%
+                                <!-- Nombre producto — siempre 2 líneas (usar &#10; o <br> para la segunda) -->
+                                <p class="card-name" style="margin:0 0 8px 0; font-family:Arial,Helvetica,sans-serif; font-size:15px; font-weight:700; color:#ffffff; line-height:1.35; min-height:40px; overflow:hidden;">
+                                  %%=v(@descripcion)=%%
+                                </p>
+                              %%[ ENDIF ]%%
+                              
                               <!-- Precios -->
-                              %%[ IF @esOferta THEN ]%%
-                                <p class="card-original" style="margin:0 0 3px 0; font-family:Arial,Helvetica,sans-serif; font-size:12px; color:#888888; text-decoration:line-through;">%%=v(@precioNormal)=%%</p>
-                              %%[ ELSE ]%%
-                                <p class="card-original" style="margin:0 0 3px 0; font-family:Arial,Helvetica,sans-serif; font-size:12px; color:transparent; text-decoration:line-through; pointer-events: none; cursor: default;">%%=v(@precioNormal)=%%</p>
+                              %%[ IF @paramFlagPrecioNormalCard THEN ]%%
+                                %%[ IF @esOferta THEN ]%%
+                                  <p class="card-original" style="margin:0 0 3px 0; font-family:Arial,Helvetica,sans-serif; font-size:12px; color:#888888; text-decoration:line-through;">%%=v(@precioNormal)=%%</p>
+                                %%[ ELSE ]%%
+                                  <p class="card-original" style="margin:0 0 3px 0; font-family:Arial,Helvetica,sans-serif; font-size:12px; color:transparent; text-decoration:line-through; pointer-events: none; cursor: default;">%%=v(@precioNormal)=%%</p>
+                                %%[ ENDIF ]%%
                               %%[ ENDIF ]%%
                               <table role="presentation" border="0" cellpadding="0" cellspacing="0" style="margin:0 0 10px 0;">
                                 <tr>
-                                  <td style="padding-right:6px; vertical-align:middle;">
-                                    <span class="card-price" style="font-family:Arial,Helvetica,sans-serif; font-size:22px; font-weight:700; color:#00c44f;">%%=v(@precioOferta)=%%</span>
-                                  </td>
-                                  <td style="vertical-align:middle;">
-                                    %%[ IF @esOferta THEN ]%%
-                                      <span class="card-badge" style="display:inline-block; background-color:#2e2300; color:#ffc000; font-family:Arial,Helvetica,sans-serif; font-size:10px; font-weight:700; padding:3px 6px; border-radius:4px; border:1px solid #ffc000;">%%=v(@descuento)=%%</span>
-                                    %%[ ELSE ]%%
-                                      <span class="card-badge" style="display:inline-block; background-color:transparent; color:transparent; font-family:Arial,Helvetica,sans-serif; font-size:10px; font-weight:700; padding:3px 6px; border-radius:4px; border:1px solid transparent; pointer-events: none; cursor: default;">%%=v(@descuento)=%%</span>
-                                    %%[ ENDIF ]%%
-                                  </td>
+                                  %%[ IF @paramFlagPrecioOfertaCard THEN ]%%
+                                    <td style="padding-right:6px; vertical-align:middle;">
+                                      <span class="card-price" style="font-family:Arial,Helvetica,sans-serif; font-size:22px; font-weight:700; color:#00c44f;">%%=v(@precioOferta)=%%</span>
+                                    </td>
+                                  %%[ ENDIF ]%%
+                                  %%[ IF @paramFlagDescuentoCard THEN ]%%
+                                    <td style="vertical-align:middle;">
+                                      %%[ IF @esOferta THEN ]%%
+                                        <span class="card-badge" style="display:inline-block; background-color:#2e2300; color:#ffc000; font-family:Arial,Helvetica,sans-serif; font-size:10px; font-weight:700; padding:3px 6px; border-radius:4px; border:1px solid #ffc000;">%%=v(@descuento)=%%</span>
+                                      %%[ ELSE ]%%
+                                        <span class="card-badge" style="display:inline-block; background-color:transparent; color:transparent; font-family:Arial,Helvetica,sans-serif; font-size:10px; font-weight:700; padding:3px 6px; border-radius:4px; border:1px solid transparent; pointer-events: none; cursor: default;">%%=v(@descuento)=%%</span>
+                                      %%[ ENDIF ]%%
+                                    </td>
+                                  %%[ ENDIF ]%%
                                 </tr>
                               </table>
                               <!-- Botón -->
-                              <a href='%%=RedirectTo(@pdp)=%%' target="_blank" class="btn-buy" style="display:block; background-color:#00c44f; color:#ffffff; font-family:Arial,Helvetica,sans-serif; font-size:12px; font-weight:700; text-decoration:none; text-align:center; line-height:35px; height:35px; border-radius:6px; letter-spacing:1px; text-transform:uppercase; mso-line-height-rule:exactly;">%%=v(@paramTextoBotonCard)=%%</a>
+                              %%[ IF @paramFlagBotonCard THEN ]%%
+                                <a href='%%=RedirectTo(@pdp)=%%' target="_blank" class="btn-buy" style="display:block; background-color:#00c44f; color:#ffffff; font-family:Arial,Helvetica,sans-serif; font-size:12px; font-weight:700; text-decoration:none; text-align:center; line-height:35px; height:35px; border-radius:6px; letter-spacing:1px; text-transform:uppercase; mso-line-height-rule:exactly;">%%=v(@paramTextoBotonCard)=%%</a>
+                              %%[ ENDIF ]%%
                             </td>
                           </tr>
                         </table>
                       </td>
-
                     %%[ NEXT @j ]%%
+
                   </tr>
                 </table>
               </td>
@@ -615,13 +626,15 @@ La estructura del email consiste en:
             <td style="padding:20px 57px 20px 57px; background-color:#000000;" class="mobile-pad">
               <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="cat-row" style="width:100%; border-collapse:collapse; background-color:#000000;">
                 <tr>
+                  %%[ IF @paramFlagImagenVerTodo THEN ]%%
                   <!-- Bodegón: 40% -->
-                  <td class="cat-img-td" style="width:40%; vertical-align:middle; padding:0;">
-                    <img src="%%=v(@paramImagenVerTodo)=%%"
-                        alt=""
-                        width="232"
-                        style="display:block; width:100%; height:auto;">
-                  </td>
+                    <td class="cat-img-td" style="width:40%; vertical-align:middle; padding:0;">
+                      <img src="%%=v(@paramImagenVerTodo)=%%"
+                          alt=""
+                          width="232"
+                          style="display:block; width:100%; height:auto;">
+                    </td>
+                  %%[ ENDI ]%%
                   <!-- Texto y botón: 60% -->
                   <td class="cat-copy-td" style="width:60%; vertical-align:middle; padding:20px 0px 20px 32px;">
                     <p class="cat-eyebrow" style="margin:0 0 4px 0; font-family:Arial,Helvetica,sans-serif; font-size:13px; font-weight:400; color:#cccccc;">%%=v(@paramTextoSecundarioVerTodo1)=%%</p>
@@ -636,7 +649,6 @@ La estructura del email consiste en:
               </table>
             </td>
           </tr>
-        %%[ ELSE ]%%
         %%[ ENDIF ]%%
 
         <!-- ============================================================ -->
@@ -654,7 +666,6 @@ La estructura del email consiste en:
               </p>
             </td>
           </tr>
-        %%[ ELSE ]%%
         %%[ ENDIF ]%%
 
       </table>
