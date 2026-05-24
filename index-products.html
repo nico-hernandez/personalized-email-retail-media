@@ -429,19 +429,17 @@ estructura HTML. No es necesario editar esta parte.
         <!--   [SALE_PRICE]        → precio de oferta                    -->
         <!--   [DISCOUNT_BADGE]    → p. ej. "-29%"                       -->
         <!-- ============================================================ -->
-        %%[ SET @filas = 3
-            SET @columnas = 2 ]%%
 
-        %%[ FOR @i=1 TO @filas DO ]%%
-          %%[ SET @paddingBottomWrapper = IIF(@i == @filas, "32px", "0px") ]%%
+        %%[ FOR @i=1 TO @paramFilas DO ]%%
+          %%[ SET @paddingBottomWrapper = IIF(@i == @paramFilas, "32px", "0px") ]%%
             <!-- ─── FILA i ─────────────────────────────────────────────── -->
             <tr>
               <td style="background-color:#000000; padding-bottom:%%=v(@paddingBottomWrapper)=%%;" class="cards-wrapper">
                 <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="card-row" style="border-collapse:collapse; width:100%;">
                   <tr>
-                    %%[ FOR @j=1 TO @columnas DO ]%%
+                    %%[ FOR @j=1 TO @paramColumnas DO ]%%
                       <!-- ─── COLUMNA j ────────────────────────────────── -->
-                      %%[ SET @index = Add(Multiply(Subtract(@i, 1), @columnas), @j)
+                      %%[ SET @index = Add(Multiply(Subtract(@i, 1), @paramColumnas), @j)
                           SET @esOferta = Field(Row(@productDetailsRows, @index), "esOferta")
                           SET @precioNormal = Field(Row(@productDetailsRows, @index), "precioNormal")
                           SET @precioOferta = Field(Row(@productDetailsRows, @index), "precioOferta")
@@ -453,8 +451,8 @@ estructura HTML. No es necesario editar esta parte.
                       %%[
                           SET @cardLado = IIF(Mod(@j, 2) == 0, "right", "left")
                           SET @paddingLado = IIF(Mod(@j, 2) == 0, "left", "right")
-                          SET @paddingBottom = IIF(@i == @filas, "0px", "45px")
-                          SET @cardLast = IIF(@i == @filas, "card-td-last", "")
+                          SET @paddingBottom = IIF(@i == @paramFilas, "0px", "45px")
+                          SET @cardLast = IIF(@i == @paramFilas, "card-td-last", "")
                       ]%%
                       <td class="card-td card-td-%%=v(@cardLado)=%% %%=v(@cardLast)=%%" style="width:227px; vertical-align:top; padding-%%=v(@paddingLado)=%%:28px; padding-bottom:%%=v(@paddingBottom)=%%;">
                         <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="card-table" style="background-color:#111811; border-radius:12px; width:227px; border:1px solid #1e2e1e;">
