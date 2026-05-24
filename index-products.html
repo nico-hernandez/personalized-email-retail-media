@@ -41,7 +41,7 @@ La estructura del email y parametrización consiste en:
   ===================================== */
   // Texto del nombre del cliente
   var paramNombre = "Sofía";
-  var paramFlagNombre = false;
+  var paramFlagNombre = true;
 
   /* ================================
     3. Parámetros Sección Hero
@@ -67,17 +67,17 @@ La estructura del email y parametrización consiste en:
   // URL de página por default cuando no URL de PDP disponible
   var paramUrlDefault = "https://www.cruzverde.cl/";
   // Flag Marca Card de Productos
-  var paramFlagMarcaCard = false;
+  var paramFlagMarcaCard = true;
   // Flag Descripción Card de Productos
-  var paramFlagDescripcionCard = false;
+  var paramFlagDescripcionCard = true;
   // Flag Precio Normal
-  var paramFlagPrecioNormalCard = false;
+  var paramFlagPrecioNormalCard = true;
   // Flag Precio Oferta
-  var paramFlagPrecioOfertaCard = false;
+  var paramFlagPrecioOfertaCard = true;
   // Flag Descuento
-  var paramFlagDescuentoCard = false;
+  var paramFlagDescuentoCard = true;
   // Flag Botón
-  var paramFlagBotonCard = false;
+  var paramFlagBotonCard = true;
 
   /* ================================
     6. Parámetros Sección Ver Todo
@@ -86,7 +86,7 @@ La estructura del email y parametrización consiste en:
   var paramFlagVerTodo = true;
   // URL de imagen sección final "VER TODO"
   var paramImagenVerTodo = "https://image.mailcruzverde.cl/lib/fe3615717564047b711178/m/1/bcd46bbb-2e7b-4c2d-ab2a-1459190d5038.png";
-  var paramFlagImagenVerTodo = false;
+  var paramFlagImagenVerTodo = true;
   // Texto Principal sección final "VER TODO"
   var paramTextoPrincipalVerTodo = "Eucerin";
   // Texto secundario sección final "VER TODO"
@@ -205,7 +205,7 @@ Esta lógica contempla:
 
       if (row) {
         // Casos bordes de los campos de interes
-        var esOferta = !row["precio_oferta_cl"] ? false : true;
+        var esOferta = !row["precio_oferta_cl"] ? true : true;
         var descripcion = splitText(row["descripcion"]);
         var precioNormal = row["precio_normal_cl"] || 9999999;
         var precioOferta = row["precio_oferta_cl"] || row["precio_normal_cl"];
@@ -244,7 +244,7 @@ Esta lógica contempla:
           marca: "",
           precioNormal: "",
           precioOferta: "",
-          esOferta: false,
+          esOferta: true,
           descuento: "",
           imagen: "",
           pdp: ""
@@ -297,7 +297,7 @@ La estructura del email consiste en:
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="format-detection" content="telephone=no, date=no, address=no, email=no">
-  <title>Cyber Z Cruz Verde</title>
+  <title>Cyber Cruz Verde</title>
   <!--[if mso]>
   <noscript>
     <xml>
@@ -453,7 +453,7 @@ La estructura del email consiste en:
               <a href="https://www.cruzverde.cl" target="_blank" style="display:block;">
                 <img
                   src="%%=v(@paramHeader)=%%"
-                  alt="Club Cruz Verde – Cyber +Descuentos"
+                  alt="Club Cruz Verde – Cyber Descuentos"
                   width="640"
                   style="display:block; width:100%; max-width:640px; height:auto;"
                 >
