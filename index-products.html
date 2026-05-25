@@ -148,7 +148,8 @@ El detalle de productos se pasa a AMPScript posteriormente
 y se puede referenciar inline en el HTML.
 Esta lógica contempla:
   1. Función para mostrar correctamente descripción
-  2. Main de ejecución de lógica y traspaso a AMPSccript
+  2. Función que normaliza descripción a Upper Camel Case
+  3. Main de ejecución de lógica y traspaso a AMPSccript
 =================================================================
 -->
 <script runat="server">
@@ -191,8 +192,24 @@ Esta lógica contempla:
     return part1 + "<br>" + part2;
   } 
 
+  /* ===========================================================
+    2. Función que deja en mayúscula la primera letra por palabra
+  =========================================================== */
+  function toTitleCaseIfUpper(str) {
+    if (!str) return "";
+
+    // Verifica si el string está completamente en mayúsculas
+    if (str === str.toUpperCase()) {
+      return str.toLowerCase().replace(/\b\w+\b/g, function(word) {
+        return word.charAt(0).toUpperCase() + word.slice(1);
+      });
+    }
+    // Si no está completamente en uppercase, no modificar
+    return str;
+  }
+
   /* =============================================================
-    2. Main que consulta atributos del producto a mostrar en HTML
+    3. Main que consulta atributos del producto a mostrar en HTML
   ============================================================= */
   try {
     var productDetails = [];
