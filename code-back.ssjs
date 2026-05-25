@@ -47,14 +47,22 @@
     return part1 + "<br>" + part2;
   } 
 
+  /* =========================================================
+    Función que divide texto para evitar descriptores largos
+  ========================================================= */
+  function toTitleCaseIfUpper(str) {
+    if (!str) return "";
 
-/*  function splitText(text) {
-var x = text.length;
-var y = text.substring(0, 24);
-var z = text.lastIndexOf(" ");
-var w = text.trim(); // no existe funcion en ssjs
-return x + y + z;
-} */
+    // Verifica si el string está completamente en mayúsculas
+    if (str === str.toUpperCase()) {
+      return str.toLowerCase().replace(/\b\w+\b/g, function(word) {
+        return word.charAt(0).toUpperCase() + word.slice(1);
+      });
+    }
+    // Si no está completamente en uppercase, no modificar
+    return str;
+  }
+
   /* =========================================================
     Main que consulta atributos del producto a mostrar en HTML
   ========================================================= */
@@ -65,7 +73,7 @@ return x + y + z;
       "546661",
       "383877",
       "259654",
-      "276432" //"574372"
+      "574372"//"276432" //
     ];
 
     var dataExtension = "ProductDetail";
@@ -79,7 +87,7 @@ return x + y + z;
       if (row) {
         // Casos bordes de los campos de interes
         var esOferta = !row["precio_oferta_cl"] ? false : true;
-        var descripcion = splitText(row["descripcion"]);
+        var descripcion = splitText(toTitleCaseIfUpper(row["descripcion"]));
         var precioNormal = row["precio_normal_cl"] || 9999999;
         var precioOferta = row["precio_oferta_cl"] || row["precio_normal_cl"];
         var descuento = Math.round(((precioNormal - precioOferta) / precioNormal) * 100);
