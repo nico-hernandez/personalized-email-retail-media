@@ -204,7 +204,7 @@ Esta lógica contempla:
 
       if (row) {
         // Casos bordes de los campos de interes
-        var esOferta = !row["precio_oferta_cl"] ? true : true;
+        var esOferta = !row["precio_oferta_cl"] ? true : false;
         var descripcion = splitText(row["descripcion"]);
         var precioNormal = row["precio_normal_cl"] || 9999999;
         var precioOferta = row["precio_oferta_cl"] || row["precio_normal_cl"];
@@ -575,9 +575,9 @@ La estructura del email consiste en:
                               <!-- Precios -->
                               %%[ IF @paramFlagPrecioNormalCard THEN ]%%
                                 %%[ IF @esOferta THEN ]%%
-                                  <p class="card-original" style="margin:0 0 3px 0; font-family:Arial,Helvetica,sans-serif; font-size:12px; color:#888888; text-decoration:line-through;">%%=v(@esOferta)=%%</p>
+                                  <p class="card-original" style="margin:0 0 3px 0; font-family:Arial,Helvetica,sans-serif; font-size:12px; color:#888888; text-decoration:line-through;">%%=v(@precioNormal)=%%</p>
                                 %%[ ELSE ]%%
-                                  <p class="card-original" style="margin:0 0 3px 0; font-family:Arial,Helvetica,sans-serif; font-size:12px; color:transparent; text-decoration:line-through; pointer-events: none; cursor: default;">%%=v(@esOferta)=%%</p>
+                                  <p class="card-original" style="margin:0 0 3px 0; font-family:Arial,Helvetica,sans-serif; font-size:12px; color:transparent; text-decoration:line-through; pointer-events: none; cursor: default;">%%=v(@precioNormal)=%%</p>
                                 %%[ ENDIF ]%%
                               %%[ ENDIF ]%%
                               <table role="presentation" border="0" cellpadding="0" cellspacing="0" style="margin:0 0 10px 0;">
