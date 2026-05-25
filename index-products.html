@@ -651,7 +651,8 @@ La estructura del email consiste en:
                     </td>
                   %%[ ENDIF ]%%
                   <!-- Texto y botón: 60% -->
-                  <td class="cat-copy-td" style="width:50%; vertical-align:middle; padding:20px 0px 20px 0px;">
+                  %%[ SET @textAlignLado = IIF(@paramFlagImagenVerTodo, "left", "center") ]%%
+                  <td class="cat-copy-td" style="width:50%; vertical-align:middle; padding:20px 0px 20px 0px; text-align:%%=v(@textAlignLado)=%%;">
                     <p class="cat-eyebrow" style="margin:0 0 4px 0; font-family:Arial,Helvetica,sans-serif; font-size:13px; font-weight:400; color:#cccccc;">%%=v(@paramTextoSecundarioVerTodo1)=%%</p>
                     <h2 class="cat-title" style="margin:0 0 6px 0; font-family:Arial,Helvetica,sans-serif; font-size:32px; font-weight:700; color:#ffffff; line-height:1.1;">%%=v(@paramTextoPrincipalVerTodo)=%%</h2>
                     <p class="cat-sub" style="margin:0 0 14px 0; font-family:Arial,Helvetica,sans-serif; font-size:12px; color:#aaaaaa;">%%=v(@paramTextoSecundarioVerTodo2)=%%</p>
