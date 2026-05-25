@@ -47,9 +47,9 @@
     return part1 + "<br>" + part2;
   } 
 
-  /* =========================================================
-    Función que divide texto para evitar descriptores largos
-  ========================================================= */
+  /* ===========================================================
+    Función que deja en mayúscula la primera letra por palabra
+  =========================================================== */
   function toTitleCaseIfUpper(str) {
     if (!str) return "";
 
