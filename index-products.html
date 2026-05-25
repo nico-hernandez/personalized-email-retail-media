@@ -222,7 +222,7 @@ Esta lógica contempla:
       if (row) {
         // Casos bordes de los campos de interes
         var esOferta = row["precio_oferta_cl"] ? true : false;
-        var descripcion = splitText(row["descripcion"]);
+        var descripcion = splitText(toTitleCaseIfUpper(row["descripcion"]));
         var precioNormal = row["precio_normal_cl"] || 9999999;
         var precioOferta = row["precio_oferta_cl"] || row["precio_normal_cl"];
         var descuento = Math.round(((precioNormal - precioOferta) / precioNormal) * 100);
