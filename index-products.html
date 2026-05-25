@@ -12,6 +12,7 @@ La estructura del email y parametrización consiste en:
   5. Grid de Cards (siempre 2 productos por fila)
   6. Ver Todo
   7. Footer
+  8. Colores funcionales
 =============================================================
 -->
 <script runat="server">
@@ -86,7 +87,7 @@ La estructura del email y parametrización consiste en:
   var paramFlagVerTodo = true;
   // URL de imagen sección final "VER TODO"
   var paramImagenVerTodo = "https://image.mailcruzverde.cl/lib/fe3615717564047b711178/m/1/bcd46bbb-2e7b-4c2d-ab2a-1459190d5038.png";
-  var paramFlagImagenVerTodo = false;
+  var paramFlagImagenVerTodo = true;
   // Texto Principal sección final "VER TODO"
   var paramTextoPrincipalVerTodo = "Eucerin";
   // Texto secundario sección final "VER TODO"
@@ -99,10 +100,36 @@ La estructura del email y parametrización consiste en:
   var paramUrlVerTodo = "https://www.cruzverde.cl/";
 
   /* ================================
-    6. Parámetros Sección Footer
+    7. Parámetros Sección Footer
   ================================ */
   // Flag activación sección Footer
   var paramFlagFooter = true;
+
+  /* ================================
+    8. Colores definidos por función
+  ================================ */
+  // Gris oscuro del body
+  var paramColorBody = "#0a0f0a";
+  // Negro del fondo de secciones
+  var paramColorBackPrimario = "#000000";
+  // Gris del fondo de cards
+  var paramColorBackSecundario = "#111811";
+  // Gris claro del borde de cards
+  var paramColorBordePrimario = "#1e2e1e";
+  // Verde de la marca
+  var paramColorPrimario = "#00c44f";
+  // Blanco de textos destacados
+  var paramColorTextoPrimario = "#ffffff";
+  // Gris claro de textos secundarios
+  var paramColorTextoSecundario = "#cccccc";
+  // Gris oscuro de textos terciarios
+  var paramColorTextoTerciario = "#888888";
+  // Gris ultra claro para texto legal
+  var paramColorTextoLight = "#555555";
+  // Amarillo destacado
+  var paramColorWarning = "#ffc000";
+  // Amarillo apagado
+  var paramColorWarningEnfasis = "#2e2300";
 
   /* ================================
     Traspaso a variables AMPScript
@@ -137,6 +164,17 @@ La estructura del email y parametrización consiste en:
   Variable.SetValue("@paramBotonVerTodo", paramBotonVerTodo);
   Variable.SetValue("@paramUrlVerTodo", paramUrlVerTodo);
   Variable.SetValue("@paramFlagFooter", paramFlagFooter);
+  Variable.SetValue("@paramColorBody", paramColorBody);
+  Variable.SetValue("@paramColorBackPrimario", paramColorBackPrimario);
+  Variable.SetValue("@paramColorBackSecundario", paramColorBackSecundario);
+  Variable.SetValue("@paramColorBordePrimario", paramColorBordePrimario);
+  Variable.SetValue("@paramColorPrimario", paramColorPrimario);
+  Variable.SetValue("@paramColorTextoPrimario", paramColorTextoPrimario);
+  Variable.SetValue("@paramColorTextoSecundario", paramColorTextoSecundario);
+  Variable.SetValue("@paramColorTextoTerciario", paramColorTextoTerciario);
+  Variable.SetValue("@paramColorTextoLight", paramColorTextoLight);
+  Variable.SetValue("@paramColorWarning", paramColorWarning);
+  Variable.SetValue("@paramColorWarningEnfasis", paramColorWarningEnfasis);
 
 </script>
 
@@ -362,12 +400,12 @@ La estructura del email consiste en:
     .card-td-last    { padding-bottom: 0 !important; }
 
     /* === CARD INNER === */
-    .card-table      { background-color: #111811; border-radius: 12px; width: 227px; border: 1px solid #1e2e1e; }
+    .card-table      { background-color: %%=v(@paramColorBackSecundario)=%%; border-radius: 12px; width: 227px; border: 1px solid %%=v(@paramColorBordePrimario)=%%; }
     .card-inner      { padding: 12px; }
 
     /* Zona imagen: alto = (227-24) × 1.214 = 247px */
     .card-img-td {
-      background-color: #ffffff;
+      background-color: %%=v(@paramColorTextoPrimario)=%%;
       border-radius: 8px;
       height: 247px;
       text-align: center;
@@ -378,30 +416,30 @@ La estructura del email consiste en:
     .card-img-td img { display: block; margin: 0 auto; max-height: 240px; max-width:200px; width: auto; height: auto; }
 
     /* Textos */
-    .card-brand  { margin: 10px 0 2px 0; font-family: Arial,Helvetica,sans-serif; font-size: 11px; font-weight: 700; color: #00c44f; letter-spacing: 0.5px; text-transform: uppercase; }
+    .card-brand  { margin: 10px 0 2px 0; font-family: Arial,Helvetica,sans-serif; font-size: 11px; font-weight: 700; color: %%=v(@paramColorPrimario)=%%; letter-spacing: 0.5px; text-transform: uppercase; }
     /* Nombre: 2 líneas fijas con line-height para que todas las cards tengan mismo alto */
     .card-name   {
       margin: 0 0 8px 0;
       font-family: Arial,Helvetica,sans-serif;
       font-size: 15px;
       font-weight: 700;
-      color: #ffffff;
+      color: %%=v(@paramColorTextoPrimario)=%%;
       line-height: 1.35;
       /* Forzar exactamente 2 líneas: line-height × font-size × 2 = 1.35×15×2 = 40.5px */
       min-height: 40px;
       /* overflow safety */
       overflow: hidden;
     }
-    .card-original { margin: 0 0 3px 0; font-family: Arial,Helvetica,sans-serif; font-size: 12px; color: #888888; text-decoration: line-through; }
-    .card-price    { font-family: Arial,Helvetica,sans-serif; font-size: 22px; font-weight: 700; color: #00c44f; }
-    .card-badge    { display: inline-block; background-color: #2e2300; color: #ffc000; font-family: Arial,Helvetica,sans-serif; font-size: 10px; font-weight: 700; padding: 3px 6px; border-radius: 4px; border: 1px solid #00c44f; vertical-align: middle; }
+    .card-original { margin: 0 0 3px 0; font-family: Arial,Helvetica,sans-serif; font-size: 12px; color: %%=v(@paramColorTextoTerciario)=%%; text-decoration: line-through; }
+    .card-price    { font-family: Arial,Helvetica,sans-serif; font-size: 22px; font-weight: 700; color: %%=v(@paramColorPrimario)=%%; }
+    .card-badge    { display: inline-block; background-color: %%=v(@paramColorWarningEnfasis)=%%; color: %%=v(@paramColorWarning)=%%; font-family: Arial,Helvetica,sans-serif; font-size: 10px; font-weight: 700; padding: 3px 6px; border-radius: 4px; border: 1px solid %%=v(@paramColorPrimario)=%%; vertical-align: middle; }
     .card-price-row { margin: 0 0 10px 0; }
 
     /* Botón: alto = 227/6.538 = 35px, ancho = 100% de la card inner */
     .btn-buy {
       display: block;
-      background-color: #00c44f;
-      color: #ffffff;
+      background-color: %%=v(@paramColorPrimario)=%%;
+      color: %%=v(@paramColorTextoPrimario)=%%;
       font-family: Arial,Helvetica,sans-serif;
       font-size: 12px;
       font-weight: 700;
@@ -446,18 +484,18 @@ La estructura del email consiste en:
     }
   </style>
 </head>
-<body style="margin:0; padding:0; background-color:#0a0f0a;">
+<body style="margin:0; padding:0; background-color:%%=v(@paramColorBody)=%%;">
 
 <!-- Preheader oculto -->
-<div style="display:none; max-height:0; overflow:hidden; font-size:1px; color:#0a0f0a; line-height:1px; max-width:0px; opacity:0;">
+<div style="display:none; max-height:0; overflow:hidden; font-size:1px; color:%%=v(@paramColorBody)=%%; line-height:1px; max-width:0px; opacity:0;">
   Sofía, hasta 40% dcto. en productos seleccionados Eucerin. ¡Compra ahora!
 </div>
 
-<table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color:#0a0f0a;">
+<table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color:%%=v(@paramColorBody)=%%;">
   <tr>
     <td align="center">
 
-      <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="600" class="email-container" style="max-width:600px; background-color:#0a0f0a;">
+      <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="600" class="email-container" style="max-width:600px; background-color:%%=v(@paramColorBody)=%%;">
 
         <!-- ============================================================ -->
         <!-- COMPONENTE 1: HEADER     — GIF animado                       -->
@@ -465,7 +503,7 @@ La estructura del email consiste en:
         <!-- ============================================================ -->
         %%[ IF @paramFlagHeader THEN ]%%
           <tr>
-            <td align="center" valign="top" style="padding:0; background-color:#000000;">
+            <td align="center" valign="top" style="padding:0; background-color:%%=v(@paramColorBackPrimario)=%%;">
               <a href="https://www.cruzverde.cl" target="_blank" style="display:block;">
                 <img
                   src="%%=v(@paramHeader)=%%"
@@ -485,8 +523,8 @@ La estructura del email consiste en:
         <!-- ============================================================ -->
         %%[ IF @paramFlagNombre THEN ]%%
           <tr>
-            <td align="center" valign="top" style="padding:32px 0px 32px 0px; background-color:#000000;">
-              <h1 style="margin:0; padding:0; font-family:Arial,Helvetica,sans-serif; font-size:24px; font-weight:700; color:#ffffff; line-height:1.2; text-align:center;">
+            <td align="center" valign="top" style="padding:32px 0px 32px 0px; background-color:%%=v(@paramColorBackPrimario)=%%;">
+              <h1 style="margin:0; padding:0; font-family:Arial,Helvetica,sans-serif; font-size:24px; font-weight:700; color:%%=v(@paramColorTextoPrimario)=%%; line-height:1.2; text-align:center;">
                 %%=v(@paramNombre)=%%
               </h1>
             </td>
@@ -499,7 +537,7 @@ La estructura del email consiste en:
         <!-- ============================================================ -->
         %%[ IF @paramFlagHero THEN ]%%
           <tr>
-            <td align="center" valign="top" style="padding:0; background-color:#000000;" class="mobile-padding">
+            <td align="center" valign="top" style="padding:0; background-color:%%=v(@paramColorBackPrimario)=%%;" class="mobile-padding">
               <a href="https://www.cruzverde.cl" target="_blank" style="display:block;">
                 <img
                   src="%%=v(@paramHero)=%%"
@@ -518,7 +556,7 @@ La estructura del email consiste en:
         <!-- ============================================================ -->
         %%[ IF @paramFlagMarca THEN ]%%
           <tr>
-            <td align="center" valign="top" style="padding:0; background-color:#0a0f0a;">
+            <td align="center" valign="top" style="padding:0; background-color:%%=v(@paramColorBody)=%%;">
               <img
                 src="%%=v(@paramMarca)=%%"
                 alt="Eucerin"
@@ -547,7 +585,7 @@ La estructura del email consiste en:
           %%[ SET @paddingBottomWrapper = IIF(@i == @paramFilas, "32px", "0px") ]%%
             <!-- ─── FILA i ─────────────────────────────────────────────── -->
             <tr>
-              <td style="background-color:#000000; padding-bottom:%%=v(@paddingBottomWrapper)=%%;" class="cards-wrapper">
+              <td style="background-color:%%=v(@paramColorBackPrimario)=%%; padding-bottom:%%=v(@paddingBottomWrapper)=%%;" class="cards-wrapper">
                 <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="card-row" style="border-collapse:collapse; width:100%;">
                   <tr>
                     %%[ FOR @j=1 TO @paramColumnas DO ]%%
@@ -568,31 +606,31 @@ La estructura del email consiste en:
                           SET @cardLast = IIF(@i == @paramFilas, "card-td-last", "")
                       ]%%
                       <td class="card-td card-td-%%=v(@cardLado)=%% %%=v(@cardLast)=%%" style="width:227px; vertical-align:top; padding-%%=v(@paddingLado)=%%:28px; padding-bottom:%%=v(@paddingBottom)=%%;">
-                        <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="card-table" style="background-color:#111811; border-radius:12px; width:227px; border:1px solid #1e2e1e;">
+                        <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="card-table" style="background-color:%%=v(@paramColorBackSecundario)=%%; border-radius:12px; width:227px; border:1px solid %%=v(@paramColorBordePrimario)=%%;">
                           <tr>
                             <td class="card-inner" style="padding:12px;">
                               <!-- Imagen -->
                               <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%">
                                 <tr>
-                                  <td class="card-img-td" style="background-color:#ffffff; border-radius:8px; height:247px; text-align:center; vertical-align:middle; overflow:hidden; padding:0;">
+                                  <td class="card-img-td" style="background-color:%%=v(@paramColorTextoPrimario)=%%; border-radius:8px; height:247px; text-align:center; vertical-align:middle; overflow:hidden; padding:0;">
                                     <img src='%%=v(@imagen)=%%' alt="" width="160" style="display:block; margin:0 auto; max-height:240px; max-width:200px; width:auto; height:auto;">
                                   </td>
                                 </tr>
                               </table>
                               %%[ IF @paramFlagMarcaCard THEN ]%%
                                 <!-- Marca -->
-                                <p class="card-brand" style="margin:10px 0 2px 0; font-family:Arial,Helvetica,sans-serif; font-size:11px; font-weight:700; color:#00c44f; letter-spacing:0.5px; text-transform:uppercase;">%%=v(@marca)=%%</p>
+                                <p class="card-brand" style="margin:10px 0 2px 0; font-family:Arial,Helvetica,sans-serif; font-size:11px; font-weight:700; color:%%=v(@paramColorPrimario)=%%; letter-spacing:0.5px; text-transform:uppercase;">%%=v(@marca)=%%</p>
                               %%[ ENDIF ]%%
                               %%[ IF @paramFlagDescripcionCard THEN ]%%
                                 <!-- Nombre producto — siempre 2 líneas (usar &#10; o <br> para la segunda) -->
-                                <p class="card-name" style="margin:0 0 8px 0; font-family:Arial,Helvetica,sans-serif; font-size:15px; font-weight:700; color:#ffffff; line-height:1.35; min-height:40px; overflow:hidden;">
+                                <p class="card-name" style="margin:0 0 8px 0; font-family:Arial,Helvetica,sans-serif; font-size:15px; font-weight:700; color:%%=v(@paramColorTextoPrimario)=%%; line-height:1.35; min-height:40px; overflow:hidden;">
                                   %%=v(@descripcion)=%%
                                 </p>
                               %%[ ENDIF ]%%
                               <!-- Precios -->
                               %%[ IF @paramFlagPrecioNormalCard THEN ]%%
                                 %%[ IF @esOferta THEN ]%%
-                                  <p class="card-original" style="margin:0 0 3px 0; font-family:Arial,Helvetica,sans-serif; font-size:12px; color:#888888; text-decoration:line-through;">%%=v(@precioNormal)=%%</p>
+                                  <p class="card-original" style="margin:0 0 3px 0; font-family:Arial,Helvetica,sans-serif; font-size:12px; color:%%=v(@paramColorTextoTerciario)=%%; text-decoration:line-through;">%%=v(@precioNormal)=%%</p>
                                 %%[ ELSE ]%%
                                   <p class="card-original" style="margin:0 0 3px 0; font-family:Arial,Helvetica,sans-serif; font-size:12px; color:transparent; text-decoration:line-through; pointer-events: none; cursor: default;">%%=v(@precioNormal)=%%</p>
                                 %%[ ENDIF ]%%
@@ -601,13 +639,13 @@ La estructura del email consiste en:
                                 <tr>
                                   %%[ IF @paramFlagPrecioOfertaCard THEN ]%%
                                     <td style="padding-right:6px; vertical-align:middle;">
-                                      <span class="card-price" style="font-family:Arial,Helvetica,sans-serif; font-size:22px; font-weight:700; color:#00c44f;">%%=v(@precioOferta)=%%</span>
+                                      <span class="card-price" style="font-family:Arial,Helvetica,sans-serif; font-size:22px; font-weight:700; color:%%=v(@paramColorPrimario)=%%;">%%=v(@precioOferta)=%%</span>
                                     </td>
                                   %%[ ENDIF ]%%
                                   %%[ IF @paramFlagDescuentoCard THEN ]%%
                                     <td style="vertical-align:middle;">
                                       %%[ IF @esOferta THEN ]%%
-                                        <span class="card-badge" style="display:inline-block; background-color:#2e2300; color:#ffc000; font-family:Arial,Helvetica,sans-serif; font-size:10px; font-weight:700; padding:3px 6px; border-radius:4px; border:1px solid #ffc000;">%%=v(@descuento)=%%</span>
+                                        <span class="card-badge" style="display:inline-block; background-color:%%=v(@paramColorWarningEnfasis)=%%; color:%%=v(@paramColorWarning)=%%; font-family:Arial,Helvetica,sans-serif; font-size:10px; font-weight:700; padding:3px 6px; border-radius:4px; border:1px solid %%=v(@paramColorWarning)=%%;">%%=v(@descuento)=%%</span>
                                       %%[ ELSE ]%%
                                         <span class="card-badge" style="display:inline-block; background-color:transparent; color:transparent; font-family:Arial,Helvetica,sans-serif; font-size:10px; font-weight:700; padding:3px 6px; border-radius:4px; border:1px solid transparent; pointer-events: none; cursor: default;">%%=v(@descuento)=%%</span>
                                       %%[ ENDIF ]%%
@@ -617,7 +655,7 @@ La estructura del email consiste en:
                               </table>
                               <!-- Botón -->
                               %%[ IF @paramFlagBotonCard THEN ]%%
-                                <a href='%%=RedirectTo(@pdp)=%%' target="_blank" class="btn-buy" style="display:block; background-color:#00c44f; color:#ffffff; font-family:Arial,Helvetica,sans-serif; font-size:12px; font-weight:700; text-decoration:none; text-align:center; line-height:35px; height:35px; border-radius:6px; letter-spacing:1px; text-transform:uppercase; mso-line-height-rule:exactly;">%%=v(@paramTextoBotonCard)=%%</a>
+                                <a href='%%=RedirectTo(@pdp)=%%' target="_blank" class="btn-buy" style="display:block; background-color:%%=v(@paramColorPrimario)=%%; color:%%=v(@paramColorTextoPrimario)=%%; font-family:Arial,Helvetica,sans-serif; font-size:12px; font-weight:700; text-decoration:none; text-align:center; line-height:35px; height:35px; border-radius:6px; letter-spacing:1px; text-transform:uppercase; mso-line-height-rule:exactly;">%%=v(@paramTextoBotonCard)=%%</a>
                               %%[ ENDIF ]%%
                             </td>
                           </tr>
@@ -638,8 +676,8 @@ La estructura del email consiste en:
         <!-- ============================================================ -->
         %%[ IF @paramFlagVerTodo THEN ]%%
           <tr>
-            <td style="padding:20px 57px 20px 57px; background-color:#000000;" class="mobile-pad">
-              <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="cat-row" style="width:100%; border-collapse:collapse; background-color:#000000;">
+            <td style="padding:20px 57px 20px 57px; background-color:%%=v(@paramColorBackPrimario)=%%;" class="mobile-pad">
+              <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="cat-row" style="width:100%; border-collapse:collapse; background-color:%%=v(@paramColorBackPrimario)=%%;">
                 <tr>
                   %%[ IF @paramFlagImagenVerTodo THEN ]%%
                   <!-- Bodegón: 40% -->
@@ -653,11 +691,11 @@ La estructura del email consiste en:
                   <!-- Texto y botón: 60% -->
                   %%[ SET @textAlignLado = IIF(@paramFlagImagenVerTodo, "left", "center") ]%%
                   <td class="cat-copy-td" style="width:50%; vertical-align:middle; padding:20px 0px 20px 0px; text-align:%%=v(@textAlignLado)=%%;">
-                    <p class="cat-eyebrow" style="margin:0 0 4px 0; font-family:Arial,Helvetica,sans-serif; font-size:13px; font-weight:400; color:#cccccc;">%%=v(@paramTextoSecundarioVerTodo1)=%%</p>
-                    <h2 class="cat-title" style="margin:0 0 6px 0; font-family:Arial,Helvetica,sans-serif; font-size:32px; font-weight:700; color:#ffffff; line-height:1.1;">%%=v(@paramTextoPrincipalVerTodo)=%%</h2>
-                    <p class="cat-sub" style="margin:0 0 14px 0; font-family:Arial,Helvetica,sans-serif; font-size:12px; color:#aaaaaa;">%%=v(@paramTextoSecundarioVerTodo2)=%%</p>
+                    <p class="cat-eyebrow" style="margin:0 0 4px 0; font-family:Arial,Helvetica,sans-serif; font-size:13px; font-weight:400; color:%%=v(@paramColorTextoSecundario)=%%;">%%=v(@paramTextoSecundarioVerTodo1)=%%</p>
+                    <h2 class="cat-title" style="margin:0 0 6px 0; font-family:Arial,Helvetica,sans-serif; font-size:32px; font-weight:700; color:%%=v(@paramColorTextoPrimario)=%%; line-height:1.1;">%%=v(@paramTextoPrincipalVerTodo)=%%</h2>
+                    <p class="cat-sub" style="margin:0 0 14px 0; font-family:Arial,Helvetica,sans-serif; font-size:12px; color:%%=v(@paramColorTextoSecundario)=%%;">%%=v(@paramTextoSecundarioVerTodo2)=%%</p>
                     <a href="%%=v(@paramUrlVerTodo)=%%" target="_blank" class="btn-cat"
-                      style="display:inline-block; background-color:#00c44f; color:#ffffff; font-family:Arial,Helvetica,sans-serif; font-size:11px; font-weight:700; text-decoration:none; text-align:center; padding:0 18px; line-height:32px; height:32px; border-radius:6px; letter-spacing:1px; text-transform:uppercase; mso-line-height-rule:exactly;">
+                      style="display:inline-block; background-color:%%=v(@paramColorPrimario)=%%; color:%%=v(@paramColorTextoPrimario)=%%; font-family:Arial,Helvetica,sans-serif; font-size:11px; font-weight:700; text-decoration:none; text-align:center; padding:0 18px; line-height:32px; height:32px; border-radius:6px; letter-spacing:1px; text-transform:uppercase; mso-line-height-rule:exactly;">
                       %%=v(@paramBotonVerTodo)=%%
                     </a>
                   </td>
@@ -672,13 +710,13 @@ La estructura del email consiste en:
         <!-- ============================================================ -->
         %%[ IF @paramFlagFooter THEN ]%%
           <tr>
-            <td align="center" valign="top" style="padding:20px 24px; background-color:#000000; border-top:1px solid #1a2a1a;">
-              <p style="margin:0 0 6px 0; padding:0; font-family:Arial,Helvetica,sans-serif; font-size:11px; color:#555555; text-align:center;">
+            <td align="center" valign="top" style="padding:20px 24px; background-color:%%=v(@paramColorBackPrimario)=%%; border-top:1px solid #1a2a1a;">
+              <p style="margin:0 0 6px 0; padding:0; font-family:Arial,Helvetica,sans-serif; font-size:11px; color:%%=v(@paramColorTextoLight)=%%; text-align:center;">
                 © 2024 Cruz Verde. Todos los derechos reservados.
               </p>
-              <p style="margin:0; padding:0; font-family:Arial,Helvetica,sans-serif; font-size:11px; color:#555555; text-align:center;">
+              <p style="margin:0; padding:0; font-family:Arial,Helvetica,sans-serif; font-size:11px; color:%%=v(@paramColorTextoLight)=%%; text-align:center;">
                 Si no deseas recibir más comunicaciones, puedes
-                <a href="#" style="color:#00c44f; text-decoration:underline;">darte de baja aquí</a>.
+                <a href="#" style="color:%%=v(@paramColorPrimario)=%%; text-decoration:underline;">darte de baja aquí</a>.
               </p>
             </td>
           </tr>
