@@ -92,7 +92,8 @@
   } */
 
   function formatUrl(url){
-    var today = Platform.Function.FormatDate(new Date(), "yyyyMMdd");
+    //var today = Platform.Function.FormatDate(new Date(), "yyyyMMdd");
+    var today = "z";
     return today;
   }
   /* =========================================================
