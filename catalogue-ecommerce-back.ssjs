@@ -14,7 +14,7 @@
       }
       return ids;
   }
-
+/* 
   // 2. Obtener cookie
   function getCookie() {
       var req = new Script.Util.HttpRequest("https://api.cruzverde.cl/customer-service/login");
@@ -124,7 +124,7 @@
         ]
     );
   }
-
+ */
   // MAIN
   try {
 
