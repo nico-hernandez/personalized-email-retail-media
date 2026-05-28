@@ -1,8 +1,0 @@
-
-%%[
-  SET @productListString = '["273358","545055","546661","383877","259654","574372"]'
-  SET @productListRows = BuildRowsetFromJSON(@productListString, "$[*]", 1)
-  SET @count = RowCount(@rows)
-  FOR @i = 1 TO @count DO
-    SET @productDetailRow = LookupRows("ProductDetail", "codigo_producto", @codigoProd)
-]%%
