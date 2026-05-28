@@ -44,6 +44,10 @@ La estructura del email y parametrización consiste en:
   var paramUtmContent = "home-cv";
   // UTM Preffix
   var paramPreffix = "fcv_crm_";
+  // URL Club
+  var paramUrlClub = "https://www.cruzverde.cl/club/";
+  // URL Cruz Verde
+  var paramUrlCruzVerde = "https://www.cruzverde.cl/";
 
   /* ================================
     1. Parámetros Sección Header
@@ -350,6 +354,11 @@ Esta lógica contempla:
     // Stringify
     var productDetailsString = Platform.Function.Stringify(productDetails);
 
+    // Calculo URL Club
+    var urlClub = formatUrl(paramUrlClub);
+    var urlCruzVerde = formatUrl(paramUrlCruzVerde);
+    
+    // Calculo URL CV
     // Print en pantalla
     // Write('<pre>' + productDetailsString + '</pre>');
 
@@ -357,7 +366,8 @@ Esta lógica contempla:
     Write('<script>console.log(' + productDetailsString + ')</script>');
 
     // Pasar a AMPscript
-    Variable.SetValue("@productDetailsString", productDetailsString);
+    Variable.SetValue("@urlClub", urlClub);
+    Variable.SetValue("@urlCruzVerde", urlCruzVerde);
 
   } catch (ex) {
     Write("Ocurrió un error: " + String(ex));
@@ -808,7 +818,7 @@ La estructura del email consiste en:
                       style="border-collapse: collapse;mso-table-lspace: 0;mso-table-rspace: 0;">
                       <tr>
                         <td align="center" style="border-collapse: collapse;mso-line-height-rule: exactly;">
-                          <a href="%%=RedirectTo(@URLclub)=%%" target="_blank">
+                          <a href="%%=RedirectTo(@urlClub)=%%" target="_blank">
                             <img
                               src="https://image.mailcruzverde.cl/lib/fe3615717564047b711178/m/1/f0adf88f-4a70-4f12-814d-ae498cf0a1cd.png"
                               alt="Club Cruz Verde" width="80" height="72"
@@ -877,7 +887,7 @@ La estructura del email consiste en:
             <td align="center" class="verde2" height="32"
               style="border-collapse: collapse;mso-line-height-rule: exactly;font-family: Arial, Helvetica, sans-serif;font-size: 14px;line-height: normal;color: #565656;text-align: center; background-color: #009739;">
               <font face="Arial, Helvetica, sans-serif">
-                <b><a href="%%=RedirectTo(@URLcv)=%%" target="_blank" class="link_blanco"
+                <b><a href="%%=RedirectTo(@urlCruzVerde)=%%" target="_blank" class="link_blanco"
                     style="color: #ffffff;text-decoration: none;">www.cruzverde.com</a></b>
               </font>
               </a>
