@@ -128,7 +128,7 @@
   // MAIN
   try {
 
-      var productIds = [1,2];//getProductIds();
+      var productIds = getProductIds();
       // Stringify
       var productIdsString = Platform.Function.Stringify(productIds);
       // Print en pantalla
