@@ -130,7 +130,7 @@
 
       var productIds = getProductIds();
       // Stringify
-      var productDetailsString = Platform.Function.Stringify(productIds);
+      var productIdsString = Platform.Function.Stringify(productIds);
       // Print consola navegador
       Write('<script>console.log(' + productIdsString + ')</script>');
 
