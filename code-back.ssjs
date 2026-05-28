@@ -94,8 +94,8 @@
     Main que consulta atributos del producto a mostrar en HTML
   ========================================================= */
   try {
-    var productList = ["572342", "573835", "295965", "295966", "578764", "587116"];
-    var dataExtension = "ProductDetail";
+    var productList = ["273358", "545055", "259654", "276432", "391647", "277072"];
+    var dataExtension = "ProductDetail - Test";
     var productDetails = [];
 
     for (var i = 0; i < productList.length; i++) {
