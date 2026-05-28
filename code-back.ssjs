@@ -90,6 +90,11 @@
     var str = url + "?" + pairs.join("&");
     return str;
   } */
+
+  function formatUrl(url){
+    var today = Platform.Function.FormatDate(Now(), "yyyyMMdd");
+    return str;
+  }
   /* =========================================================
     Main que consulta atributos del producto a mostrar en HTML
   ========================================================= */
@@ -111,7 +116,7 @@
         var precioOferta = row["precio_oferta_cl"] || row["precio_normal_cl"];
         var descuento = Math.round(((precioNormal - precioOferta) / precioNormal) * 100);
         var imagen = row["url_imagen"] || "https://image.mailcruzverde.cl/lib/fe3615717564047b711178/m/1/70239c1d-2dac-4c6a-af85-fb4336152eac.png";
-        var pdp = "";//row["url_pdp"] ? formatUrl(row["url_pdp"]) : formatUrl("https://www.cruzverde.cl/");
+        var pdp = formatUrl("");//row["url_pdp"] ? formatUrl(row["url_pdp"]) : formatUrl("https://www.cruzverde.cl/");
         var valorOculto = esOferta ? "" : " visibility:hidden; mso-hide:all;";
         
         //Formatear para mostrar en HTML
