@@ -13,7 +13,7 @@
     for (var i = 0; i < rows.length; i++) {
         ids.push(rows[i]["codigo_producto"]);
     }
-    return rows;
+    return ids;
   }
 /* 
   // 2. Obtener cookie
