@@ -7,12 +7,13 @@
 
   // 1. Obtener productos desde DE origen
   function getProductIds() {
-      var rows = Platform.Function.LookupRows(SOURCE_DE, "codigo_producto");
-      var ids = [];
-      for (var i = 0; i < rows.length; i++) {
-          ids.push(rows[i]["codigo_producto"]);
-      }
-      return ids;
+    var de = DataExtension.Init(SOURCE_DE);
+    var rows = de.Rows.Retrieve();
+    var ids = [];
+    for (var i = 0; i < rows.length; i++) {
+        ids.push(rows[i]["codigo_producto"]);
+    }
+    return ids;
   }
 /* 
   // 2. Obtener cookie
