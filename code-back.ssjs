@@ -95,8 +95,27 @@
 
     var today = new Date();
     today = today.getFullYear() + ("0" + (today.getMonth() + 1)).slice(-2) + ("0" + today.getDate()).slice(-2);
-    //var today = "z";
-    return today;
+    var paramUnidadComercial = "bycp";
+    var paramLineaEstrategica = "RMedia-Dermosolares";
+    var paramNombreCampana = "Anthelios-LRP";
+    var paramUtmSource = "salesforce";
+    var paramUtmMedium = "email";
+    var paramUtmContent = "home-cv";
+    var suffix = [today, paramUnidadComercial, paramLineaEstrategica, paramNombreCampana].join("_");
+    var paramsUrl = {
+      utm_source: paramUtmSource,
+      utm_medium: paramUtmMedium,
+      utm_content: paramUtmContent,
+      utm_campaign: "fcv_crm_" + suffix
+    };
+    var pairs = [];
+    for (var prop in paramsUrl) {
+        if (paramsUrl.hasOwnProperty(prop)) {
+            pairs.push(prop + "=" + paramsUrl[prop]);
+        }
+    }
+    var str = url + "?" + pairs.join("&");
+    return str;
   }
   /* =========================================================
     Main que consulta atributos del producto a mostrar en HTML
