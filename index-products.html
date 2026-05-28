@@ -297,7 +297,7 @@ Esta lógica contempla:
         var precioOferta = row["precio_oferta_cl"] || row["precio_normal_cl"];
         var descuento = Math.round(((precioNormal - precioOferta) / precioNormal) * 100);
         var imagen = row["url_imagen"] || paramImagenDefaultCard;
-        var pdp = row["url_pdp"] || paramUrlDefault;
+        var pdp = row["url_pdp"] ? formatUrl(row["url_pdp"]) : formatUrl(paramUrlDefault);
         var valorOculto = esOferta ? "" : " visibility:hidden; mso-hide:all;";
         
         //Formatear para mostrar en HTML
