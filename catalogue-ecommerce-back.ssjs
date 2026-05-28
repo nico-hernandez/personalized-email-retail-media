@@ -131,6 +131,8 @@
       var productIds = getProductIds();
       // Stringify
       var productIdsString = Platform.Function.Stringify(productIds);
+      // Print en pantalla
+      Write('<pre>' + productIdsString + '</pre>');
       // Print consola navegador
       Write('<script>console.log(' + productIdsString + ')</script>');
 
