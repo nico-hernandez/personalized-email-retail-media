@@ -1,0 +1,16 @@
+        <!-- ============================================================ -->
+        <!-- COMPONENTE 7: FOOTER                                         -->
+        <!-- ============================================================ -->
+        %%[ IF @paramFlagFooter THEN ]%%
+          <tr>
+            <td align="center" valign="top" style="padding:20px 24px; background-color:%%=v(@paramColorBackPrimario)=%%; border-top:1px solid #1a2a1a;">
+              <p style="margin:0 0 6px 0; padding:0; font-family:Arial,Helvetica,sans-serif; font-size:11px; color:%%=v(@paramColorTextoLight)=%%; text-align:center;">
+                © 2024 Cruz Verde. Todos los derechos reservados.
+              </p>
+              <p style="margin:0; padding:0; font-family:Arial,Helvetica,sans-serif; font-size:11px; color:%%=v(@paramColorTextoLight)=%%; text-align:center;">
+                Si no deseas recibir más comunicaciones, puedes
+                <a href="#" style="color:%%=v(@paramColorPrimario)=%%; text-decoration:underline;">darte de baja aquí</a>.
+              </p>
+            </td>
+          </tr>
+        %%[ ENDIF ]%%
