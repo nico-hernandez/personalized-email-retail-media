@@ -7,7 +7,7 @@
 
   // 1. Obtener productos desde DE origen
   function getProductIds() {
-      var rows = Platform.Function.LookupOrderedRows(SOURCE_DE, 10, "codigo_producto ASC");
+      var rows = Platform.Function.LookupRows(SOURCE_DE, "codigo_producto");
       var ids = [];
       for (var i = 0; i < rows.length; i++) {
           ids.push(rows[i]["codigo_producto"]);
