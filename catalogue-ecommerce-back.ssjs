@@ -129,17 +129,21 @@
   try {
 
       var productIds = getProductIds();
+      // Stringify
+      var productDetailsString = Platform.Function.Stringify(productIds);
+      // Print consola navegador
+      Write('<script>console.log(' + productIdsString + ')</script>');
 
-      if (productIds.length == 0) {
-          throw "No hay productos en DE Source";
-      }
+      // if (productIds.length == 0) {
+      //     throw "No hay productos en DE Source";
+      // }
 
-      var cookie = getCookie();
-      var products = getProducts(productIds, cookie);
+      // var cookie = getCookie();
+      // var products = getProducts(productIds, cookie);
 
-      for (var i = 0; i < products.length; i++) {
-          upsertProduct(i, products[i]);
-      }
+      // for (var i = 0; i < products.length; i++) {
+      //     upsertProduct(i, products[i]);
+      // }
 
       //Write("OK - " + products.length + " productos actualizados");
 
