@@ -2,7 +2,7 @@
   Platform.Load("Core", "1.1.1");
 
   // CONFIG
-  var SOURCE_DE = "ProductListRetailMediaSubsetExternalKey";
+  var SOURCE_DE = "ProductListRetailMediaSubsetExternalKey2";
   var TARGET_DE = "ProductDetail - RetailMedia - Subset";
 
   // 1. Obtener productos desde DE origen
