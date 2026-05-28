@@ -134,7 +134,7 @@
       var productIdsString = Platform.Function.Stringify(productIds);
       // Print en pantalla
       Write('<pre>' + productIdsString + '</pre>');
-      // Print consola navegador
+      // Print consola navegador -test
       Write('<script>console.log(' + productIdsString + ')</script>');
 
       // if (productIds.length == 0) {
