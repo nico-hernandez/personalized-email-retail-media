@@ -74,7 +74,7 @@
     var paramUtmSource = "salesforce";
     var paramUtmMedium = "email";
     var paramUtmContent = "home-cv";
-    var suffix = [today, paramUnidadComercial, paramLineaEstrategica, paramNombreCampana].join("_");;
+    var suffix = [today, paramUnidadComercial, paramLineaEstrategica, paramNombreCampana].join("_");
     var paramsUrl = {
       utm_source: paramUtmSource,
       utm_medium: paramUtmMedium,
