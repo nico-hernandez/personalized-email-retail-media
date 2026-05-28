@@ -366,6 +366,7 @@ Esta lógica contempla:
     Write('<script>console.log(' + productDetailsString + ')</script>');
 
     // Pasar a AMPscript
+    Variable.SetValue("@productDetailsString", productDetailsString);
     Variable.SetValue("@urlClub", urlClub);
     Variable.SetValue("@urlCruzVerde", urlCruzVerde);
 
