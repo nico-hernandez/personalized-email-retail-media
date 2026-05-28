@@ -188,7 +188,8 @@ y se puede referenciar inline en el HTML.
 Esta lógica contempla:
   1. Función para mostrar correctamente descripción
   2. Función que normaliza descripción a Upper Camel Case
-  3. Main de ejecución de lógica y traspaso a AMPSccript
+  3. Función que agrega parámetros UTM y de tracking a URL
+  4. Main de ejecución de lógica y traspaso a AMPSccript
 =================================================================
 -->
 <script runat="server">
@@ -247,8 +248,38 @@ Esta lógica contempla:
     return str;
   }
 
+  /* ===========================================================
+    3. Función que formatea la URL para incluir UTM y tracking
+  =========================================================== */
+  function formatUrl(url){
+
+    var today = new Date();
+    today = today.getFullYear() + ("0" + (today.getMonth() + 1)).slice(-2) + ("0" + today.getDate()).slice(-2);
+    var paramUnidadComercial = "bycp";
+    var paramLineaEstrategica = "RMedia-Dermosolares";
+    var paramNombreCampana = "Anthelios-LRP";
+    var paramUtmSource = "salesforce";
+    var paramUtmMedium = "email";
+    var paramUtmContent = "home-cv";
+    var suffix = [today, paramUnidadComercial, paramLineaEstrategica, paramNombreCampana].join("_");
+    var paramsUrl = {
+      utm_source: paramUtmSource,
+      utm_medium: paramUtmMedium,
+      utm_content: paramUtmContent,
+      utm_campaign: "fcv_crm_" + suffix
+    };
+    var pairs = [];
+    for (var prop in paramsUrl) {
+        if (paramsUrl.hasOwnProperty(prop)) {
+            pairs.push(prop + "=" + paramsUrl[prop]);
+        }
+    }
+    var str = url + "?" + pairs.join("&");
+    return str;
+  }
+
   /* =============================================================
-    3. Main que consulta atributos del producto a mostrar en HTML
+    4. Main que consulta atributos del producto a mostrar en HTML
   ============================================================= */
   try {
     var productDetails = [];
