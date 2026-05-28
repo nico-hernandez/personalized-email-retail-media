@@ -92,8 +92,10 @@
   } */
 
   function formatUrl(url){
-    //var today = Platform.Function.FormatDate(new Date(), "yyyyMMdd");
-    var today = "z";
+
+    var today = new Date();
+    today = today.getFullYear() + ("0" + (today.getMonth() + 1)).slice(-2) + ("0" + today.getDate()).slice(-2);
+    //var today = "z";
     return today;
   }
   /* =========================================================
