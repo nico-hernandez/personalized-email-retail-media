@@ -759,141 +759,66 @@ La estructura del email consiste en:
         <!-- COMPONENTE 7: FOOTER                                         -->
         <!-- ============================================================ -->
         %%[ IF @paramFlagFooter THEN ]%%
-          <!-- RRSS -->
+          <!-- BLOQUE RRSS + CONTACTO -->
           <tr>
-            <td class="verde1"
-              style="border-collapse: collapse; mso-line-height-rule: exactly; background-color: #00594c;"
-              align="center">
-              <table align="center" width="100%" border="0" cellspacing="0" cellpadding="0">
+            <td align="center" bgcolor="#00594c">
+              <table width="600" cellpadding="0" cellspacing="0" border="0">
                 <tr>
-                  <td align="center" class="footer" width="42%"
-                    style="border-collapse: collapse;mso-line-height-rule: exactly;font-family: Arial, Helvetica, sans-serif;font-size: 14px;line-height: normal;color: #565656;text-align: center; ">
-                    <table align="center" border="0" cellspacing="0" cellpadding="0"
-                      style="border-collapse: collapse;mso-table-lspace: 0;mso-table-rspace: 0;">
-                      <tr>
-                        <td align="center"
-                          style="border-collapse: collapse;mso-line-height-rule: exactly;padding: 4px;">
-                          <a href="https://www.facebook.com/farmaciascruzverdechile/" target="_blank">
-                            <img
-                              src="https://image.mailcruzverde.cl/lib/fe3615717564047b711178/m/1/ece815e2-d1db-4e79-a62d-113379896818.png"
-                              alt="Facebook" width="32" height="32"
-                              style="width: 100%; max-width: 32px; height: auto; max-height: 32px;border: 0 !important;outline: none !important;"
-                              border="0" />
-                          </a>
-                        </td>
-                        <td align="center"
-                          style="border-collapse: collapse;mso-line-height-rule: exactly;padding: 4px;">
-                          <a href="https://www.instagram.com/farmaciascruzverdechile/" target="_blank">
-                            <img
-                              src="https://image.mailcruzverde.cl/lib/fe3615717564047b711178/m/1/06b97bec-5175-4521-b942-e0c6b2a34f97.png"
-                              alt="Instagram" width="32" height="32"
-                              style="width: 100%; max-width: 32px; height: auto; max-height: 32px;border: 0 !important;outline: none !important;"
-                              border="0" />
-                          </a>
-                        </td>
-                        <td align="center"
-                          style="border-collapse: collapse;mso-line-height-rule: exactly;padding: 4px;">
-                          <a href="https://www.youtube.com/user/CruzVerdeOficial" target="_blank">
-                            <img src="https://contenidos.cruzverde.cl/wp-content/uploads/2024/08/youtube.png"
-                              alt="Youtube" width="32" height="32"
-                              style="width: 100%; max-width: 32px; height: auto; max-height: 32px;border: 0 !important;outline: none !important;"
-                              border="0" />
-                          </a>
-                        </td>
-                        <td align="center"
-                          style="border-collapse: collapse;mso-line-height-rule: exactly;padding: 4px;">
-                          <a href="https://wa.me/56950083442" target="_blank">
-                            <img
-                              src="https://image.mailcruzverde.cl/lib/fe3615717564047b711178/m/1/bc730801-cdb6-461b-9eb2-f1fcd3cbda48.png"
-                              alt="Whatsapp" width="32" height="32"
-                              style="width: 100%; max-width: 32px; height: auto; max-height: 32px;border: 0 !important;outline: none !important;"
-                              border="0" />
-                          </a>
-                        </td>
-                      </tr>
-                    </table>
+
+                  <!-- RRSS -->
+                  <td align="left" width="200" style="padding:15px;">
+                    
+                    <a href="https://www.facebook.com/">
+                      <img src="https://image.mailcruzverde.cl/...facebook.png" width="32" style="display:inline-block; margin-right:8px;">
+                    </a>
+
+                    <a href="https://www.instagram.com/">
+                      <img src="https://image.mailcruzverde.cl/...instagram.png" width="32" style="display:inline-block; margin-right:8px;">
+                    </a>
+
+                    <a href="https://www.youtube.com/">
+                      <img src="https://image.mailcruzverde.cl/...youtube.png" width="32" style="display:inline-block; margin-right:8px;">
+                    </a>
+
+                    <a href="https://wa.me/56950083442">
+                      <img src="https://image.mailcruzverde.cl/...whatsapp.png" width="32" style="display:inline-block;">
+                    </a>
+
                   </td>
-                  <td align="center" width="16%" style="border-collapse: collapse;mso-line-height-rule: exactly;">
-                    <table align="center" border="0" cellspacing="0" cellpadding="0"
-                      style="border-collapse: collapse;mso-table-lspace: 0;mso-table-rspace: 0;">
-                      <tr>
-                        <td align="center" style="border-collapse: collapse;mso-line-height-rule: exactly;">
-                          <a href="%%=RedirectTo(@urlClub)=%%" target="_blank">
-                            <img
-                              src="https://image.mailcruzverde.cl/lib/fe3615717564047b711178/m/1/f0adf88f-4a70-4f12-814d-ae498cf0a1cd.png"
-                              alt="Club Cruz Verde" width="80" height="72"
-                              style="width: 100%; max-width: 80px; height: auto; max-height: 72px;border: 0 !important;outline: none !important;"
-                              border="0" />
-                          </a>
-                        </td>
-                      </tr>
-                    </table>
+
+                  <!-- LOGO -->
+                  <td align="center" width="200">
+                    <img src="https://image.mailcruzverde.cl/...club.png" width="90" style="display:block;">
                   </td>
-                  <td align="center" width="42%"
-                    style="border-collapse: collapse;mso-line-height-rule: exactly;font-family: Arial, Helvetica, sans-serif;font-size: 14px;line-height: normal;color: #ffffff;text-align: center;">
-                    <table align="center" border="0" cellspacing="0" cellpadding="0"
-                      style="border-collapse: collapse;mso-table-lspace: 0;mso-table-rspace: 0;">
-                      <tr>
-                        <td align="right" valign="middle"
-                          style="border-collapse: collapse;mso-line-height-rule: exactly;">
-                          <a href="tel:800802800" target="_blank">
-                            <img
-                              src="https://image.mailcruzverde.cl/lib/fe3615717564047b711178/m/1/494aaed9-11a8-4782-82f7-4ce087ac37f6.png"
-                              valign="middle" class="hide" width="22" height="22"
-                              style="width: 100%; max-width: 22px; height: auto; max-height: 22px;border: 0 !important;outline: none !important;"
-                              border="0" />
-                          </a>
-                        </td>
-                        <td align="left" valign="middle"
-                          style="border-collapse: collapse;mso-line-height-rule: exactly;">
-                          <a href="tel:800802800" target="_blank" class="link_blanco"
-                            style="color: #ffffff;text-decoration: none;">
-                            <b>800 802 800</b>
-                          </a>
-                        </td>
-                        <td align="center" width="5%" valign="middle"
-                          style="border-collapse: collapse;mso-line-height-rule: exactly;">
-                        </td>
-                        <td align="right" valign="middle"
-                          style="border-collapse: collapse;mso-line-height-rule: exactly;">
-                          <a href="tel:*7700" target="_blank">
-                            <img
-                              src="https://image.mailcruzverde.cl/lib/fe3615717564047b711178/m/1/ae87c048-4279-4e3a-b59e-789b87080c37.png"
-                              alt="Celular" class="hide" width="24" height="24"
-                              style="width: 100%; max-width: 24px; height: auto; max-height: 24px;border: 0 !important;outline: none !important;"
-                              border="0" />
-                          </a>
-                        </td>
-                        <td align="left" valign="middle"
-                          style="border-collapse: collapse;mso-line-height-rule: exactly;">
-                          <a href="tel:*7700" target="_blank" class="link_blanco"
-                            style="color: #ffffff;text-decoration: none;">
-                            <b>*7700</b>
-                          </a>
-                        </td>
-                        <td align="center" width="3%" valign="middle"
-                          style="border-collapse: collapse;mso-line-height-rule: exactly;">
-                        </td>
-                      </tr>
-                    </table>
+
+                  <!-- CONTACTO -->
+                  <td align="right" width="200" style="padding:15px; font-family: Arial; font-size:16px; color:white;">
+                    
+                    <img src="https://image.mailcruzverde.cl/...phone.png" width="18" style="vertical-align:middle;">
+                    <span style="margin-right:15px;"><b>800 802 800</b></span>
+
+                    <img src="https://image.mailcruzverde.cl/...mobile.png" width="18" style="vertical-align:middle;">
+                    <b>*7700</b>
+
                   </td>
+
                 </tr>
               </table>
             </td>
           </tr>
-          <!-- FIN RRSS -->
-          <!-- Footer -->
+
+          <!-- BARRA INFERIOR -->
           <tr>
-            <td align="center" class="verde2" height="32"
-              style="border-collapse: collapse;mso-line-height-rule: exactly;font-family: Arial, Helvetica, sans-serif;font-size: 14px;line-height: normal;color: #565656;text-align: center; background-color: #009739;">
-              <font face="Arial, Helvetica, sans-serif">
-                <b><a href="%%=RedirectTo(@urlCruzVerde)=%%" target="_blank" class="link_blanco"
-                    style="color: #ffffff;text-decoration: none;">www.cruzverde.com</a></b>
-              </font>
+            <td align="center" bgcolor="#009739" style="padding:10px;">
+              
+              <a href="https://www.cruzverde.com" 
+                style="font-family: Arial; font-size:18px; color:white; text-decoration:none;">
+                <b>www.cruzverde.com</b>
               </a>
+
             </td>
-          </tr>
-          <!-- FIN Footer -->
+</tr>
+
         %%[ ENDIF ]%%
       </table>
 
@@ -902,71 +827,7 @@ La estructura del email consiste en:
   <!-- ============================================================ -->
   <!-- COMPONENTE 8: LEGAL                                         -->
   <!-- ============================================================ -->
-  <tr>
-    <td align="center" valign="top">
-      <!-- content -->
-      <!--[if (gte mso 9)|(IE)]>
-      <table align="center" border="0" cellspacing="0" cellpadding="0" width="602">
-      <tr>
-      <td align="center" valign="top" width="602">
-      <![endif]-->
-      <table class="wFull" cellpadding="0" cellspacing="0" border="0" role="presentation" style="width:600px;">
-
-        <!-- LEGAL -->
-        <tr>
-          <td align="center" style="border-collapse: collapse;mso-line-height-rule: exactly;">
-            <table border="0" align="center" cellpadding="0" cellspacing="10" width="100%"
-              style=" border-collapse: collapse;mso-table-lspace: 0;mso-table-rspace: 0;">
-              <tr>
-                <td class="small" align="center"
-                  style="font-family: Arial, Helvetica, sans-serif;font-size: 11px;line-height: 16px;color: #565656;text-align: justify;border-collapse: collapse;mso-line-height-rule: exactly;padding-top: 10px;padding-left: 5px;padding-right: 5px;">
-                  Promoción válida sólo para Chile y exclusiva para Socios que registren su compra a través del Club
-                  Cruz Verde: Descuento del 20% en Anthelios de La Roche Posay los lunes, jueves y sábados de mayo.
-                  Válido por compras en la App y en <a href="%%=RedirectTo(@URLcv)=%%"
-                    style="color:#3a3c49; text-decoration:none" target="_blank">www.cruzverde.com,</a> disponible en
-                  áreas con cobertura ecommerce, sólo para personas naturales, consumidores finales con pago a través
-                  de tarjeta de crédito o débito, y en locales Cruz Verde con cualquier medio de pago, excepto Isla de
-                  Pascua. Vigente hasta el 29/05/2026. Productos sujetos a reposición al momento de la compra.
-                  Descuentos no acumulables entre sí ni respecto de otras promociones, convenios y/o descuentos.
-                  Infórmate en <b><a href="%%=RedirectTo(@URLcv)=%%" style="color:#3a3c49; text-decoration:none"
-                      target="_blank">www.cruzverde.com</a></b>.
-                </td>
-              </tr>
-            </table>
-          </td>
-        </tr>
-        <tr>
-          <td class="small" align="center"
-            style="font-family: Arial, Helvetica, sans-serif;font-size: 11px;line-height: 14px;color: #565656;text-align: center;border-collapse: collapse;mso-line-height-rule: exactly;padding-top: 10px;padding-bottom: 10px;padding-left: 5px;padding-right: 5px;">
-            <font face="Arial, Helvetica, sans-serif" style="font-size: 11px; line-height: normal"><br />Si no deseas
-              seguir recibiendo informaci&oacute;n
-              <a href="%%=RedirectTo(CloudPagesURL(30,'SubKey',_subscriberkey))=%%"
-                style="color: #3a3c49; text-decoration: none"><strong>haz click aqu&iacute;</strong></a>
-            </font>
-          </td>
-        </tr>
-        <tr>
-          <td align="center" class="darkmode">
-            <table cellpadding="0" cellspacing="0" width="100%" id="Table5" border="0">
-              <tr>
-                <td align="center">
-                  <font face="Arial, Helvetica, sans-serif" size="1" class="small"
-                    style="font-family: Arial, Helvetica, sans-serif;font-size: 11px;line-height: normal;color: #565656;text-align: center;">
-                    <br />Este email fue enviado por: <b>%%Member_Busname%%</b><br />%%Member_City%%,
-                    %%Member_Country%%<br /><br /></font>
-                </td>
-              </tr>
-            </table>
-          </td>
-        </tr>
-      </table>
-      <!--[if (gte mso 9)|(IE)]>
-        </td>
-        </tr>
-        </table>
-      <![endif]-->
-    </td>
-  </tr>
+  
 </table>
 
 </body>
