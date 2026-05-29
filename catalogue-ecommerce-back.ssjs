@@ -148,7 +148,7 @@
       var cookieString = Platform.Function.Stringify(cookie);
       Write('<pre>' + cookieString + '</pre>');
       var productsString = Platform.Function.Stringify(products);
-      Write('<pre>' + productIdsString + '</pre>');
+      Write('<pre>' + productsString + '</pre>');
 
       for (var i = 0; i < products.length; i++) {
           upsertProduct(i, products[i]);
