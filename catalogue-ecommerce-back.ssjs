@@ -54,7 +54,7 @@
       req.setHeader("Cookie", cookie);
       var resp = req.send();
       Write("Check 3");
-      if (resp.statusCode != 200) {
+      if (resp.statusCode > 299) {
           throw "Error productos API: " + resp.statusCode;
       }
 
@@ -142,7 +142,7 @@
       }
 
       var cookie = getCookie();
-      //var products = getProducts(productIds, cookie);
+      var products = getProducts(productIds, cookie);
 
       // for (var i = 0; i < products.length; i++) {
       //     upsertProduct(i, products[i]);
