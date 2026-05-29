@@ -155,7 +155,7 @@
       var productsString = Platform.Function.Stringify(products);
       Write('<pre>' + productsString + '</pre>');
 
-      for (var i = 0; i < products.length; i++) {
+      for (var i in products) {
           upsertProduct(i, products[i]);
       }
 
