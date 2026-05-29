@@ -16,7 +16,7 @@
     return ids;
   }
 
-/* 
+
   // 2. Obtener cookie
   function getCookie() {
       var req = new Script.Util.HttpRequest("https://api.cruzverde.cl/customer-service/login");
@@ -41,7 +41,7 @@
 
       return cookie;
   }
-
+/* 
   // 3. Obtener productos API
   function getProducts(ids, cookie) {
 
@@ -137,11 +137,11 @@
       // Print consola navegador -test
       Write('<script>console.log(' + productIdsString + ')</script>');
 
-      // if (productIds.length == 0) {
-      //     throw "No hay productos en DE Source";
-      // }
+      if (productIds.length == 0) {
+          throw "No hay productos en DE Source";
+      }
 
-      // var cookie = getCookie();
+      var cookie = getCookie();
       // var products = getProducts(productIds, cookie);
 
       // for (var i = 0; i < products.length; i++) {
