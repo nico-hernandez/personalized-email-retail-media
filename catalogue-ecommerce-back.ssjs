@@ -43,24 +43,29 @@
   }
  
   // 3. Obtener productos API
-  function getProducts(ids, cookie) {
-   
-      var url = "https://api.cruzverde.cl/product-service/products/product-summary";
-      url += "?fields=name&fields=brand&fields=categoryId&fields=prices&fields=images";
-      url += "&ids=" + ids.join("&ids=");
-  
-      var req = new Script.Util.HttpRequest(url);
-      req.method = "GET";
-      req.setHeader("Cookie", cookie);
-      var resp = req.send();
+  function getProduct(prodList, cookie) {
+    var host = "https://api.cruzverde.cl/";
+    var url =
+      host +
+      "product-service/products/product-summary?fields=name&fields=brand&fields=categoryId&fields=prices&fields=images&fields=stock&fields=promotions&fields=isBioequivalent&fields=bioequivalentSubCategoryId";
+    var url = url + "&ids=" + prodList.join("&ids=") + "&ids=0";
+    var req = new Script.Util.HttpRequest(url);
+    req.emptyContentHandling = 0;
+    req.retries = 2;
+    req.continueOnError = true;
+    req.method = "GET";
+    req.setHeader("Cookie", cookie);
 
-      if (resp.statusCode > 299) {
-          throw "Error productos API: " + resp.statusCode;
-      }
+    var resp = req.send();
+    var content = String(resp.content);
+    var statusCode = String(resp.statusCode);
 
-      var json = Platform.Function.ParseJSON(String(resp.content));
-
-      return json.products || [];
+    if (statusCode == 200){
+      return Platform.Function.ParseJSON(content);
+    }
+    else {
+      return {}
+    }
   }
 
   // 4. Upsert simple
@@ -150,9 +155,9 @@
       var productsString = Platform.Function.Stringify(products);
       Write('<pre>' + productsString + '</pre>');
 
-      for (var i = 0; i < products.length; i++) {
-          upsertProduct(i, products[i]);
-      }
+      // for (var i = 0; i < products.length; i++) {
+      //     upsertProduct(i, products[i]);
+      // }
 
       Write("OK - " + products.length + " productos actualizados");
 
