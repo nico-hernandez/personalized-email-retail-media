@@ -555,6 +555,18 @@ La estructura del email consiste en:
       <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="640" class="email-container" style="max-width:640px; background-color:%%=v(@paramColorBackPrimario)=%%;">
 
         <!-- ============================================================ -->
+        <!-- COMPONENTE 0: LINK SI NO VISUALIZA CORRECTAMENTE EMAIL       -->
+        <!-- La variable AMPScript la genera automaticamente Salesforce   -->
+        <!-- ============================================================ -->
+          <tr>
+            <td align="center" valign="top" style="padding:0; background-color:%%=v(@paramColorBody)=%%;">
+              <p style="font-family:Arial,sans-serif;font-size:11px;color:#3a3c49;margin:0 0 4px 0;text-align:center;">
+                Si no puedes ver este mensaje, 
+              </p>
+              <a href="%%view_email_url%%" target="_blank" style="color:#3a3c49; text-decoration:none;"><strong>haz click aquí;</strong></a>
+            </td>
+          </tr>
+        <!-- ============================================================ -->
         <!-- COMPONENTE 1: HEADER     — GIF animado                       -->
         <!-- Reemplazar src con URL del GIF real (640px ancho)            -->
         <!-- ============================================================ -->
