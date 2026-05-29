@@ -11,7 +11,7 @@
     var rows = de.Rows.Retrieve();
     var ids = [];
     for (var i = 0; i < rows.length; i++) {
-        ids.push(rows[i]["codigo_producto"]);
+        ids.push(rows[i].codigo_producto);
     }
     return ids;
   }
