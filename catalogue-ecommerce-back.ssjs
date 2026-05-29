@@ -11,10 +11,11 @@
     var rows = de.Rows.Retrieve({});
     var ids = [];
     for (var i = 0; i < rows.length; i++) {
-        ids.push(rows[i].codigo_producto);
+        ids.push(rows[i]["codigo_producto"]);
     }
     return ids;
   }
+
 /* 
   // 2. Obtener cookie
   function getCookie() {
@@ -128,7 +129,6 @@
  */
   // MAIN
   try {
-
       var productIds = getProductIds();
       // Stringify
       var productIdsString = Platform.Function.Stringify(productIds);
