@@ -8,7 +8,7 @@
   // 1. Obtener productos desde DE origen
   function getProductIds() {
     var de = DataExtension.Init(SOURCE_DE);
-    var rows = de.Rows.Retrieve();
+    var rows = de.Rows.Retrieve({});
     var ids = [];
     for (var i = 0; i < rows.length; i++) {
         ids.push(rows[i].codigo_producto);
