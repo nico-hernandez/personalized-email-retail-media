@@ -128,7 +128,7 @@ La estructura del email y parametrización consiste en:
     8. Colores definidos por función
   ================================ */
   // Gris oscuro del body
-  var paramColorBody = "#0a0f0a";//"#ffffff";//
+  var paramColorBody = "#ffffff"; //"#0a0f0a";
   // Negro del fondo de secciones
   var paramColorBackPrimario = "#000000";
   // Gris del fondo de cards
@@ -548,7 +548,7 @@ La estructura del email consiste en:
   <tr>
     <td align="center">
 
-      <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="640" class="email-container" style="max-width:640px; background-color:%%=v(@paramColorBody)=%%;">
+      <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="640" class="email-container" style="max-width:640px; background-color:%%=v(@paramColorBackPrimario)=%%;">
 
         <!-- ============================================================ -->
         <!-- COMPONENTE 1: HEADER     — GIF animado                       -->
@@ -609,7 +609,7 @@ La estructura del email consiste en:
         <!-- ============================================================ -->
         %%[ IF @paramFlagMarca THEN ]%%
           <tr>
-            <td align="center" valign="top" style="padding:0; background-color:%%=v(@paramColorBody)=%%;">
+            <td align="center" valign="top" style="padding:0; background-color:%%=v(@paramColorBackPrimario)=%%;">
               <img
                 src="%%=v(@paramMarca)=%%"
                 alt="Eucerin"
@@ -856,7 +856,7 @@ La estructura del email consiste en:
               FILA 3 · Texto legal
               ══════════════════════════════════════════════════ -->
           <tr>
-            <td class="legal-td" style="padding:20px 24px 16px 24px;background-color:#ffffff;">
+            <td class="legal-td" style="padding:20px 24px 16px 24px;background-color:%%=v(@paramColorBody)=%%;">
               <p class="legal-p" style="font-family:Arial,sans-serif;font-size:11px;color:#3a3c49;line-height:16px;margin:0;text-align:justify;">
                 Promoción válida sólo para Chile y exclusiva para Socios que registren su compra a través del Club Cruz Verde:
                 Descuento del 20% en Anthelios de La Roche Posay los lunes, jueves y sábados de mayo. Válido por compras en la
@@ -874,7 +874,7 @@ La estructura del email consiste en:
               FILA 4 · Baja / Unsubscribe
               ══════════════════════════════════════════════════ -->
           <tr>
-            <td align="center" style="padding:16px 24px 8px 24px;background-color:#ffffff;">
+            <td align="center" style="padding:16px 24px 8px 24px;background-color:%%=v(@paramColorBody)=%%;">
               <p class="unsub-p" style="font-family:Arial,sans-serif;font-size:11px;color:#3a3c49;margin:0;text-align:center;">
                 Si no deseas seguir recibiendo información
                 <a href="%%=RedirectTo(CloudPagesURL(30,'SubKey',_subscriberkey))=%%" alias="Desuscribirse" target="_blank"
@@ -887,7 +887,7 @@ La estructura del email consiste en:
               FILA 5 · Remitente
               ══════════════════════════════════════════════════ -->
           <tr>
-            <td align="center" style="padding:14px 24px 24px 24px;background-color:#ffffff;">
+            <td align="center" style="padding:14px 24px 24px 24px;background-color:%%=v(@paramColorBody)=%%;">
               <p class="sender-p" style="font-family:Arial,sans-serif;font-size:11px;color:#3a3c49;margin:0 0 4px 0;text-align:center;">
                 Este email fue enviado por: <strong style="color:#3a3c49;">%%Member_Busname%%</strong>
               </p>
