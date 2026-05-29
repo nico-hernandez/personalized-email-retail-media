@@ -29,7 +29,7 @@
       });
       var resp = req.send();
 
-      if (resp.statusCode != 200) {
+      if (resp.statusCode > 299) {
           throw "Error login API: " + resp.statusCode;
       }
 
