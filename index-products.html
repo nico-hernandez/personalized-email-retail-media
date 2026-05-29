@@ -353,13 +353,16 @@ Esta lógica contempla:
 
     // Stringify
     var productDetailsString = Platform.Function.Stringify(productDetails);
-    // Calculo URL Club
+    // Formatear URL Ver Todo con UTM
+    var urlVerTodo = formatUrl(paramUrlVerTodo);
+    // Formatear URL Club con UTM
     var urlClub = formatUrl(paramUrlClub);   
-    // Calculo URL CV
+    // Formatear URL Cruz Verde con UTM
     var urlCruzVerde = formatUrl(paramUrlCruzVerde);
 
     // Pasar a AMPscript
     Variable.SetValue("@productDetailsString", productDetailsString);
+    Variable.SetValue("@urlVerTodo", urlVerTodo);
     Variable.SetValue("@urlClub", urlClub);
     Variable.SetValue("@urlCruzVerde", urlCruzVerde);
 
@@ -545,7 +548,7 @@ La estructura del email consiste en:
   <tr>
     <td align="center">
 
-      <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="600" class="email-container" style="max-width:600px; background-color:%%=v(@paramColorBody)=%%;">
+      <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="640" class="email-container" style="max-width:640px; background-color:%%=v(@paramColorBody)=%%;">
 
         <!-- ============================================================ -->
         <!-- COMPONENTE 1: HEADER     — GIF animado                       -->
@@ -641,6 +644,7 @@ La estructura del email consiste en:
                     %%[ FOR @j=1 TO @paramColumnas DO ]%%
                       <!-- ─── COLUMNA j ────────────────────────────────── -->
                       %%[ SET @index = Add(Multiply(Subtract(@i, 1), @paramColumnas), @j)
+                          SET @codigo = Field(Row(@productDetailsRows, @index), "codigo")
                           SET @esOferta = Field(Row(@productDetailsRows, @index), "esOferta")
                           SET @precioNormal = Field(Row(@productDetailsRows, @index), "precioNormal")
                           SET @precioOferta = Field(Row(@productDetailsRows, @index), "precioOferta")
@@ -648,7 +652,8 @@ La estructura del email consiste en:
                           SET @marca = Field(Row(@productDetailsRows, @index), "marca")
                           SET @descripcion = Field(Row(@productDetailsRows, @index), "descripcion")
                           SET @imagen = Field(Row(@productDetailsRows, @index), "imagen")
-                          SET @pdp = Field(Row(@productDetailsRows, @index), "pdp") ]%%
+                          SET @pdp = Field(Row(@productDetailsRows, @index), "pdp") 
+                        ]%%
                       %%[
                           SET @cardLado = IIF(Mod(@j, 2) == 0, "right", "left")
                           SET @paddingLado = IIF(Mod(@j, 2) == 0, "left", "right")
@@ -705,7 +710,7 @@ La estructura del email consiste en:
                               </table>
                               <!-- Botón -->
                               %%[ IF @paramFlagBotonCard THEN ]%%
-                                <a href='%%=RedirectTo(@pdp)=%%' target="_blank" class="btn-buy" style="display:block; background-color:%%=v(@paramColorPrimario)=%%; color:%%=v(@paramColorTextoPrimario)=%%; font-family:Arial,Helvetica,sans-serif; font-size:12px; font-weight:700; text-decoration:none; text-align:center; line-height:35px; height:35px; border-radius:6px; letter-spacing:1px; text-transform:uppercase; mso-line-height-rule:exactly;">%%=v(@paramTextoBotonCard)=%%</a>
+                                <a href='%%=RedirectTo(TreatAsContent(@pdp))=%%' alias="%%=v(@codigo)=%%" target="_blank" class="btn-buy" style="display:block; background-color:%%=v(@paramColorPrimario)=%%; color:%%=v(@paramColorTextoPrimario)=%%; font-family:Arial,Helvetica,sans-serif; font-size:12px; font-weight:700; text-decoration:none; text-align:center; line-height:35px; height:35px; border-radius:6px; letter-spacing:1px; text-transform:uppercase; mso-line-height-rule:exactly;">%%=v(@paramTextoBotonCard)=%%</a>
                               %%[ ENDIF ]%%
                             </td>
                           </tr>
@@ -744,7 +749,7 @@ La estructura del email consiste en:
                     <p class="cat-eyebrow" style="margin:0 0 4px 0; font-family:Arial,Helvetica,sans-serif; font-size:13px; font-weight:400; color:%%=v(@paramColorTextoSecundario)=%%;">%%=v(@paramTextoSecundarioVerTodo1)=%%</p>
                     <h2 class="cat-title" style="margin:0 0 6px 0; font-family:Arial,Helvetica,sans-serif; font-size:32px; font-weight:700; color:%%=v(@paramColorTextoPrimario)=%%; line-height:1.1;">%%=v(@paramTextoPrincipalVerTodo)=%%</h2>
                     <p class="cat-sub" style="margin:0 0 14px 0; font-family:Arial,Helvetica,sans-serif; font-size:12px; color:%%=v(@paramColorTextoSecundario)=%%;">%%=v(@paramTextoSecundarioVerTodo2)=%%</p>
-                    <a href="%%=v(@paramUrlVerTodo)=%%" target="_blank" class="btn-cat"
+                    <a href="%%=RedirectTo(@urlVerTodo)=%%" target="_blank" class="btn-cat"
                       style="display:inline-block; background-color:%%=v(@paramColorPrimario)=%%; color:%%=v(@paramColorTextoPrimario)=%%; font-family:Arial,Helvetica,sans-serif; font-size:11px; font-weight:700; text-decoration:none; text-align:center; padding:0 18px; line-height:32px; height:32px; border-radius:6px; letter-spacing:1px; text-transform:uppercase; mso-line-height-rule:exactly;">
                       %%=v(@paramBotonVerTodo)=%%
                     </a>
