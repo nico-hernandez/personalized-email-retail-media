@@ -758,7 +758,7 @@ La estructura del email consiste en:
         <!-- ============================================================ -->
         <!-- COMPONENTE 7: FOOTER                                         -->
         <!-- ============================================================ -->
-         
+
         %%[ IF @paramFlagFooter THEN ]%%
           <!-- ══════════════════════════════════════════════════
           FILA 1 · Barra verde oscura
@@ -800,7 +800,7 @@ La estructura del email consiste en:
 
                   <!-- COL B: Logo Club Cruz Verde — ocupa el espacio restante, centrado -->
                   <td align="center" valign="middle" style="padding:0px 0px;">
-                    <a href="%%=RedirectTo(@URLclub)=%%" target="_blank" style="display:inline-block;">
+                    <a href="%%=RedirectTo(@urlClub)=%%" target="_blank" style="display:inline-block;">
                       <img class="logo-img" src="https://image.mailcruzverde.cl/lib/fe3615717564047b711178/m/1/f0adf88f-4a70-4f12-814d-ae498cf0a1cd.png" style="max-width:80px;" alt="Club Cruz Verde">
                     </a>
                   </td>
@@ -841,7 +841,7 @@ La estructura del email consiste en:
               ══════════════════════════════════════════════════ -->
           <tr>
             <td align="center" style="background-color:#009739;padding:6px 0px;">
-              <a href="%%=RedirectTo(@URLcv)=%%" target="_blank" style="text-decoration:none;">
+              <a href="%%=RedirectTo(@urlCruzVerde)=%%" target="_blank" style="text-decoration:none;">
                 <span style="font-family:Arial,sans-serif;font-size:14px;font-weight:bold;color:#ffffff;letter-spacing:0.3px;">www.cruzverde.com</span>
               </a>
             </td>
@@ -855,12 +855,12 @@ La estructura del email consiste en:
               <p class="legal-p" style="font-family:Arial,sans-serif;font-size:11px;color:#3a3c49;line-height:16px;margin:0;text-align:justify;">
                 Promoción válida sólo para Chile y exclusiva para Socios que registren su compra a través del Club Cruz Verde:
                 Descuento del 20% en Anthelios de La Roche Posay los lunes, jueves y sábados de mayo. Válido por compras en la
-                App y en <a href="%%=RedirectTo(@URLcv)=%%" target="_blank" style="color:#3a3c49;text-decoration:none;font-weight:bold;">www.cruzverde.com</a>,
+                App y en <a href="%%=RedirectTo(@urlCruzVerde)=%%" target="_blank" style="color:#3a3c49;text-decoration:none;font-weight:bold;">www.cruzverde.com</a>,
                 disponible en áreas con cobertura ecommerce, sólo para personas naturales, consumidores finales con pago a través
                 de tarjeta de crédito o débito, y en locales Cruz Verde con cualquier medio de pago, excepto Isla de Pascua.
                 Vigente hasta el 29/05/2026. Productos sujetos a reposición al momento de la compra. Descuentos no acumulables
                 entre sí ni respecto de otras promociones, convenios y/o descuentos. Infórmate en
-                <a href="%%=RedirectTo(@URLcv)=%%" target="_blank" style="color:#3a3c49;text-decoration:none;font-weight:bold;">www.cruzverde.com</a>.
+                <a href="%%=RedirectTo(@urlCruzVerde)=%%" target="_blank" style="color:#3a3c49;text-decoration:none;font-weight:bold;">www.cruzverde.com</a>.
               </p>
             </td>
           </tr>
@@ -896,10 +896,7 @@ La estructura del email consiste en:
 
     </td>
   </tr>
-  <!-- ============================================================ -->
-  <!-- COMPONENTE 8: LEGAL                                         -->
-  <!-- ============================================================ -->
-  
+
 </table>
 
 </body>
