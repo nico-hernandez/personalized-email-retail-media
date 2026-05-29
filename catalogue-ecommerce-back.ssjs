@@ -44,16 +44,16 @@
  
   // 3. Obtener productos API
   function getProducts(ids, cookie) {
-      Write("Check 1");
+   
       var url = "https://api.cruzverde.cl/product-service/products/product-summary";
       url += "?fields=name&fields=brand&fields=categoryId&fields=prices&fields=images";
       url += "&ids=" + ids.join("&ids=");
-      Write("Check 2");
+  
       var req = new Script.Util.HttpRequest(url);
       req.method = "GET";
       req.setHeader("Cookie", cookie);
       var resp = req.send();
-      Write("Check 3");
+
       if (resp.statusCode > 299) {
           throw "Error productos API: " + resp.statusCode;
       }
@@ -144,11 +144,11 @@
       var cookie = getCookie();
       var products = getProducts(productIds, cookie);
 
-      // for (var i = 0; i < products.length; i++) {
-      //     upsertProduct(i, products[i]);
-      // }
+      for (var i = 0; i < products.length; i++) {
+          upsertProduct(i, products[i]);
+      }
 
-      // Write("OK - " + products.length + " productos actualizados");
+      Write("OK - " + products.length + " productos actualizados");
 
   } catch (e) {
       Write("ERROR: " + String(e));
