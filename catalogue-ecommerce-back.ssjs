@@ -144,6 +144,12 @@
       var cookie = getCookie();
       var products = getProducts(productIds, cookie);
 
+      // Print en pantalla
+      var cookieString = Platform.Function.Stringify(cookie);
+      Write('<pre>' + cookieString + '</pre>');
+      var productsString = Platform.Function.Stringify(products);
+      Write('<pre>' + productIdsString + '</pre>');
+
       for (var i = 0; i < products.length; i++) {
           upsertProduct(i, products[i]);
       }
