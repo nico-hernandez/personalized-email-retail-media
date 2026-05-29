@@ -2,27 +2,18 @@
   Platform.Load("Core", "1.1.1");
 
   // CONFIG
-  var SOURCE_DE = "ProductListRetailMediaSubsetExternalKey";
-  var TARGET_DE = "ProductDetail - RetailMedia - Subset";
+  var SOURCE_DE = "ProductListRetailMediaExternalKey";
+  var TARGET_DE = "ProductDetailRetailMediaExternalKey";
 
   // 1. Obtener productos desde DE origen
-  function getProductIds(key, cols) {
-    var records = [];
-    var data = wsProxy.retrieve("DataExtensionObject[" + key + "]", cols);
-    records = getFields(data); //forma de extraer los ids
-    return records;
-  }
-
-  function getFields(data) {
-    var output = [];
-    for (var i in data["Results"]) {
-      for (var j in data["Results"][i]["Properties"]) {
-        if (data["Results"][i]["Properties"][j]["Name"] == "codigo_producto") {
-          output.push(data["Results"][i]["Properties"][j]["Value"]);
-        }
-      }
+  function getProductIds() {
+    var de = DataExtension.Init(SOURCE_DE);
+    var rows = de.Rows.Retrieve();
+    var ids = [];
+    for (var i = 0; i < rows.length; i++) {
+        ids.push(rows[i]["codigo_producto"]);
     }
-    return output;
+    return ids;
   }
 
 /* 
@@ -138,7 +129,7 @@
  */
   // MAIN
   try {
-      var productIds = getProductIds(SOURCE_DE, ["codigo_producto"]);
+      var productIds = getProductIds();
       // Stringify
       var productIdsString = Platform.Function.Stringify(productIds);
       // Print en pantalla
