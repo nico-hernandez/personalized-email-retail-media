@@ -559,7 +559,7 @@ La estructura del email consiste en:
         <!-- La variable AMPScript la genera automaticamente Salesforce   -->
         <!-- ============================================================ -->
           <tr>
-            <td align="center" height="30" valign="top" style="padding:0; background-color:%%=v(@paramColorBody)=%%;">
+            <td align="center" height="30" valign="middle" style="padding:0; background-color:%%=v(@paramColorBody)=%%;">
               <font face="Arial, Helvetica, sans-serif" color="#3a3c49" style="color:#3a3c49; font-size:11px; font-family:Arial, Helvetica, sans-serif; line-height:normal;">
                 Si no puedes ver este mensaje, 
                 <a href="%%view_email_url%%" style="color:#3a3c49; text-decoration:none;">
@@ -573,7 +573,7 @@ La estructura del email consiste en:
         <!-- ============================================================ -->
         %%[ IF @paramFlagHeader THEN ]%%
           <tr>
-            <td align="center" valign="middle" style="padding:0; background-color:%%=v(@paramColorBackPrimario)=%%;">
+            <td align="center" valign="top" style="padding:0; background-color:%%=v(@paramColorBackPrimario)=%%;">
               <a href="https://www.cruzverde.cl" target="_blank" style="display:block;">
                 <img
                   src="%%=v(@paramHeader)=%%"
