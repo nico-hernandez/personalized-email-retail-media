@@ -758,48 +758,77 @@ La estructura del email consiste en:
         <!-- ============================================================ -->
         <!-- COMPONENTE 7: FOOTER                                         -->
         <!-- ============================================================ -->
+         
         %%[ IF @paramFlagFooter THEN ]%%
-          <!-- BLOQUE RRSS + CONTACTO -->
+          <!-- ══════════════════════════════════════════════════
+          FILA 1 · Barra verde oscura
+          3 columnas: [Redes] [Logo centrado] [Teléfonos]
+          Columnas izq y der de igual ancho para centrar logo
+          ══════════════════════════════════════════════════ -->
           <tr>
-            <td align="center" bgcolor="#00594c">
-              <table width="600" cellpadding="0" cellspacing="0" border="0">
+            <td style="background-color:#00594c;padding:0;">
+              <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%">
                 <tr>
 
-                  <!-- RRSS -->
-                  <td align="left" width="200" style="padding:15px;">
-                    
-                    <a href="https://www.facebook.com/">
-                      <img src="https://image.mailcruzverde.cl/...facebook.png" width="32" style="display:inline-block; margin-right:8px;">
-                    </a>
-
-                    <a href="https://www.instagram.com/">
-                      <img src="https://image.mailcruzverde.cl/...instagram.png" width="32" style="display:inline-block; margin-right:8px;">
-                    </a>
-
-                    <a href="https://www.youtube.com/">
-                      <img src="https://image.mailcruzverde.cl/...youtube.png" width="32" style="display:inline-block; margin-right:8px;">
-                    </a>
-
-                    <a href="https://wa.me/56950083442">
-                      <img src="https://image.mailcruzverde.cl/...whatsapp.png" width="32" style="display:inline-block;">
-                    </a>
-
+                  <!-- COL A: Redes sociales — ancho fijo ~220px -->
+                  <td width="220" align="left" valign="middle" style="padding:0px 0px 0px 20px;">
+                    <table align="center" role="presentation" border="0" cellpadding="0" cellspacing="0">
+                      <tr>
+                        <td style="padding-right:8px;">
+                          <a href="https://www.facebook.com/farmaciascruzverdechile/" target="_blank">
+                            <img class="s-icon" src="https://image.mailcruzverde.cl/lib/fe3615717564047b711178/m/1/ece815e2-d1db-4e79-a62d-113379896818.png" style="max-width:32px;" alt="Facebook">
+                          </a>
+                        </td>
+                        <td style="padding-right:8px;">
+                          <a href="https://www.instagram.com/farmaciascruzverdechile/" target="_blank">
+                            <img class="s-icon" src="https://image.mailcruzverde.cl/lib/fe3615717564047b711178/m/1/06b97bec-5175-4521-b942-e0c6b2a34f97.png" style="max-width:32px;" alt="Instagram">
+                          </a>
+                        </td>
+                        <td style="padding-right:8px;">
+                          <a href="https://www.youtube.com/user/CruzVerdeOficial" target="_blank">
+                            <img class="s-icon" src="https://contenidos.cruzverde.cl/wp-content/uploads/2024/08/youtube.png" style="max-width:32px;" alt="YouTube">
+                          </a>
+                        </td>
+                        <td>
+                          <a href="https://wa.me/56950083442" target="_blank">
+                            <img class="s-icon" src="https://image.mailcruzverde.cl/lib/fe3615717564047b711178/m/1/bc730801-cdb6-461b-9eb2-f1fcd3cbda48.png" style="max-width:32px;" alt="WhatsApp">
+                          </a>
+                        </td>
+                      </tr>
+                    </table>
                   </td>
 
-                  <!-- LOGO -->
-                  <td align="center" width="200">
-                    <img src="https://image.mailcruzverde.cl/...club.png" width="90" style="display:block;">
+                  <!-- COL B: Logo Club Cruz Verde — ocupa el espacio restante, centrado -->
+                  <td align="center" valign="middle" style="padding:0px 0px;">
+                    <a href="%%=RedirectTo(@URLclub)=%%" target="_blank" style="display:inline-block;">
+                      <img class="logo-img" src="https://image.mailcruzverde.cl/lib/fe3615717564047b711178/m/1/f0adf88f-4a70-4f12-814d-ae498cf0a1cd.png" style="max-width:80px;" alt="Club Cruz Verde">
+                    </a>
                   </td>
 
-                  <!-- CONTACTO -->
-                  <td align="right" width="200" style="padding:15px; font-family: Arial; font-size:16px; color:white;">
-                    
-                    <img src="https://image.mailcruzverde.cl/...phone.png" width="18" style="vertical-align:middle;">
-                    <span style="margin-right:15px;"><b>800 802 800</b></span>
-
-                    <img src="https://image.mailcruzverde.cl/...mobile.png" width="18" style="vertical-align:middle;">
-                    <b>*7700</b>
-
+                  <!-- COL C: Teléfonos en una sola línea — ancho fijo ~220px -->
+                  <td width="220" align="right" valign="middle" style="padding:0px 20px 0px 0px;">
+                    <table align="center" role="presentation" border="0" cellpadding="0" cellspacing="0" align="right">
+                      <tr>
+                        <!-- Ícono + 800 802 800 -->
+                        <td valign="middle" style="padding-right:5px;">
+                          <img class="ph-icon" src="https://image.mailcruzverde.cl/lib/fe3615717564047b711178/m/1/494aaed9-11a8-4782-82f7-4ce087ac37f6.png" width="18" height="18" alt="">
+                        </td>
+                        <td valign="middle" style="padding-right:14px;">
+                          <a href="tel:800802800" style="text-decoration:none;">
+                            <span class="ph-txt" style="font-family:Arial,sans-serif;font-size:14px;font-weight:bold;color:#ffffff;white-space:nowrap;">800 802 800</span>
+                          </a>
+                        </td>
+                        <!-- Ícono + *7700 -->
+                        <td valign="middle" style="padding-right:5px;">
+                          <img class="ph-icon" src="https://image.mailcruzverde.cl/lib/fe3615717564047b711178/m/1/ae87c048-4279-4e3a-b59e-789b87080c37.png" width="18" height="18" alt="">
+                        </td>
+                        <td valign="middle">
+                          <a href="tel:*7700" style="text-decoration:none;">
+                            <span class="ph-txt" style="font-family:Arial,sans-serif;font-size:14px;font-weight:bold;color:#ffffff;white-space:nowrap;">*7700</span>
+                          </a>
+                        </td>
+                      </tr>
+                    </table>
                   </td>
 
                 </tr>
@@ -807,18 +836,61 @@ La estructura del email consiste en:
             </td>
           </tr>
 
-          <!-- BARRA INFERIOR -->
+          <!-- ══════════════════════════════════════════════════
+              FILA 2 · Barra verde · URL principal
+              ══════════════════════════════════════════════════ -->
           <tr>
-            <td align="center" bgcolor="#009739" style="padding:10px;">
-              
-              <a href="https://www.cruzverde.com" 
-                style="font-family: Arial; font-size:18px; color:white; text-decoration:none;">
-                <b>www.cruzverde.com</b>
+            <td align="center" style="background-color:#009739;padding:6px 0px;">
+              <a href="%%=RedirectTo(@URLcv)=%%" target="_blank" style="text-decoration:none;">
+                <span style="font-family:Arial,sans-serif;font-size:14px;font-weight:bold;color:#ffffff;letter-spacing:0.3px;">www.cruzverde.com</span>
               </a>
-
             </td>
-</tr>
+          </tr>
 
+          <!-- ══════════════════════════════════════════════════
+              FILA 3 · Texto legal
+              ══════════════════════════════════════════════════ -->
+          <tr>
+            <td class="legal-td" style="padding:20px 24px 16px 24px;background-color:#ffffff;">
+              <p class="legal-p" style="font-family:Arial,sans-serif;font-size:11px;color:#3a3c49;line-height:16px;margin:0;text-align:justify;">
+                Promoción válida sólo para Chile y exclusiva para Socios que registren su compra a través del Club Cruz Verde:
+                Descuento del 20% en Anthelios de La Roche Posay los lunes, jueves y sábados de mayo. Válido por compras en la
+                App y en <a href="%%=RedirectTo(@URLcv)=%%" target="_blank" style="color:#3a3c49;text-decoration:none;font-weight:bold;">www.cruzverde.com</a>,
+                disponible en áreas con cobertura ecommerce, sólo para personas naturales, consumidores finales con pago a través
+                de tarjeta de crédito o débito, y en locales Cruz Verde con cualquier medio de pago, excepto Isla de Pascua.
+                Vigente hasta el 29/05/2026. Productos sujetos a reposición al momento de la compra. Descuentos no acumulables
+                entre sí ni respecto de otras promociones, convenios y/o descuentos. Infórmate en
+                <a href="%%=RedirectTo(@URLcv)=%%" target="_blank" style="color:#3a3c49;text-decoration:none;font-weight:bold;">www.cruzverde.com</a>.
+              </p>
+            </td>
+          </tr>
+
+          <!-- ══════════════════════════════════════════════════
+              FILA 4 · Baja / Unsubscribe
+              ══════════════════════════════════════════════════ -->
+          <tr>
+            <td align="center" style="padding:16px 24px 8px 24px;background-color:#ffffff;">
+              <p class="unsub-p" style="font-family:Arial,sans-serif;font-size:11px;color:#3a3c49;margin:0;text-align:center;">
+                Si no deseas seguir recibiendo información
+                <a href="%%=RedirectTo(CloudPagesURL(30,'SubKey',_subscriberkey))=%%" target="_blank"
+                  style="color:#3a3c49;text-decoration:none;font-weight:bold;">haz click aquí</a>
+              </p>
+            </td>
+          </tr>
+
+          <!-- ══════════════════════════════════════════════════
+              FILA 5 · Remitente
+              ══════════════════════════════════════════════════ -->
+          <tr>
+            <td align="center" style="padding:14px 24px 24px 24px;background-color:#ffffff;">
+              <p class="sender-p" style="font-family:Arial,sans-serif;font-size:11px;color:#3a3c49;margin:0 0 4px 0;text-align:center;">
+                Este email fue enviado por: <strong style="color:#3a3c49;">Farmacias Cruz Verde</strong>
+              </p>
+              <p class="sender-p" style="font-family:Arial,sans-serif;font-size:11px;color:#3a3c49;margin:0;text-align:center;">
+                Santiago, CL
+              </p>
+            </td>
+          </tr>
         %%[ ENDIF ]%%
       </table>
 
