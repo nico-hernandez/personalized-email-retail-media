@@ -60,7 +60,7 @@ La estructura del email y parametrización consiste en:
     2. Parámetros Sección Nombre Variable
   ===================================== */
   // Texto del nombre del cliente
-  var paramNombre = "Sofía";
+  var paramNombre = "Sofía"; //Attribute.GetValue("nombre");
   var paramFlagNombre = true;
 
   /* ================================
@@ -128,7 +128,7 @@ La estructura del email y parametrización consiste en:
     8. Colores definidos por función
   ================================ */
   // Gris oscuro del body
-  var paramColorBody = "#ffffff"//"#0a0f0a";
+  var paramColorBody = "#ffffff";//"#0a0f0a"
   // Negro del fondo de secciones
   var paramColorBackPrimario = "#000000";
   // Gris del fondo de cards
@@ -537,9 +537,9 @@ La estructura del email consiste en:
 <body style="margin:0; padding:0; background-color:%%=v(@paramColorBody)=%%;">
 
 <!-- Preheader oculto -->
-<div style="display:none; max-height:0; overflow:hidden; font-size:1px; color:%%=v(@paramColorBody)=%%; line-height:1px; max-width:0px; opacity:0;">
+<!-- <div style="display:none; max-height:0; overflow:hidden; font-size:1px; color:%%=v(@paramColorBody)=%%; line-height:1px; max-width:0px; opacity:0;">
   Sofía, hasta 40% dcto. en productos seleccionados Eucerin. ¡Compra ahora!
-</div>
+</div> -->
 
 <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color:%%=v(@paramColorBody)=%%;">
   <tr>
