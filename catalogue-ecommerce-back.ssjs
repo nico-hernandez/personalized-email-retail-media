@@ -142,7 +142,7 @@
       }
 
       var cookie = getCookie();
-      // var products = getProducts(productIds, cookie);
+      var products = getProducts(productIds, cookie);
 
       // for (var i = 0; i < products.length; i++) {
       //     upsertProduct(i, products[i]);
