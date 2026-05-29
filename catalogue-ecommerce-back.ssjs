@@ -43,7 +43,7 @@
   }
  
   // 3. Obtener productos API
-  function getProduct(prodList, cookie) {
+  function getProducts(prodList, cookie) {
     var host = "https://api.cruzverde.cl/";
     var url =
       host +
