@@ -24,7 +24,7 @@
       req.contentType = "application/json";
       req.postData = Platform.Function.Stringify({
           authType: "guest",
-          customerId: "",
+          customerId: "bcAIJUKQoxgRNkMTY3a9pllFxW",
           preferredLocale: "es_CL"
       });
       var resp = req.send();
