@@ -271,7 +271,7 @@ Esta lógica contempla:
   =========================================================== */
   function formatUrl(url){
 
-    var today = new Date();
+    var today = DateTime.SystemDateToLocalDate(Now());
     today = today.getFullYear() + ("0" + (today.getMonth() + 1)).slice(-2) + ("0" + today.getDate()).slice(-2);
     var paramUtmCampaign = [today, paramUnidadComercial, paramLineaEstrategica, paramNombreCampana].join("_");
     var paramsUrl = {
