@@ -507,6 +507,8 @@ La estructura del email consiste en:
       mso-line-height-rule: exactly;
     }
 
+    .mobile-pad   { padding: 20px 57px; }
+
     /* === MOBILE === */
     @media only screen and (max-width: 640px) {
       .email-container { width: 100% !important; }
@@ -534,6 +536,8 @@ La estructura del email consiste en:
       .card-price         { font-size: 16px !important; }
       .card-badge         { font-size: 8px !important; padding: 2px 4px !important; }
       .btn-buy            { font-size: 10px !important; line-height: 28px !important; height: 28px !important; letter-spacing: 0.5px !important; }
+
+      .mobile-pad         { padding: 12px 18px !important; }
     }
   </style>
 </head>
@@ -731,7 +735,7 @@ La estructura del email consiste en:
         <!-- ============================================================ -->
         %%[ IF @paramFlagVerTodo THEN ]%%
           <tr>
-            <td style="padding:20px 57px 20px 57px; background-color:%%=v(@paramColorBackPrimario)=%%;" class="mobile-pad">
+            <td style="background-color:%%=v(@paramColorBackPrimario)=%%;" class="mobile-pad">
               <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="cat-row" style="width:100%; border-collapse:collapse; background-color:%%=v(@paramColorBackPrimario)=%%;">
                 <tr>
                   %%[ IF @paramFlagImagenVerTodo THEN ]%%
