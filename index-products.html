@@ -68,7 +68,10 @@ La estructura del email y parametrización consiste en:
   ================================ */  
   // URL de imagen del Hero
   var paramHero = "https://image.mailcruzverde.cl/lib/fe3615717564047b711178/m/1/44d8f97f-6e7d-4e74-8584-6021bc46f2eb.png";
+  // Flag del Hero
   var paramFlagHero = true;
+  // URL destino del Hero
+  var paramUrlHero = "https://www.cruzverde.cl/";
 
   /* ================================
     4. Parámetros Sección Marca
@@ -353,6 +356,8 @@ Esta lógica contempla:
 
     // Stringify
     var productDetailsString = Platform.Function.Stringify(productDetails);
+    // Formatear URL destino Hero con UTM
+    var urlHero = formatUrl(paramUrlHero);
     // Formatear URL Ver Todo con UTM
     var urlVerTodo = formatUrl(paramUrlVerTodo);
     // Formatear URL Club con UTM
@@ -362,6 +367,7 @@ Esta lógica contempla:
 
     // Pasar a AMPscript
     Variable.SetValue("@productDetailsString", productDetailsString);
+    Variable.SetValue("@urlHero", urlHero);
     Variable.SetValue("@urlVerTodo", urlVerTodo);
     Variable.SetValue("@urlClub", urlClub);
     Variable.SetValue("@urlCruzVerde", urlCruzVerde);
@@ -370,7 +376,6 @@ Esta lógica contempla:
     // Write('<pre>' + productDetailsString + '</pre>');
 
     // Print consola navegador - para eviar email eliminar línea porque el aprser se cae
-    // Write('<script>console.log(' + productDetailsString + ')</script>');
 
   } catch (ex) {
     Write("Ocurrió un error: " + String(ex));
@@ -574,7 +579,7 @@ La estructura del email consiste en:
         %%[ IF @paramFlagHeader THEN ]%%
           <tr>
             <td align="center" valign="top" style="padding:0; background-color:%%=v(@paramColorBackPrimario)=%%;">
-              <a href="https://www.cruzverde.cl" target="_blank" style="display:block;">
+              <a href="%%=RedirectTo(@urlCruzVerde)=%%" alias="Cruz Verde Header" target="_blank" style="display:block;">
                 <img
                   src="%%=v(@paramHeader)=%%"
                   alt="Club Cruz Verde – Cyber Descuentos"
@@ -608,7 +613,7 @@ La estructura del email consiste en:
         %%[ IF @paramFlagHero THEN ]%%
           <tr>
             <td align="center" valign="top" style="padding:0; background-color:%%=v(@paramColorBackPrimario)=%%;" class="mobile-padding">
-              <a href="https://www.cruzverde.cl" target="_blank" style="display:block;">
+              <a href="%%=RedirectTo(@urlHero)=%%" alias="Cruz Verde Hero" target="_blank" style="display:block;">
                 <img
                   src="%%=v(@paramHero)=%%"
                   alt="Hasta 40% de descuento en productos seleccionados"
