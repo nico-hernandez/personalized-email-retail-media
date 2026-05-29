@@ -155,9 +155,9 @@
       var productsString = Platform.Function.Stringify(products);
       Write('<pre>' + productsString + '</pre>');
 
-      // for (var i = 0; i < products.length; i++) {
-      //     upsertProduct(i, products[i]);
-      // }
+      for (var i = 0; i < products.length; i++) {
+          upsertProduct(i, products[i]);
+      }
 
       Write("OK - " + products.length + " productos actualizados");
 
