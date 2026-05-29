@@ -100,7 +100,7 @@
     Platform.Function.UpsertData(
         TARGET_DE,
         ["codigo_producto"],
-        [productId],
+        [prodId],
         [
           "descripcion",
           "marca",
