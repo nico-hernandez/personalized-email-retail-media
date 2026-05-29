@@ -104,30 +104,30 @@
         [
           "descripcion",
           "marca",
+          "url_imagen",
+          "url_pdp",
+          "url_ribbons",
+          "precio_normal_cl",
+          "precio_oferta_cl",
+          "update",
           "formato",
           "categoria",
           "es_bioequivalente",
-          "categoria_bioequivalente",
-          "url_imagen",
-          "url_pdp",
-          "ur_ribbons",
-          "precio_normal_cl",
-          "precio_oferta_cl",
-          "update"
+          "categoria_bioequivalente"
         ],
         [
           name,
           brand,
-          format,
-          category,
-          bioequivalent,
-          bioCategory,
           urlImage,
           urlPdp,
           urlRibbons,
           priceList,
           priceOffer,
-          now
+          now,
+          format,
+          category,
+          bioequivalent,
+          bioCategory,
         ]
     );
   }
