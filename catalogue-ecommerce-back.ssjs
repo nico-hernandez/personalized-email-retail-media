@@ -3,7 +3,7 @@
 
   // CONFIG
   var SOURCE_DE = "ProductListRetailMediaExternalKey";
-  var TARGET_DE = "ProductDetailRetailMediaExternalKey";
+  var TARGET_DE = "ProductDetailRetailMedia";
 
   // 1. Obtener productos desde DE origen
   function getProductIds() {
