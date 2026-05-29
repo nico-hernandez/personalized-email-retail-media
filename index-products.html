@@ -749,7 +749,7 @@ La estructura del email consiste en:
                     <p class="cat-eyebrow" style="margin:0 0 4px 0; font-family:Arial,Helvetica,sans-serif; font-size:13px; font-weight:400; color:%%=v(@paramColorTextoSecundario)=%%;">%%=v(@paramTextoSecundarioVerTodo1)=%%</p>
                     <h2 class="cat-title" style="margin:0 0 6px 0; font-family:Arial,Helvetica,sans-serif; font-size:32px; font-weight:700; color:%%=v(@paramColorTextoPrimario)=%%; line-height:1.1;">%%=v(@paramTextoPrincipalVerTodo)=%%</h2>
                     <p class="cat-sub" style="margin:0 0 14px 0; font-family:Arial,Helvetica,sans-serif; font-size:12px; color:%%=v(@paramColorTextoSecundario)=%%;">%%=v(@paramTextoSecundarioVerTodo2)=%%</p>
-                    <a href="%%=RedirectTo(@urlVerTodo)=%%" target="_blank" class="btn-cat"
+                    <a href="%%=RedirectTo(@urlVerTodo)=%%" alias="Ver Todo" target="_blank" class="btn-cat"
                       style="display:inline-block; background-color:%%=v(@paramColorPrimario)=%%; color:%%=v(@paramColorTextoPrimario)=%%; font-family:Arial,Helvetica,sans-serif; font-size:11px; font-weight:700; text-decoration:none; text-align:center; padding:0 18px; line-height:32px; height:32px; border-radius:6px; letter-spacing:1px; text-transform:uppercase; mso-line-height-rule:exactly;">
                       %%=v(@paramBotonVerTodo)=%%
                     </a>
@@ -805,7 +805,7 @@ La estructura del email consiste en:
 
                   <!-- COL B: Logo Club Cruz Verde — ocupa el espacio restante, centrado -->
                   <td align="center" valign="middle" style="padding:0px 0px;">
-                    <a href="%%=RedirectTo(@urlClub)=%%" target="_blank" style="display:inline-block;">
+                    <a href="%%=RedirectTo(@urlClub)=%%" alias="Club Cruz Verde" target="_blank" style="display:inline-block;">
                       <img class="logo-img" src="https://image.mailcruzverde.cl/lib/fe3615717564047b711178/m/1/f0adf88f-4a70-4f12-814d-ae498cf0a1cd.png" style="max-width:80px;" alt="Club Cruz Verde">
                     </a>
                   </td>
@@ -846,7 +846,7 @@ La estructura del email consiste en:
               ══════════════════════════════════════════════════ -->
           <tr>
             <td align="center" style="background-color:#009739;padding:6px 0px;">
-              <a href="%%=RedirectTo(@urlCruzVerde)=%%" target="_blank" style="text-decoration:none;">
+              <a href="%%=RedirectTo(@urlCruzVerde)=%%" alias="Cruz Verde Footer"  target="_blank" style="text-decoration:none;">
                 <span style="font-family:Arial,sans-serif;font-size:14px;font-weight:bold;color:#ffffff;letter-spacing:0.3px;">www.cruzverde.com</span>
               </a>
             </td>
@@ -860,12 +860,12 @@ La estructura del email consiste en:
               <p class="legal-p" style="font-family:Arial,sans-serif;font-size:11px;color:#3a3c49;line-height:16px;margin:0;text-align:justify;">
                 Promoción válida sólo para Chile y exclusiva para Socios que registren su compra a través del Club Cruz Verde:
                 Descuento del 20% en Anthelios de La Roche Posay los lunes, jueves y sábados de mayo. Válido por compras en la
-                App y en <a href="%%=RedirectTo(@urlCruzVerde)=%%" target="_blank" style="color:#3a3c49;text-decoration:none;font-weight:bold;">www.cruzverde.com</a>,
+                App y en <a href="%%=RedirectTo(@urlCruzVerde)=%%" alias="Cruz Verde Legal" target="_blank" style="color:#3a3c49;text-decoration:none;font-weight:bold;">www.cruzverde.com</a>,
                 disponible en áreas con cobertura ecommerce, sólo para personas naturales, consumidores finales con pago a través
                 de tarjeta de crédito o débito, y en locales Cruz Verde con cualquier medio de pago, excepto Isla de Pascua.
                 Vigente hasta el 29/05/2026. Productos sujetos a reposición al momento de la compra. Descuentos no acumulables
                 entre sí ni respecto de otras promociones, convenios y/o descuentos. Infórmate en
-                <a href="%%=RedirectTo(@urlCruzVerde)=%%" target="_blank" style="color:#3a3c49;text-decoration:none;font-weight:bold;">www.cruzverde.com</a>.
+                <a href="%%=RedirectTo(@urlCruzVerde)=%%" alias="Cruz Verde Legal" target="_blank" style="color:#3a3c49;text-decoration:none;font-weight:bold;">www.cruzverde.com</a>.
               </p>
             </td>
           </tr>
@@ -877,7 +877,7 @@ La estructura del email consiste en:
             <td align="center" style="padding:16px 24px 8px 24px;background-color:#ffffff;">
               <p class="unsub-p" style="font-family:Arial,sans-serif;font-size:11px;color:#3a3c49;margin:0;text-align:center;">
                 Si no deseas seguir recibiendo información
-                <a href="%%=RedirectTo(CloudPagesURL(30,'SubKey',_subscriberkey))=%%" target="_blank"
+                <a href="%%=RedirectTo(CloudPagesURL(30,'SubKey',_subscriberkey))=%%" alias="Desuscribirse" target="_blank"
                   style="color:#3a3c49;text-decoration:none;font-weight:bold;">haz click aquí</a>
               </p>
             </td>
